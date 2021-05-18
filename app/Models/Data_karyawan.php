@@ -26,4 +26,7 @@ class Data_karyawan extends Model
     public function karyawan_mentor(){
         return $this->belongsTo('App\Models\Chief_Mentor');
     }
+    public function datakaryawan_user(){
+        return $this->hasOne('App\Models\Users','id_users');
+    }
 }
