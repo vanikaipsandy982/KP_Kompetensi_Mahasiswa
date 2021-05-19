@@ -16,4 +16,7 @@ class Prodi extends Model
     public function prodi_mahasiswa(){
         return $this->belongsTo('App\Models\Mahasiswa');
     }
+    public function prodi_fakultas(){
+        return $this->hasMany('App\Models\Fakultas','id_fakultas');
+    }
 }

@@ -12,4 +12,8 @@ class Fakultas extends Model
         "id_fakultas",
         "nama_fakultas"
     ];
+
+    public function fakultas_prodi(){
+        return $this->belongsTo('App\Models\Prodi');
+    }
 }
