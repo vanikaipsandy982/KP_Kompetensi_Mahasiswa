@@ -50,10 +50,9 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto" href="#hero" >Home</a></li>
-                <li><a class="nav-link scrollto" href="#features">Mahasiswa</a></li>
-                <li><a class="nav-link scrollto" href="#gallery">Survey</a></li>
-                <li><a class="nav-link scrollto" href="#pricing">Mentoring</a></li>
-                <li><a class="nav-link scrollto" href="#faq">Catatan</a></li>
+                <li><a class="nav-link scrollto" href="/listMhs">Mahasiswa</a></li>
+                <li><a class="nav-link scrollto" href="#mentoring">Mentoring</a></li>
+                <li><a class="nav-link scrollto" href="#catatan">Catatan</a></li>
                 <li class="dropdown "><a href="#"><span>Survey</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/isiSurvey" >Isi Survey</a></li>

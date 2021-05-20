@@ -49,15 +49,14 @@
 
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a class="nav-link scrollto active" href="#hero"  >Home</a></li>
-                <li><a class="nav-link scrollto" href="#features">Mahasiswa</a></li>
-                <li><a class="nav-link scrollto" href="#gallery">Survey</a></li>
+                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="/listMhs">Mahasiswa</a></li>
                 <li><a class="nav-link scrollto" href="#pricing">Mentoring</a></li>
                 <li><a class="nav-link scrollto" href="#faq">Catatan</a></li>
                 <li class="dropdown"><a href="#"><span>Survey</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/isiSurvey/">Isi Survey</a></li>
-                        <li><a href="/editSurvey/">Edit Survey</a></li>
+                        <li><a href="/isiSurvey">Isi Survey</a></li>
+                        <li><a href="/editSurvey">Edit Survey</a></li>
                     </ul>
                 </li>
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
