@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
-* Desktop Navigation 
+* Desktop Navigation
 */
 .navbar {
   padding: 0;
@@ -230,7 +230,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
-* Mobile Navigation 
+* Mobile Navigation
 */
 .mobile-nav-toggle {
   color: #47536e;
@@ -339,7 +339,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding: 140px 0 100px 0;
+  padding: 140px 0 1000px 0;
 }
 
 #hero::before {
