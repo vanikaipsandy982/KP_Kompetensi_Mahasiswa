@@ -1,5 +1,5 @@
 @extends('layouts.main')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 @section('title', 'Data Mahasiswa')
 
 <section id="hero" class="d-flex align-items-center">
@@ -15,8 +15,9 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nama Depan</th>
-                        <th scope="col">Nama Belakang</th>
+                        <th scope="col">NRP</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Fakultas</th>
                         <th scope="col">Program Studi</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -24,32 +25,14 @@
                     <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
+                        <td>1872001</td>
                         <td>Otto</td>
+                        <td>Teknologi Informasi</td>
                         <td>Teknik Informatika</td>
                         <td>
                             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
                             <button type="button" class="btn btn-outline-danger">Hapus</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>Teknik Informatika</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-info">Edit</button>
-                            <button type="button" class="btn btn-outline-danger">Hapus</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>Sistem Informasi</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-info">Edit</button>
-                            <button type="button" class="btn btn-outline-danger">Hapus</button>
+                            <button type="button" class="btn btn-outline-dark">Detail</button>
                         </td>
                     </tr>
                     </tbody>
@@ -80,6 +63,7 @@
                 </div>
             </div>
         </div>
+        <!--Konfirmasi-->
         <div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -99,11 +83,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     </div>
 </div>
 </section>

@@ -42,6 +42,15 @@ Route::get('/editSurvey', function () {
 });
 
 //Bagian Vanika
+//Mahasiswa
 Route::get('/listMhs', function(){
     return view('mahasiswa/index');
+});
+//Fakultas
+Route::get('/listFakultas', function(){
+    return view('fakultas/index');
+});
+//Prodi
+Route::get('/listProdi', function(){
+    return view('prodi/index');
 });

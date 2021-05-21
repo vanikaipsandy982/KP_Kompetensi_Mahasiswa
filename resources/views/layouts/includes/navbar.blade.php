@@ -11,8 +11,8 @@
                 <li><a class="nav-link scrollto" href="/listMhs">Mahasiswa</a></li>
                 <li class="dropdown"><a href="#"><span>Akademik</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/isiSurvey">Fakultas</a></li>
-                        <li><a href="/editSurvey">Program Studi</a></li>
+                        <li><a href="/listFakultas">Fakultas</a></li>
+                        <li><a href="/listProdi">Program Studi</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#"><span>Mentoring</span> <i class="bi bi-chevron-down"></i></a>
@@ -27,6 +27,7 @@
                 <li class="dropdown"><a href="#"><span>Survey</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/isiSurvey">Isi Survey</a></li>
+                        <li><a href="">Hasil Survey</a></li>
                         <li><a href="/editSurvey">Edit Survey</a></li>
                     </ul>
                 </li>

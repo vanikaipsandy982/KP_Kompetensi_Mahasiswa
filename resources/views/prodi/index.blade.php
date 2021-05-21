@@ -1,57 +1,28 @@
 @extends('layouts.main')
 
-@section('title', 'Edit Survey')
+@section('title', 'Data Program Studi')
 
 <section id="hero" class="d-flex align-items-center">
-
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-                <div>
-                    <h1>MCU Care Survey</h1>
-                    <form class="row g-3">
-                        <div class="col-12">
-                            <label for="inputAddress" class="form-label">Kategori Survey</label>
-                            <select class="form-select " aria-label="Default select example">
-                                <option selected>Pilih Kategori Survey</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-            </div>
             <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                 <div class="col-sm-12">
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter">Tambah Program Studi</button>
+                    <br><br>
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col"> </th>
-                            <th scope="col">Pertanyaan</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Kode</th>
+                            <th scope="col">Nama Program Studi</th>
                             <th scope="col">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <th scope="row">1</th>
-                            <td>Apakah kamu suka ayam kfc ?</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-info">Edit</button>
-                                <button type="button" class="btn btn-outline-danger">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Kenapa nama kamu Vanika ?</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-info">Edit</button>
-                                <button type="button" class="btn btn-outline-danger">Hapus</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Kenapa saya bisa menghirup udara ?</td>
+                            <th>72</th>
+                            <td>Teknik Informatika</td>
                             <td>
                                 <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
                                 <button type="button" class="btn btn-outline-danger">Hapus</button>
@@ -61,7 +32,7 @@
                     </table>
                 </div>
             </div>
-            <!-- Modal -->
+            <!--Form Tambah Data-->
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -86,6 +57,7 @@
                     </div>
                 </div>
             </div>
+            <!--Konfirmasi-->
             <div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">

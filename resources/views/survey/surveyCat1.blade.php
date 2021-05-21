@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Isi Survey')
+
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="gallery">
     <div class="container" data-aos="fade-up">
@@ -445,22 +446,6 @@
                 <input class="form-check-input" type="radio" name="inlineRadioOptions10" id="inlineRadio2" value="option2">
                 <label class="form-check-label" for="inlineRadio2">10</label>
             </div>
-
         </div>
-
     </div>
-
-
-</section><!-- End Hero -->
-
-<!-- Vendor JS Files -->
-<script src="assets/vendor/aos/aos.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
-<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
-
-
+</section>
