@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\testquery;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ Route::get('/index', function () {
     return view('home');
 });
 
-//Route::get('/isiSurvey/', 'SurveyController@index');
+Route::get('/editSurvey', [testquery::class,'show']);
 //Route::get('/isiSurvey/cat1', 'SurveyController@Category1');
 
 //Bagian Josrel
@@ -37,9 +38,9 @@ Route::get('/polosan', function () {
 //Route::get('/isiSurvey/Category1', function () {
 //    return view('surveyCat1');
 //});
-Route::get('/editSurvey', function () {
-    return view('survey/editSurvey');
-});
+//Route::get('/editSurvey', function () {
+//    return view('survey/editSurvey');
+//});
 
 //Bagian Vanika
 //Mahasiswa

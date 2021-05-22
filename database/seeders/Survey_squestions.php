@@ -6,6 +6,10 @@ use Illuminate\Database\Seeder;
 
 class Survey_squestions extends Seeder
 {
+    public static function get()
+    {
+    }
+
     /**
      * Run the database seeds.
      *

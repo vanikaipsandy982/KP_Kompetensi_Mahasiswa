@@ -57,6 +57,16 @@
                                 <button type="button" class="btn btn-outline-danger">Hapus</button>
                             </td>
                         </tr>
+                        @foreach($survey as $data)
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>{{$data->question}}</td>
+                            <td>
+                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+                                <button type="button" class="btn btn-outline-danger">Hapus</button>
+                            </td>
+                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
