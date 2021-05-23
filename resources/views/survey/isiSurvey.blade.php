@@ -14,27 +14,27 @@
                             <label for="inputAddress" class="form-label">Fakultas</label>
                             <select class="form-select " aria-label="Default select example">
                                 <option selected>Pilih Fakultas</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                @foreach($fakultas as $data)
+                                <option>{{$data->nama_fakultas}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-12">
                             <label for="inputAddress" class="form-label">Program Studi</label>
                             <select class="form-select " aria-label="Default select example">
+                                @foreach($prodi as $prod)
                                 <option selected>Pilih Program Studi</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option>{{$prod->nama_prodi}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-12">
                             <label for="inputAddress" class="form-label">Kategori Survey</label>
                             <select class="form-select " aria-label="Default select example">
+                                @foreach($catsurvey as $catsurveys)
                                 <option selected>Pilih Kategori Survey</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option>{{$catsurveys->survey_name}}</option>
+                                @endforeach
                             </select>
                         </div>
 

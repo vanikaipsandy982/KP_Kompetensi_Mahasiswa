@@ -2,17 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testquery;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\IsiSurveyController;
 
 
 Route::get('/', function () {
@@ -23,12 +13,13 @@ Route::get('/index', function () {
 });
 
 Route::get('/editSurvey', [testquery::class,'show']);
+Route::get('/isiSurvey', [IsiSurveyController::class,'index']);
 //Route::get('/isiSurvey/cat1', 'SurveyController@Category1');
 
 //Bagian Josrel
-Route::get('/isiSurvey', function () {
-    return view('survey/isiSurvey');
-});
+//Route::get('/isiSurvey', function () {
+//    return view('survey/isiSurvey');
+//});
 Route::get('/surveyCategory1', function () {
     return view('survey/surveyCat1');
 });
