@@ -38,6 +38,9 @@ Route::get('/polosan', function () {
 Route::get('/listMhs', function(){
     return view('mahasiswa/index');
 });
+Route::get('/detailMhs', function(){
+    return view('mahasiswa/detailmhs');
+});
 //Fakultas
 Route::get('/listFakultas', function(){
     return view('fakultas/index');

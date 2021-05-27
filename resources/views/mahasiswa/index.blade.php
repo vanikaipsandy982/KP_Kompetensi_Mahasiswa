@@ -2,13 +2,15 @@
 
 @section('title', 'Data Mahasiswa')
 
+@section('container')
+
 <section id="hero" class="d-flex align-items-center">
 <div class="container">
     <div class="row">
         <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
             <div class="col-sm-12">
                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahMahasiswa">Tambah Mahasiswa</button>
-                <button type="button" class="btn btn-outline-success">Export</button>
+                <button type="button" class="btn btn-outline-success">Export to Excel</button>
                 <button type="button" class="btn btn-outline-warning">Import</button>
                 <br><br>
                 <table class="table table-striped">
@@ -23,14 +25,12 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>1872001</td>
-                        <td>Otto</td>
+                        <td>1872000</td>
+                        <td>Nama Mahasiswa</td>
                         <td>Teknologi Informasi</td>
                         <td>Teknik Informatika</td>
                         <td>
-                            <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
-                            <button type="button" class="btn btn-outline-danger">Hapus</button>
-                            <button type="button" class="btn btn-outline-dark">Detail</button>
+                            <a href="/detailMhs" class="btn btn-outline-dark">Detail</a>
                         </td>
                     </tr>
                     </tbody>
@@ -133,3 +133,4 @@
     </div>
 </div>
 </section>
+@endsection

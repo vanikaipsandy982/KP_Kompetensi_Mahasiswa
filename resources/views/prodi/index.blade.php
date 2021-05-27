@@ -22,7 +22,7 @@
                             <th>72</th>
                             <td>Teknik Informatika</td>
                             <td>
-                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditProdi">Edit</button>
                                 <button type="button" class="btn btn-outline-danger">Hapus</button>
                             </td>
                         </tr>
@@ -38,6 +38,46 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Program Studi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <!--Pilih Fakultas-->
+                    <div class="form-group">
+                        <label for="fakultas_mhs">Fakultas</label>
+                        <select class="form-select">
+                            <option selected>Pilih Fakultas</option>
+                            <option value="1">Teknologi Informasi</option>
+                            <option value="2">Kedokteran</option>
+                        </select>
+                    </div>
+                    <!--Kode Program Studi-->
+                    <div class="form-group">
+                        <label for="kode_fakultas">Kode Program Studi</label>
+                        <input type="text" class="form-control" placeholder="Kode Program Studi" maxlength="3">
+                    </div>
+                    <!--Nama Program Studi-->
+                    <div class="form-group">
+                        <label for="nama_fakultas">Nama Program Studi</label>
+                        <input type="text" class="form-control" placeholder="Nama Program Studi">
+                    </div>
+                    <!--Button Simpan-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Form Edit Program Studi-->
+<div class="modal fade" id="modalEditProdi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Program Studi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
