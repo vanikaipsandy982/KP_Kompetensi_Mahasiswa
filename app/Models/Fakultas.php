@@ -14,6 +14,6 @@ class Fakultas extends Model
     ];
 
     public function fakultas_prodi(){
-        return $this->belongsTo('App\Models\Prodi');
+        return $this->hasMany('App\Models\Prodi','id_prodi');
     }
 }
