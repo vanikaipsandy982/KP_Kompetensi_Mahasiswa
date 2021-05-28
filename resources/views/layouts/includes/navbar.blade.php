@@ -23,7 +23,13 @@
                         <li><a href="">Kelompok(Family-Cell)</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto" href="">Catatan</a></li>
+                <li  class="dropdown" ><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="">Data Mahasiswa</a></li>
+                        <li><a href="">Data Dosen</a></li>
+                        <li><a href="">Data Karyawan</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown"><a href="#"><span>Survey</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/isiSurvey">Isi Survey</a></li>
