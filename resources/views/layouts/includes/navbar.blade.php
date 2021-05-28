@@ -18,7 +18,7 @@
                 <li class="dropdown"><a href="#"><span>Mentoring</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="">Data Mentor</a></li>
-                        <li><a href="">Data Chief Mentor</a></li>
+                        <li><a href="/listChief">Data Chief Mentor</a></li>
                         <li><a href="">Jadwal Mentoring</a></li>
                         <li><a href="">Kelompok(Family-Cell)</a></li>
                     </ul>

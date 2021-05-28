@@ -49,3 +49,9 @@ Route::get('/listFakultas', function(){
 Route::get('/listProdi', function(){
     return view('prodi/index');
 });
+
+//Bagian Mic
+//Chief Mentor
+Route::get('/listChief', function(){
+    return view('chiefmentor/index');
+});
