@@ -15,19 +15,19 @@ class Prodi extends Seeder
     {
         $data=[
             [
-                'id_prodi'=>'1',
+                'id_fakultas'=>1,
                 'nama_prodi'=>'Teknik Informatika'
             ],
             [
-                'id_prodi'=>'2',
+                'id_fakultas'=>2,
                 'nama_prodi'=>'Sistem Informasi'
             ]
         ];
         foreach ($data as $value){
             $prodi = new \App\Models\Prodi();
-            $prodi->id_prodi = $value['id_prodi'];
+            $prodi->id_fakultas = $value['id_fakultas'];
             $prodi->nama_prodi = $value['nama_prodi'];
-            $prodi->save;
+            $prodi->save();
         }
     }
 }

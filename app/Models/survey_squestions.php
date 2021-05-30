@@ -7,15 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class survey_squestions extends Model
 {
-    protected $table="survey_squestions";
+    protected $table="Survey_squestions";
     protected $fillable=[
-        "id_question",
         "question",
-        "created_at",
-        "updated_at"
     ];
 
     public function surveyquestion_survey(){
-        return $this->belongsTo('App\Models\survey');
+        return $this->belongsTo('App\Models\survey','id_survey');
     }
+
 }

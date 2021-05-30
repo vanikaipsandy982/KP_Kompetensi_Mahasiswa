@@ -39,7 +39,7 @@ class Data_Karyawan extends Seeder
             $data_karyawan->jeniskelamin_karyawan = $value['jeniskelamin_karyawan'];
             $data_karyawan->tgl_masuk_karyawan = $value['tgl_masuk_karyawan'];
             $data_karyawan->id_jabatan = $value['id_jabatan'];
-            $data_karyawan->save;
+            $data_karyawan->save();
         }
     }
 }

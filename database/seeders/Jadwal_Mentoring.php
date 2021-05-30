@@ -15,22 +15,19 @@ class Jadwal_Mentoring extends Seeder
     {
         $data=[
             [
-                'id_mahasiswa'=>'1872006',
-                'id_kelompok'=>'767676',
-                'catatan'=>'test catatan'
+                'catatan'=>'test catatan',
+                'jadwal'=>'Kamis'
             ],
             [
-                'id_mahasiswa'=>'1872011',
-                'id_kelompok'=>'898989',
-                'catatan'=>'test catatan 2'
+                'catatan'=>'test catatan 2',
+                'jadwal'=>'Jumat'
             ]
         ];
         foreach($data as $value){
             $jadwal_mentoring = new \App\Models\Jadwal_Mentoring();
-            $jadwal_mentoring->id_mahasiswa = $value['id_mahasiswa'];
-            $jadwal_mentoring->id_kelompok = $value['id_kelompok'];
             $jadwal_mentoring->catatan = $value['catatan'];
-            $jadwal_mentoring->save;
+            $jadwal_mentoring->jadwal = $value['jadwal'];
+            $jadwal_mentoring->save();
         }
     }
 }

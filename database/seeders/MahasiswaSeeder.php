@@ -15,7 +15,7 @@ class MahasiswaSeeder extends Seeder
     {
         $data=[
             [
-                'id_mahasiswa'=>'1872006',
+                'nrp'=>'1872006',
                 'nama_mahasiswa'=>'Michael Widjajahalim',
                 'alamat_mahasiswa'=>'Komplek taman burung A2/37',
                 'jeniskel_mahasiswa'=>'Laki-laki',
@@ -26,7 +26,7 @@ class MahasiswaSeeder extends Seeder
                 'alamat_orangtua'=>'Komplek taman burung A2/37'
             ],
             [
-                'id_mahasiswa'=>'1872011',
+                'nrp'=>'1872011',
                 'nama_mahasiswa'=>'Stephen Candra',
                 'alamat_mahasiswa'=>'Jl Griyatama 2 no 9',
                 'jeniskel_mahasiswa'=>'Laki-laki',
@@ -39,7 +39,7 @@ class MahasiswaSeeder extends Seeder
         ];
         foreach ($data as $value){
             $mahasiswa = new \App\Models\Mahasiswa();
-            $mahasiswa->id_mahasiswa = $value['id_mahasiswa'];
+            $mahasiswa->nrp = $value['nrp'];
             $mahasiswa->nama_mahasiswa = $value['nama_mahasiswa'];
             $mahasiswa->alamat_mahasiswa = $value['alamat_mahasiswa'];
             $mahasiswa->jeniskel_mahasiswa = $value['jeniskel_mahasiswa'];
@@ -48,7 +48,7 @@ class MahasiswaSeeder extends Seeder
             $mahasiswa->tanggal_masuk = $value['tanggal_masuk'];
             $mahasiswa->nama_orangtua = $value['nama_orangtua'];
             $mahasiswa->alamat_orangtua = $value['alamat_orangtua'];
-            $mahasiswa->save;
+            $mahasiswa->save();
         }
     }
 }

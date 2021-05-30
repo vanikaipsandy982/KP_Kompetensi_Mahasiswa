@@ -9,11 +9,10 @@ class Fakultas extends Model
 {
     protected $table = "Fakultas";
     protected $fillable = [
-        "id_fakultas",
         "nama_fakultas"
     ];
 
     public function fakultas_prodi(){
-        return $this->hasMany('App\Models\Prodi','id_prodi');
+        return $this->hasMany('App\Models\Prodi','id_fakultas');
     }
 }

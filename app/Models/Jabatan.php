@@ -9,12 +9,11 @@ class Jabatan extends Model
 {
     protected $table="Jabatan";
     protected $fillable=[
-        "id_jabatan",
         "nama_jabatan"
     ];
 
     public function jabatan_karyawan(){
-        return $this->belongsTo('App\Models\Data_karyawan');
+        return $this->hasMany('App\Models\Data_karyawan','id_jabatan');
     }
 
 }

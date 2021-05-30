@@ -9,7 +9,7 @@ class Mahasiswa extends Model
 {
     protected $table = "mahasiswa";
     public $fillable=[
-        "id_mahasiswa",
+        "nrp",
         "nama_mahasiswa",
         "alamat_mahasiswa",
         "jeniskel_mahasiswa",
@@ -21,9 +21,12 @@ class Mahasiswa extends Model
     ];
 
     public function mahasiswa_prodi(){
-        return $this->hasOne('App\Models\Prodi','id_prodi');
+        return $this->belongsTo('App\Models\Prodi','id_prodi');
     }
-    public function jadwalmentoring_mahasiswa(){
-        return $this->belongsTo('App\Models\Jadwal_Mentoring');
+    public function mahasiswa_jadwalmentoring(){
+        return $this->hasMany('App\Models\Jadwal_Mentoring','id_mahasiswa');
+    }
+    public function mahasiswa_user(){
+        return $this->belongsTo('App\Models\Users','id_user');
     }
 }

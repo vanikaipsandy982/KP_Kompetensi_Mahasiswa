@@ -9,13 +9,10 @@ class forums extends Model
 {
     protected $table="forums";
     protected $fillable=[
-        "forum_id",
         "artikel",
         "berita",
-        "created_at",
-        "updated_at"
     ];
     public function forum_user(){
-        return $this->belongsTo('App\Models\Users');
+        return $this->belongsTo('App\Models\Users','id_users');
     }
 }

@@ -9,12 +9,12 @@ class Chief_Mentor extends Model
 {
     protected $table = "Chief_Mentor";
     protected $fillable =[
-        "id_chief_mentor",
         "catatan_mentor",
-        "tgl_masuk_chief_mentor",
-        "tgl_keluar_chief_mentor"
     ];
     public function mentor_karyawan(){
-        return $this->hasOne('App\Models\Data_karyawan','id_karyawan');
+        return $this->belongsTo('App\Models\Data_karyawan','fk_id_karyawan');
+    }
+    public function mentor_kelompok(){
+        return $this->hasMany('App\Models\Pengelompokan','id_chief_mentor');
     }
 }

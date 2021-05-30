@@ -9,14 +9,13 @@ class Prodi extends Model
 {
     protected $table = "Prodi";
     protected $fillable = [
-        "id_prodi",
         "nama_prodi"
     ];
 
     public function prodi_mahasiswa(){
-        return $this->belongsTo('App\Models\Mahasiswa');
+        return $this->hasMany('App\Models\Mahasiswa','id_prodi');
     }
     public function prodi_fakultas(){
-        return $this->belongsTo('App\Models\Fakultas');
+        return $this->belongsTo('App\Models\Fakultas','id_fakultas');
     }
 }

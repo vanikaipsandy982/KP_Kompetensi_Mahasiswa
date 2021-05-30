@@ -17,8 +17,6 @@ class Chief_Mentor extends Seeder
             [
                 'id_chief_mentor'=>'7138428',
                 'catatan_mentor'=>'test',
-                'tgl_masuk_chief_mentor'=>'26-05-2017',
-                'tgl_keluar_chief_mentor'=>'26-09-2020',
                 'id_karyawan'=>'8158182'
             ],
         ];
@@ -26,10 +24,8 @@ class Chief_Mentor extends Seeder
             $chief_mentor = new \App\Models\Chief_Mentor();
             $chief_mentor->$value = ['id_chief_mentor'];
             $chief_mentor->$value = ['catatan_mentor'];
-            $chief_mentor->$value = ['tgl_masuk_chief_mentor'];
-            $chief_mentor->$value = ['tgl_keluar_chief_mentor'];
             $chief_mentor->$value = ['id_karyawan'];
-            $chief_mentor->save;
+            $chief_mentor->save();
         }
     }
 }

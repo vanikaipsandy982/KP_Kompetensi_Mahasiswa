@@ -15,17 +15,13 @@ class Jabatan extends Seeder
     {
         $data=[
             [
-                'id_jabatan'=>'125120',
-                'nama_jabatan'=>'test jabatan',
-                'id_divisi'=>'24921'
+                'nama_jabatan'=>'test jabatan'
             ]
         ];
         foreach ($data as $value) {
             $jabatan = new \App\Models\Jabatan();
-            $jabatan->id_jabatan = $value['id_jabatan'];
-            $jabatan->id_jabatan = $value['nama_jabatan'];
-            $jabatan->id_divisi = $value['id_divisi'];
-            $jabatan->save;
+            $jabatan->nama_jabatan = $value['nama_jabatan'];
+            $jabatan->save();
         }
     }
 }

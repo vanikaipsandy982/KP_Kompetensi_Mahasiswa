@@ -9,9 +9,9 @@ class hasil_survey extends Model
 {
     protected $table="hasil_survey";
     protected $fillable=[
-        "id_hasil",
         "rata_rata",
-        "created_at",
-        "updated_at"
     ];
+    public function surveyquestion_survey(){
+        return $this->hasMany('App\Models\survey','id_survey');
+    }
 }
