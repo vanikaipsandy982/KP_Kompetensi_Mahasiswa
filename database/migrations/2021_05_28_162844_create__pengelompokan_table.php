@@ -16,7 +16,7 @@ class CreatePengelompokanTable extends Migration
         Schema::create('Pengelompokan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kelompok');
-            $table->integer('id_chief_mentor');
+            $table->integer('id_chief_mentor')->nullable();
             $table->timestamps();
         });
     }
