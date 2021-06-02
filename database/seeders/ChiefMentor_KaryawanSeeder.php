@@ -18,7 +18,7 @@ class ChiefMentor_KaryawanSeeder extends Seeder
                 'id_karyawan'=>'4288191',
                 'nama_karyawan'=>'Muhammad Azeez Maree',
                 'email_karyawan'=>'azeeza@gmail.com',
-                'tgl_lahir'=>'29-01-2000',
+                'tgl_lahir'=>'05-01-2000',
                 'alamat_karyawan'=>'test alamat',
                 'notelp_karyawan'=>'8130123922',
                 'agama'=>'islam',
