@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fakultas extends Model
 {
-    protected $table = "Fakultas";
+    protected $table = "fakultas";
     protected $fillable = [
         "nama_fakultas"
     ];
 
-    public function fakultas_prodi(){
-        return $this->hasMany('App\Models\Prodi','id_fakultas');
+    public function fakultasProdi(){
+        return $this->hasMany('App\Models\Prodi','fk_id_fakultas');
     }
 }

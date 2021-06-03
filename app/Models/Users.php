@@ -7,26 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Users extends Model
 {
-    protected $table="Users";
+    protected $table="users";
     protected $fillable=[
         "username",
         "password",
-        "email_verified_at",
-        "id_role"
+        "fk_id_role"
     ];
-    public function user_datakaryawan(){
-        return $this->hasOne('App\Models\Data_karyawan','id_user');
+    public function userKaryawan(){
+        return $this->hasOne('App\Models\Data_karyawan','fk_id_user');
     }
-    public function user_mahasiswa(){
-        return $this->hasOne('App\Models\Mahasiswa','id_user');
+    public function userMahasiswa(){
+        return $this->hasOne('App\Models\Mahasiswa','fk_id_user');
     }
-    public function user_role(){
-        return $this->belongsTo('App\Models\role','id_role');
+    public function userRole(){
+        return $this->belongsTo('App\Models\role','fk_id_role');
     }
-    public function user_forum(){
-        return $this->hasMany('App\Models\forums','id_user');
+    public function userForum(){
+        return $this->hasMany('App\Models\forums','fk_id_user');
     }
     public function user_hasil_surveys(){
-        return $this->hasMany('App\Models\hasil_survey','id_user');
+        return $this->hasMany('App\Models\hasil_survey','fk_id_user');
     }
 }

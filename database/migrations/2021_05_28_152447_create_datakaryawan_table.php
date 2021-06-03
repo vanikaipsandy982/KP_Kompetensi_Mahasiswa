@@ -13,7 +13,7 @@ class CreateDatakaryawanTable extends Migration
      */
     public function up()
     {
-        Schema::create('Data_karyawan', function (Blueprint $table) {
+        Schema::create('data_karyawan', function (Blueprint $table) {
             $table->id();
             $table->double('id_karyawan');
             $table->string('nama_karyawan');
@@ -24,7 +24,8 @@ class CreateDatakaryawanTable extends Migration
             $table->string('agama');
             $table->string('jeniskelamin_karyawan');
             $table->timestamps();
-            $table->integer('id_jabatan');
+            $table->integer('fk_id_jabatan');
+            $table->integer('fk_id_user');
         });
     }
 
@@ -35,6 +36,6 @@ class CreateDatakaryawanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Data_karyawan');
+        Schema::dropIfExists('data_karyawan');
     }
 }

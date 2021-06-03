@@ -11,8 +11,9 @@ class forums extends Model
     protected $fillable=[
         "artikel",
         "berita",
+        "fk_id_user"
     ];
-    public function forum_user(){
-        return $this->belongsTo('App\Models\Users','id_users');
+    public function forumUser(){
+        return $this->belongsTo('App\Models\Users','fk_id_user');
     }
 }

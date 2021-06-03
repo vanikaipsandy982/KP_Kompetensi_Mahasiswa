@@ -13,11 +13,11 @@ class CreateChiefMentorTable extends Migration
      */
     public function up()
     {
-        Schema::create('Chief_Mentor', function (Blueprint $table) {
+        Schema::create('chief_mentor', function (Blueprint $table) {
             $table->id();
             $table->string('catatan_mentor');
             $table->timestamps();
-            $table->integer('id_karyawan');
+            $table->integer('fk_id_karyawan');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateChiefMentorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Chief_Mentor');
+        Schema::dropIfExists('chief_mentor');
     }
 }

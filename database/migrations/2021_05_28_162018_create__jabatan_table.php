@@ -13,7 +13,7 @@ class CreateJabatanTable extends Migration
      */
     public function up()
     {
-        Schema::create('Jabatan', function (Blueprint $table) {
+        Schema::create('jabatan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_jabatan');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateJabatanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Jabatan');
+        Schema::dropIfExists('jabatan');
     }
 }

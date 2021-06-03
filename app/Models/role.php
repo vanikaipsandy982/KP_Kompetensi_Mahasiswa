@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class role extends Model
 {
-    protected $table="rolePermissionSeeder";
+    protected $table="role";
     protected $fillable=[
         "name"
     ];
 
-    public function role_user(){
-        return $this->hasMany('App\Models\Users','id_role');
+    public function roleUser(){
+        return $this->hasMany('App\Models\Users','fk_id_role');
     }
-    public function role_permission(){
-        return $this->belongsToMany(permissions::class, 'role_has_permissions', 'id_permission', 'id_role');
+    public function rolePermission(){
+        return $this->belongsToMany(permissions::class, 'role_has_permissions', 'fk_id_permission', 'fk_id_role');
 
     }
 }

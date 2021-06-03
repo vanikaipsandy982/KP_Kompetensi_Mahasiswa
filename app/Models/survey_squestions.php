@@ -14,10 +14,10 @@ class survey_squestions extends Model
     ];
 
     public function surveyquestion_survey(){
-        return $this->belongsTo('App\Models\survey','id_survey');
+        return $this->belongsTo('App\Models\survey','fk_id_survey');
     }
     public function surveyquestion_hasilsurveys(){
-        return $this->hasMany('App\Models\hasil_survey','id_squestion');
+        return $this->hasMany('App\Models\hasil_survey','fk_id_squestion');
     }
 
 }

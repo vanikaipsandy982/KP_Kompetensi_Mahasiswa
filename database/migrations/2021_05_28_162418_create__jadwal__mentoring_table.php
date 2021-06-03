@@ -13,13 +13,14 @@ class CreateJadwalMentoringTable extends Migration
      */
     public function up()
     {
-        Schema::create('Jadwal_Mentoring', function (Blueprint $table) {
+        Schema::create('jadwal_mentoring', function (Blueprint $table) {
             $table->id();
             $table->string('catatan');
             $table->string('jadwal');
+            $table->integer('fk_id_mahasiswa')->nullable();
+            $table->integer('fk_id_kelompok')->nullable();
             $table->timestamps();
-            $table->integer('id_mahasiswa')->nullable();
-            $table->integer('id_kelompok')->nullable();
+
         });
     }
 
@@ -30,6 +31,6 @@ class CreateJadwalMentoringTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Jadwal_Mentoring');
+        Schema::dropIfExists('jadwal_mentoring');
     }
 }

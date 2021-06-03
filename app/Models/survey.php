@@ -13,9 +13,9 @@ class survey extends Model
     ];
 
     public function survey_surveyquestion(){
-        return $this->hasMany('App\Models\survey_squestions','id_survey');
+        return $this->hasMany('App\Models\survey_squestions','fk_id_survey');
     }
     public function survey_hasilsurvey(){
-        return $this->hasMany('App\Models\hasil_survey','id_survey');
+        return $this->hasMany('App\Models\hasil_survey','fk_id_survey');
     }
 }

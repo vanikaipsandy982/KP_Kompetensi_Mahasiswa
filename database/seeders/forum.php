@@ -17,16 +17,15 @@ class forum extends Seeder
             [
                 'artikel'=>'test artikel',
                 'berita'=>'test berita',
-                'id_user_survey'=>'158999',
-                'users_id'=>'2810012'
+                'username'=>'123'
             ]
         ];
         foreach($data as $value){
             $forum = new \App\Models\forums();
             $forum->artikel = $value['artikel'];
             $forum->berita = $value['berita'];
-            $forum->id_user_survey = $value['id_user_survey'];
-            $forum->users_id = $value['users_id'];
+            $user = \App\Models\Users::where('username','=',$value['username'])->first();
+            $forum->fk_id_user=$user->id;
             $forum->save();
         }
     }

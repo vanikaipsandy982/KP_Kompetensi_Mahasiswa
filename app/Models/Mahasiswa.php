@@ -17,16 +17,18 @@ class Mahasiswa extends Model
         "telp_mahasiswa",
         "tanggal_masuk",
         "nama_orangtua",
-        "alamat_orangtua"
+        "alamat_orangtua",
+        "fk_id_prodi",
+        "fk_id_user"
     ];
 
-    public function mahasiswa_prodi(){
-        return $this->belongsTo('App\Models\Prodi','id_prodi');
+    public function mahasiswaProdi(){
+        return $this->belongsTo('App\Models\Prodi','fk_id_prodi');
     }
-    public function mahasiswa_jadwalmentoring(){
-        return $this->hasMany('App\Models\Jadwal_Mentoring','id_mahasiswa');
+    public function mahasiswaJadwalmentoring(){
+        return $this->hasMany('App\Models\Jadwal_Mentoring','fk_id_mahasiswa');
     }
-    public function mahasiswa_user(){
-        return $this->belongsTo('App\Models\Users','id_user');
+    public function mahasiswaUser(){
+        return $this->belongsTo('App\Models\Users','fk_id_user');
     }
 }

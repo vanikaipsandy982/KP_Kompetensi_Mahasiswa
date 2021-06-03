@@ -7,24 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Data_karyawan extends Model
 {
-    protected $table="Data_karyawan";
+    protected $table="data_karyawan";
     protected $fillable=[
+        "id_karyawan",
         "nama_karyawan",
         "jeniskelamin_karyawan",
         "alamat_karyawan",
         "notelp_karyawan",
         "agama",
         "tgl_lahir",
-        "email_karyawan"
+        "email_karyawan",
+        "fk_id_jabatan",
+        "fk_id_user"
     ];
-    public function karyawan_jabatan(){
-        return $this->belongsTo('App\Models\Jabatan','id_jabatan');
+    public function karyawanJabatan(){
+        return $this->belongsTo('App\Models\Jabatan','fk_id_jabatan');
     }
 
-    public function karyawan_mentor(){
+    public function karyawanMentor(){
         return $this->hasMany('App\Models\Chief_Mentor','fk_id_karyawan');
     }
-    public function datakaryawan_user(){
-        return $this->belongsTo('App\Models\Users','id_user');
+    public function karyawanUser(){
+        return $this->belongsTo('App\Models\Users','fk_id_user');
     }
 }

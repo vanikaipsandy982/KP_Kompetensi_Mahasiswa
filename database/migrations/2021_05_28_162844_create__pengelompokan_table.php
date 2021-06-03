@@ -13,10 +13,10 @@ class CreatePengelompokanTable extends Migration
      */
     public function up()
     {
-        Schema::create('Pengelompokan', function (Blueprint $table) {
+        Schema::create('pengelompokan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kelompok');
-            $table->integer('id_chief_mentor')->nullable();
+            $table->integer('fk_id_chief_mentor')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePengelompokanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Pengelompokan');
+        Schema::dropIfExists('pengelompokan');
     }
 }

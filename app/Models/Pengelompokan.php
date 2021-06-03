@@ -7,15 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pengelompokan extends Model
 {
-    protected $table = "Pengelompokan";
+    protected $table = "pengelompokan";
     protected $fillable=[
+        "fk_id_chief_mentor",
         "nama_kelompok"
     ];
-    public function kelompok_jadwalmentoring(){
-        return $this->hasMany('App\Models\Jadwal_Mentoring','id_kelompok');
+    public function kelompokJadwalmentoring(){
+        return $this->hasMany('App\Models\Jadwal_Mentoring','fk_id_kelompok');
     }
 
-    public function kelompok_mentor(){
-        return $this->belongsTo('App\Models\Chief_Mentor','id_chief_mentor');
+    public function kelompokMentor(){
+        return $this->belongsTo('App\Models\Chief_Mentor','fk_id_chief_mentor');
     }
 }

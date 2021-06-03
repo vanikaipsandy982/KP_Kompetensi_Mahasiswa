@@ -15,7 +15,7 @@ class CreateHasilSurveyTable extends Migration
     {
         Schema::create('hasil_surveys', function (Blueprint $table) {
             $table->id();
-            $table->integer('users_id');
+            $table->integer('fk_id_user');
             $table->integer('id_survey');
             $table->integer('id_squestion');
             $table->integer('rata_rata');

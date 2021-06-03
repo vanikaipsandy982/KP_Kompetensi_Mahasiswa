@@ -23,7 +23,9 @@ class MahasiswaSeeder extends Seeder
                 'telp_mahasiswa'=>'08123456789',
                 'tanggal_masuk'=>'12-07-2018',
                 'nama_orangtua'=>'Ahoey Gunawan',
-                'alamat_orangtua'=>'Komplek taman burung A2/37'
+                'alamat_orangtua'=>'Komplek taman burung A2/37',
+                'nama_prodi'=>'Teknik Informatika',
+                'username'=>'123'
             ],
             [
                 'nrp'=>'1872011',
@@ -34,7 +36,9 @@ class MahasiswaSeeder extends Seeder
                 'telp_mahasiswa'=>'08198765432',
                 'tanggal_masuk'=>'12-07-2018',
                 'nama_orangtua'=>'Suwarni',
-                'alamat_orangtua'=>'Jl Griyatama 2 no 9'
+                'alamat_orangtua'=>'Jl Griyatama 2 no 9',
+                'nama_prodi'=>'Teknik Informatika',
+                'username'=>'123'
             ]
         ];
         foreach ($data as $value){
@@ -48,6 +52,10 @@ class MahasiswaSeeder extends Seeder
             $mahasiswa->tanggal_masuk = $value['tanggal_masuk'];
             $mahasiswa->nama_orangtua = $value['nama_orangtua'];
             $mahasiswa->alamat_orangtua = $value['alamat_orangtua'];
+            $prodi = \App\Models\Prodi::where('nama_prodi','=',$value['nama_prodi'])->first();
+            $mahasiswa->fk_id_prodi=$prodi->id;
+            $user = \App\Models\Users::where('username','=',$value['username'])->first();
+            $mahasiswa->fk_id_user=$user->id;
             $mahasiswa->save();
         }
     }

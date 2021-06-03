@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Users;
 use Illuminate\Database\Seeder;
 
 class ChiefMentor_KaryawanSeeder extends Seeder
@@ -23,13 +24,15 @@ class ChiefMentor_KaryawanSeeder extends Seeder
                 'notelp_karyawan'=>'8130123922',
                 'agama'=>'islam',
                 'jeniskelamin_karyawan'=>'pria',
-                'id_jabatan'=>'125120',
                 'karyawan_chiefMentor'=>[
                     [
                         'catatan_mentor'=>'test'
                     ]
-                ]
+                ],
+                'nama_jabatan'=>'test jabatan',
+                'username'=>'111'
             ],
+
         ];
         foreach ($data as $value)   {
             $Karyawan = new \App\Models\Data_karyawan();
@@ -41,12 +44,17 @@ class ChiefMentor_KaryawanSeeder extends Seeder
             $Karyawan->notelp_karyawan=$value['notelp_karyawan'];
             $Karyawan->agama=$value['agama'];
             $Karyawan->jeniskelamin_karyawan=$value['jeniskelamin_karyawan'];
-            $Karyawan->id_jabatan=$value['id_jabatan'];
+
+            $jabatan = \App\Models\Jabatan::where('nama_jabatan','=',$value['nama_jabatan'])->first();
+            $Karyawan->fk_id_jabatan=$jabatan->id;
+
+            $user = Users::where('username','=',$value['username'])->first();
+            $Karyawan->fk_id_user = $user->id;
             $Karyawan->save();
             foreach ($value['karyawan_chiefMentor'] as $value_Child){
                 $mentor = new \App\Models\Chief_Mentor();
                 $mentor->catatan_mentor=$value_Child['catatan_mentor'];
-                $mentor->id_karyawan=$Karyawan->id;
+                $mentor->fk_id_karyawan=$Karyawan->id;
                 $mentor->save();
             }
         }

@@ -18,8 +18,7 @@ class CreateForumTable extends Migration
             $table->string('artikel');
             $table->string('berita');
             $table->timestamps();
-            $table->integer('id_user_survey')->nullable();
-            $table->integer('users_id')->nullable();
+            $table->integer('fk_id_user')->nullable();
         });
     }
 

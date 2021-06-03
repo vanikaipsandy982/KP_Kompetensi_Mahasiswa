@@ -25,7 +25,8 @@ class CreateMahasiswaTable extends Migration
             $table->string('nama_orangtua');
             $table->string('alamat_orangtua');
             $table->timestamps();
-            $table->integer('id_prodi')->nullable();
+            $table->integer('fk_id_prodi')->nullable();
+            $table->integer('fk_id_user')->nullable();
         });
     }
 

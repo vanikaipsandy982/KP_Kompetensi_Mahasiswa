@@ -39,7 +39,7 @@ class RolePermissionSeeder extends Seeder
                 $permissions = new \App\Models\permissions();
                 $permissions->name =$value_child['name'];
                 $permissions->save();
-                $role->role_permission()->attach($permissions->id);
+                $role->rolePermission()->attach($permissions->id);
             }
         }
     }

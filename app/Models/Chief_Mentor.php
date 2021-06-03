@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chief_Mentor extends Model
 {
-    protected $table = "Chief_Mentor";
+    protected $table = "chief_mentor";
     protected $fillable =[
         "catatan_mentor",
+        "fk_id_karyawan",
     ];
-    public function mentor_karyawan(){
+    public function mentorKaryawan(){
         return $this->belongsTo('App\Models\Data_karyawan','fk_id_karyawan');
     }
-    public function mentor_kelompok(){
-        return $this->hasMany('App\Models\Pengelompokan','id_chief_mentor');
+    public function mentorKelompok(){
+        return $this->hasMany('App\Models\Pengelompokan','fk_id_chief_mentor');
     }
 }

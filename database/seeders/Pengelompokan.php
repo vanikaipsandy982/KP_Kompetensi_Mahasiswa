@@ -15,15 +15,15 @@ class Pengelompokan extends Seeder
     {
         $data=[
           [
-              'id_chief_mentor'=>1,
-              'nama_kelompok'=>'test kelompok1'
+              'nama_kelompok'=>'test kelompok1',
+              'catatan_mentor'=>'test'
           ],
         ];
         foreach($data as $value){
             $pengelompokan = new \App\Models\Pengelompokan();
-            $pengelompokan->id_chief_mentor=$value['id_chief_mentor'];
             $pengelompokan->nama_kelompok = $value['nama_kelompok'];
-
+            $mentor = \App\Models\Chief_Mentor::where('catatan_mentor','=',$value['catatan_mentor'])->first();
+            $pengelompokan->fk_id_chief_mentor=$mentor->id;
             $pengelompokan->save();
         }
     }

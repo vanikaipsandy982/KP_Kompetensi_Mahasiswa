@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jabatan extends Model
 {
-    protected $table="Jabatan";
+    protected $table="jabatan";
     protected $fillable=[
         "nama_jabatan"
     ];
 
-    public function jabatan_karyawan(){
-        return $this->hasMany('App\Models\Data_karyawan','id_jabatan');
+    public function jabatanKaryawan(){
+        return $this->hasMany('App\Models\Data_karyawan','fk_id_jabatan');
     }
 
 }
