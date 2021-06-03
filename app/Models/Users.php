@@ -26,7 +26,7 @@ class Users extends Model
     public function user_forum(){
         return $this->hasMany('App\Models\forums','id_user');
     }
-    public function user_survey(){
-        return $this->hasMany('App\Models\survey','id_user');
+    public function user_hasil_surveys(){
+        return $this->hasMany('App\Models\hasil_survey','id_user');
     }
 }

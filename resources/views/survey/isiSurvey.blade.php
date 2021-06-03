@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Isi Survey')
+@section('container')
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
@@ -22,24 +23,16 @@
                         <div class="col-12">
                             <label for="inputAddress" class="form-label">Program Studi</label>
                             <select class="form-select " aria-label="Default select example">
-                                @foreach($prodi as $prod)
                                 <option selected>Pilih Program Studi</option>
-                                <option>{{$prod->nama_prodi}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-12">
-                            <label for="inputAddress" class="form-label">Kategori Survey</label>
-                            <select class="form-select " aria-label="Default select example">
-                                @foreach($catsurvey as $catsurveys)
-                                <option selected>Pilih Kategori Survey</option>
-                                <option>{{$catsurveys->survey_name}}</option>
+                                @foreach($prodi as $data)
+                                <option>{{$data->nama_prodi}}</option>
                                 @endforeach
                             </select>
                         </div>
 
+
                         <div class="col-12">
-                            <a href="/surveyCategory1" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
+                            <a href="/surveyCat1" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
                         </div>
                     </form>
                 </div>
@@ -47,3 +40,4 @@
         </div>
     </div>
 </section><!-- End Hero -->
+@endsection

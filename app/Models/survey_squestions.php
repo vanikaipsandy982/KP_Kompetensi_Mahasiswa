@@ -7,13 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class survey_squestions extends Model
 {
-    protected $table="Survey_squestions";
+    protected $table="survey_squestions";
     protected $fillable=[
         "question",
+        "id_survey",
     ];
 
     public function surveyquestion_survey(){
         return $this->belongsTo('App\Models\survey','id_survey');
+    }
+    public function surveyquestion_hasilsurveys(){
+        return $this->hasMany('App\Models\hasil_survey','id_squestion');
     }
 
 }

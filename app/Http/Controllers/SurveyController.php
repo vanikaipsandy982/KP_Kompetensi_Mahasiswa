@@ -10,7 +10,7 @@ class SurveyController extends Controller
     {
         return view('survey.isiSurvey');
     }
-    public function Category1()
+    public function category1()
     {
         return view('survey.surveyCat1');
     }

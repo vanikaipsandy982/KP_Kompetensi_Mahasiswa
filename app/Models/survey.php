@@ -7,18 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class survey extends Model
 {
-    protected $table="Survey";
+    protected $table="surveys";
     protected $fillable=[
-        "survey_name",
+        "surveys_name",
     ];
 
-    public function survey_user(){
-        return $this->belongsTo('App\Models\Users','id_users');
-    }
     public function survey_surveyquestion(){
         return $this->hasMany('App\Models\survey_squestions','id_survey');
     }
-    public function surveyquestion_survey(){
-        return $this->belongsTo('App\Models\hasil_survey','id_survey');
+    public function survey_hasilsurvey(){
+        return $this->hasMany('App\Models\hasil_survey','id_survey');
     }
 }

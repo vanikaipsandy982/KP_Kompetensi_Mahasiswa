@@ -13,9 +13,12 @@ class CreateHasilSurveyTable extends Migration
      */
     public function up()
     {
-        Schema::create('hasil_survey', function (Blueprint $table) {
+        Schema::create('hasil_surveys', function (Blueprint $table) {
             $table->id();
-            $table->string('rata_rata');
+            $table->integer('users_id');
+            $table->integer('id_survey');
+            $table->integer('id_squestion');
+            $table->integer('rata_rata');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateHasilSurveyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hasil_survey');
+        Schema::dropIfExists('hasil_surveys');
     }
 }
