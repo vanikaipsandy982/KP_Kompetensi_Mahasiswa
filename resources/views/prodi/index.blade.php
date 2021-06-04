@@ -93,25 +93,22 @@
                 <form>
                     <!--Pilih Fakultas-->
                     <div class="form-group">
-                        <label for="fakultas_mhs">Fakultas
+                        <label for="fakultas_mhs">Fakultas</label>
                         <select class="form-select">
                             <option selected>Pilih Fakultas</option>
                             <option value="1">Teknologi Informasi</option>
                             <option value="2">Kedokteran</option>
                         </select>
-                        </label>
                     </div>
                     <!--Kode Program Studi-->
                     <div class="form-group">
-                        <label for="kode_fakultas">Kode Program Studi
+                        <label for="kode_fakultas">Kode Program Studi</label>
                         <input type="text" class="form-control" placeholder="Kode Program Studi" maxlength="3">
-                        </label>
                     </div>
                     <!--Nama Program Studi-->
                     <div class="form-group">
-                        <label for="nama_fakultas">Nama Program Studi
+                        <label for="nama_fakultas">Nama Program Studi</label>
                         <input type="text" class="form-control" placeholder="Nama Program Studi">
-                        </label>
                     </div>
                     <!--Button Simpan-->
                     <div class="modal-footer">
