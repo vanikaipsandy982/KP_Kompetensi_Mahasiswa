@@ -2,6 +2,8 @@
 
 @section('title', 'Data Program Studi')
 
+@section('container')
+
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
         <div class="row">
@@ -14,18 +16,22 @@
                         <tr>
                             <th scope="col">Kode</th>
                             <th scope="col">Nama Program Studi</th>
+                            <th scope="col">Fakultas</th>
                             <th scope="col">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($prodi as $prod)
                         <tr>
-                            <th>72</th>
-                            <td>Teknik Informatika</td>
+                            <th>{{$prod->id_prodi}}</th>
+                            <td>{{$prod->nama_prodi}}</td>
+                            <td>{{$prod->nama_fakultas}}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditProdi">Edit</button>
                                 <button type="button" class="btn btn-outline-danger">Hapus</button>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -49,8 +55,9 @@
                         <label for="fakultas_mhs">Fakultas</label>
                         <select class="form-select">
                             <option selected>Pilih Fakultas</option>
-                            <option value="1">Teknologi Informasi</option>
-                            <option value="2">Kedokteran</option>
+                            @foreach($fakultas as $data)
+                            <option value="1">{{$data->nama_fakultas}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <!--Kode Program Studi-->
@@ -86,22 +93,25 @@
                 <form>
                     <!--Pilih Fakultas-->
                     <div class="form-group">
-                        <label for="fakultas_mhs">Fakultas</label>
+                        <label for="fakultas_mhs">Fakultas
                         <select class="form-select">
                             <option selected>Pilih Fakultas</option>
                             <option value="1">Teknologi Informasi</option>
                             <option value="2">Kedokteran</option>
                         </select>
+                        </label>
                     </div>
                     <!--Kode Program Studi-->
                     <div class="form-group">
-                        <label for="kode_fakultas">Kode Program Studi</label>
+                        <label for="kode_fakultas">Kode Program Studi
                         <input type="text" class="form-control" placeholder="Kode Program Studi" maxlength="3">
+                        </label>
                     </div>
                     <!--Nama Program Studi-->
                     <div class="form-group">
-                        <label for="nama_fakultas">Nama Program Studi</label>
+                        <label for="nama_fakultas">Nama Program Studi
                         <input type="text" class="form-control" placeholder="Nama Program Studi">
+                        </label>
                     </div>
                     <!--Button Simpan-->
                     <div class="modal-footer">
@@ -113,3 +123,4 @@
     </div>
 </div>
 </section>
+@endsection

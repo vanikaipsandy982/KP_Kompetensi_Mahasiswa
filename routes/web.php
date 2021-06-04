@@ -1,5 +1,8 @@
 <?php
 use App\Http\Controllers;
+use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testquery;
 use App\Http\Controllers\IsiSurveyController;
@@ -34,20 +37,14 @@ Route::get('/polosan', function () {
 //});
 
 //Bagian Vanika
+//Fakultas
+Route::get('/listFakultas', [FakultasController::class, 'index']);
+//Prodi
+Route::get('/listProdi', [ProdiController::class, 'index']);
 //Mahasiswa
-Route::get('/listMhs', function(){
-    return view('mahasiswa/index');
-});
+Route::get('/listMhs', [MahasiswaController::class, 'index']);
 Route::get('/detailMhs', function(){
     return view('mahasiswa/detailmhs');
-});
-//Fakultas
-Route::get('/listFakultas', function(){
-    return view('fakultas/index');
-});
-//Prodi
-Route::get('/listProdi', function(){
-    return view('prodi/index');
 });
 
 //Bagian Mic

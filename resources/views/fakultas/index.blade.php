@@ -14,20 +14,22 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">Kode</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Nama Fakultas</th>
                             <th scope="col">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($fakultas as $data)
                         <tr>
-                            <th scope="row">70</th>
-                            <td>Teknologi Informasi</td>
+                            <th scope="row">{{$data->id}}</th>
+                            <td>{{$data->nama_fakultas}}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditFakultas">Edit</button>
                                 <button type="button" class="btn btn-outline-danger">Hapus</button>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -46,11 +48,6 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <!--Kode Fakultas-->
-                    <div class="form-group">
-                        <label for="kode_fakultas">Kode Fakultas</label>
-                        <input type="text" class="form-control" placeholder="Kode Fakultas" maxlength="3">
-                    </div>
                     <!--Nama Fakultas-->
                     <div class="form-group">
                         <label for="nama_fakultas">Nama Fakultas</label>
@@ -77,15 +74,11 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <!--Kode Fakultas-->
-                    <div class="form-group">
-                        <label for="kode_fakultas">Kode Fakultas</label>
-                        <input type="text" class="form-control" placeholder="Kode Fakultas" maxlength="3">
-                    </div>
                     <!--Nama Fakultas-->
                     <div class="form-group">
-                        <label for="nama_fakultas">Nama Fakultas</label>
+                        <label for="nama_fakultas">Nama Fakultas
                         <input type="text" class="form-control" placeholder="Nama Fakultas">
+                        </label>
                     </div>
                     <!--Button Simpan-->
                     <div class="modal-footer">

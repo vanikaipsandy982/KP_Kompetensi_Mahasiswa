@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fakultas;
+use App\Models\Mahasiswa;
+use App\Models\Prodi;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -13,8 +16,10 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = DB::table('Mahasiswa')->get();
-        return view('mahasiswa.index', ['mahasiswa' => $mahasiswa]);
+        $mahasiswa = Mahasiswa::all();
+        $fakultas = Fakultas::all();
+        $prodi = Prodi::all();
+        return view('mahasiswa.index', compact('mahasiswa', 'fakultas', 'prodi'));
     }
 
     /**

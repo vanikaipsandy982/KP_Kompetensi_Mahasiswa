@@ -18,21 +18,23 @@
                     <tr>
                         <th scope="col">NRP</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Fakultas</th>
+{{--                        <th scope="col">Fakultas</th>--}}
                         <th scope="col">Program Studi</th>
                         <th scope="col">Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach($mahasiswa as $mhs)
                     <tr>
-                        <td>1872000</td>
-                        <td>Nama Mahasiswa</td>
-                        <td>Teknologi Informasi</td>
-                        <td>Teknik Informatika</td>
+                        <td>{{$mhs->nrp}}</td>
+                        <td>{{$mhs->nama_mahasiswa}}</td>
+{{--                        <td>{{$mhs->nama_fakultas}}</td>--}}
+                        <td>{{$mhs->nama_prodi}}</td>
                         <td>
                             <a href="/detailMhs" class="btn btn-outline-dark">Detail</a>
                         </td>
                     </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -94,8 +96,9 @@
                         <label for="fakultas_mhs">Fakultas</label>
                         <select class="form-select">
                             <option selected>Pilih Fakultas</option>
-                            <option value="1">Teknologi Informasi</option>
-                            <option value="2">Kedokteran</option>
+                            @foreach($fakultas as $data)
+                                <option value="1">{{$data->nama_fakultas}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <!--Program Studi-->
@@ -103,8 +106,9 @@
                         <label for="prodi_mhs">Program Studi</label>
                         <select class="form-select">
                             <option selected>Pilih Program Studi</option>
-                            <option value="1">Teknik Informatika</option>
-                            <option value="2">Sistem Informasi</option>
+                            @foreach($prodi as $prod)
+                                <option value="1">{{$prod->nama_prodi}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <!--Tanggal Masuk-->

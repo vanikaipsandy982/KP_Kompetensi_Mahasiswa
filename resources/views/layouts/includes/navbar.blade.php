@@ -8,7 +8,6 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" href="/index">Home</a></li>
-                <li><a class="nav-link scrollto" href="/listMhs">Mahasiswa</a></li>
 {{--                @if(Auth::user()->user_role == 'superadmin')--}}
                 <li class="dropdown"><a href="#"><span>Akademik</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
@@ -26,7 +25,7 @@
                 </li>
                 <li  class="dropdown" ><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="">Data Mahasiswa</a></li>
+                        <li><a href="/listMhs">Data Mahasiswa</a></li>
                         <li><a href="">Data Dosen</a></li>
                         <li><a href="">Data Karyawan</a></li>
                     </ul>
