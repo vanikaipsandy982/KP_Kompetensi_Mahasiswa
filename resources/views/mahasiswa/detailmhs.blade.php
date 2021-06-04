@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
-                                <label for="fullName">NRP</label>
+                                <label for="nrp_mhs">NRP</label>
                                 <input disabled name="nrpMahasiswa" id="idStudent" type="text" class="form-control" value="1872000">
                             </div>
                         </div>

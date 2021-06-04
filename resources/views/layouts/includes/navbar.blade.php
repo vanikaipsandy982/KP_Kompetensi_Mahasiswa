@@ -23,23 +23,27 @@
                         <li><a href="">Kelompok(Family-Cell)</a></li>
                     </ul>
                 </li>
-                <li  class="dropdown" ><a href="#"><span>Data</span> <i class="bi bi-chevron-down"></i></a>
+                <li  class="dropdown" ><a href="#"><span>Data</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/listMhs">Data Mahasiswa</a></li>
                         <li><a href="">Data Dosen</a></li>
                         <li><a href="">Data Karyawan</a></li>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#"><span>Survey</span> <i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#"><span>Survey</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/isiSurvey">Isi Survey</a></li>
                         <li><a href="">Hasil Survey</a></li>
                         <li><a href="/editSurvey">Edit Survey</a></li>
                     </ul>
                 </li>
-                <li><a class="getstarted scrollto" href="">LOGOUT</a></li>
+                <li class="dropdown"><a href="#"><span>NIK/NRP</span><i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/userProfile">Profile</a></li>
+                        <li><a href="">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
     </div>
 </header><!-- End Header -->

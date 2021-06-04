@@ -46,6 +46,9 @@ Route::get('/listMhs', [MahasiswaController::class, 'index']);
 Route::get('/detailMhs', function(){
     return view('mahasiswa/detailmhs');
 });
+Route::get('/userProfile', function (){
+    return view('user.profile');
+});
 
 //Bagian Mic
 //Chief Mentor
