@@ -63,7 +63,7 @@
                 @endif
         @endforeach
             <div class="col-12">
-                <a href="/surveyCat14" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
+                <a href="/hasilsurvey" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
             </div>
     </div>
 </section>

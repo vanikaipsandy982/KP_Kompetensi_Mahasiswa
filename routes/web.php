@@ -31,6 +31,7 @@ Route::get('/surveyCat11',[IsiSurveyController::class,'category11']);
 Route::get('/surveyCat12',[IsiSurveyController::class,'category12']);
 Route::get('/surveyCat13',[IsiSurveyController::class,'category13']);
 Route::get('/surveyCat14',[IsiSurveyController::class,'category14']);
+Route::get('/hasilsurvey',[IsiSurveyController::class,'hasilsurvey']);
 
 //Bagian Josrel
 //Route::get('/isiSurvey', function () {

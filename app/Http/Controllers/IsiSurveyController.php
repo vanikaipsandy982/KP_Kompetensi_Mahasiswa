@@ -101,4 +101,13 @@ class IsiSurveyController extends Controller
         $pertanyaan = survey_squestions::all();
         return view('survey.surveyCat14',compact('pertanyaan'));
     }
+    public function hasilsurvey()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::select('survey_squestions.id_survey','surveys.survey_name', 'survey_squestions.question', 'surveys.id', 'survey_squestions.id AS nomor')
+            ->join('surveys', 'survey_squestions.id_survey', '=', 'surveys.id')
+//            ->where('survey_squestions.id_survey','=','surveys.id')
+            ->get();
+        return view('survey.hasilsurvey',compact('pertanyaan'));
+    }
 }

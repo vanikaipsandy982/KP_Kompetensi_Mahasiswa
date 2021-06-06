@@ -33,7 +33,7 @@
                 <li class="dropdown"><a href="#"><span>Survey</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/isiSurvey">Isi Survey</a></li>
-                        <li><a href="">Hasil Survey</a></li>
+                        <li><a href="/hasilsurvey">Hasil Survey</a></li>
                         <li><a href="/editSurvey">Edit Survey</a></li>
                     </ul>
                 </li>
