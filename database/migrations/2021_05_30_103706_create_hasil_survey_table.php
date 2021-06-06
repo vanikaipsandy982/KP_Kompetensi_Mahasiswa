@@ -16,9 +16,13 @@ class CreateHasilSurveyTable extends Migration
         Schema::create('hasil_surveys', function (Blueprint $table) {
             $table->id();
             $table->integer('fk_id_user');
-            $table->integer('id_survey');
-            $table->integer('id_squestion');
+            $table->integer('fk_id_survey');
+            $table->integer('fk_id_squestion');
+            $table->integer('skor_kepuasan');
+            $table->integer('skor_kemampuan');
+            $table->integer('selisih');
             $table->integer('rata_rata');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

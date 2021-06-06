@@ -9,8 +9,14 @@ class hasil_survey extends Model
 {
     protected $table="hasil_surveys";
     protected $fillable=[
+        "fk_id_survey",
+        "fk_id_squestion",
+        "fk_id_user",
         "rata_rata",
-        "fk_id_user"
+        "skor_kepuasan",
+        "skor_kemampuan",
+        "selisih",
+        "keterangan"
     ];
     public function hasilsurvey_survey(){
         return $this->belongsTo('App\Models\survey','fk_id_survey');

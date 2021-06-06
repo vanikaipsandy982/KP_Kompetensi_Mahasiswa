@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Jadwal_Mentoring::class);
         $this->call(forum::class);
         $this->call(Survey_squestions::class);
+        $this->call(HasilSurveySeeder::class);
     }
 }
