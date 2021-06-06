@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class hasil_survey extends Model
 {
+    use HasFactory;
+    protected $guarded=[];
     protected $table="hasil_surveys";
     protected $fillable=[
         "fk_id_survey",

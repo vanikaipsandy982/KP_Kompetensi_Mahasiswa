@@ -6,7 +6,9 @@ use App\Models\Fakultas;
 use App\Models\Prodi;
 use App\Models\survey;
 use App\Models\survey_squestions;
+use App\Models\hasil_survey;
 use Illuminate\Http\Request;
+use App\Http\Requests\HasilRadioRequest;
 use Illuminate\Support\Facades\DB;
 
 class IsiSurveyController extends Controller
@@ -104,10 +106,21 @@ class IsiSurveyController extends Controller
     public function hasilsurvey()
     {
         $catpertanyaan = survey::all();;
-        $pertanyaan = survey_squestions::select('survey_squestions.id_survey','surveys.survey_name', 'survey_squestions.question', 'surveys.id', 'survey_squestions.id AS nomor')
+        $pertanyaan = survey_squestions::select('survey_squestions.id_survey',
+            'surveys.survey_name', 'survey_squestions.question', 'surveys.id',
+            'survey_squestions.id AS nomor','hasil_surveys.skor_kepuasan','hasil_surveys.skor_kemampuan',
+            'hasil_surveys.selisih', 'hasil_surveys.rata_rata', 'hasil_surveys.keterangan')
             ->join('surveys', 'survey_squestions.id_survey', '=', 'surveys.id')
+            ->join('hasil_surveys', 'survey_squestions.id', '=', 'hasil_surveys.fk_id_squestion')
 //            ->where('survey_squestions.id_survey','=','surveys.id')
             ->get();
         return view('survey.hasilsurvey',compact('pertanyaan'));
+    }
+    public function hasilRadio(HasilRadioRequest $request)
+    {
+        hasil_survey::create([
+            'skor_kemampuan'=> $request->inlineRadioOptions1
+        ]);
+        return redirect('survey.SurveyCat2');
     }
 }

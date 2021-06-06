@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Isi Survey')
+@section('title', 'Hasil Survey')
 
 @section('container')
 
@@ -29,32 +29,27 @@
 
                 @foreach($pertanyaan->unique('survey_name') as $data)
                 <tr>
-                        <th scope="col"></th>
-                        <th scope="col">{{$data->survey_name}}</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+
+                        <th scope="col" colspan="6">{{$data->survey_name}}</th>
+
                 </tr>
                     @foreach($pertanyaan as $data2)
                         @if($data2->id_survey == $data->id)
                 <tr>
                     <td scope="col">{{$data2->nomor}}</td>
                     <td scope="col">{{$data2->question}}</td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
+                    <td scope="col">{{$data2->skor_kemampuan}}</td>
+                    <td scope="col">{{$data2->skor_kepuasan}}</td>
+                    <td scope="col">{{$data2->selisih}}</td>
+                    <td scope="col">{{$data2->keterangan}}</td>
                 </tr>
                         @endif
                     @endforeach
                 <tr>
                     <td scope="col"></td>
                     <td scope="col" ><b>RATA RATA</b> </td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
-                    <td scope="col"></td>
+                    <td scope="col" colspan="4">{{$data2->rata_rata}}</td>
+
                 </tr>
                 @endforeach
                 </tbody>
