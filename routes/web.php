@@ -18,6 +18,19 @@ Route::get('/index', function () {
 Route::get('/editSurvey', [testquery::class,'show']);
 Route::get('/isiSurvey', [IsiSurveyController::class,'index']);
 Route::get('/surveyCat1',[IsiSurveyController::class,'category1']);
+Route::get('/surveyCat2',[IsiSurveyController::class,'category2']);
+Route::get('/surveyCat3',[IsiSurveyController::class,'category3']);
+Route::get('/surveyCat4',[IsiSurveyController::class,'category4']);
+Route::get('/surveyCat5',[IsiSurveyController::class,'category5']);
+Route::get('/surveyCat6',[IsiSurveyController::class,'category6']);
+Route::get('/surveyCat7',[IsiSurveyController::class,'category7']);
+Route::get('/surveyCat8',[IsiSurveyController::class,'category8']);
+Route::get('/surveyCat9',[IsiSurveyController::class,'category9']);
+Route::get('/surveyCat10',[IsiSurveyController::class,'category10']);
+Route::get('/surveyCat11',[IsiSurveyController::class,'category11']);
+Route::get('/surveyCat12',[IsiSurveyController::class,'category12']);
+Route::get('/surveyCat13',[IsiSurveyController::class,'category13']);
+Route::get('/surveyCat14',[IsiSurveyController::class,'category14']);
 
 //Bagian Josrel
 //Route::get('/isiSurvey', function () {

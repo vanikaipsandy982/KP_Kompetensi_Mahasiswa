@@ -9,12 +9,12 @@
     <div class="container" data-aos="fade-up">
         <!--pertanyaan 1-->
         <div class="section-title">
-            <h1>ASESMEN KEPUASAN
+            <h1>ASESMEN KEMAMPUAN
                 PENGEMBANGAN DIRI MAHASISWA
             </h1>
-            <h2>DEVELOPING COMPETENCE</h2>
+            <h2>MOVING THROUGH AUTONOMY TOWARD INTERDEPENCY</h2>
             @foreach($pertanyaan as $data)
-                @if($data->id_survey == 1)
+                @if($data->id_survey == 3)
 
             <p style="font-size: 30px" >{{$data->question}}</p>
 
@@ -62,7 +62,7 @@
                 @endif
         @endforeach
             <div class="col-12">
-                <a href="/surveyCat2" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
+                <a href="/surveyCat11" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
             </div>
     </div>
 </section>

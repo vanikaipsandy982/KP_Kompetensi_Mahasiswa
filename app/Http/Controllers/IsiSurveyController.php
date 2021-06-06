@@ -19,8 +19,86 @@ class IsiSurveyController extends Controller
     }
     public function category1()
     {
-        $catpertanyaan = survey::all();
+        $catpertanyaan = survey::all();;
         $pertanyaan = survey_squestions::all();
         return view('survey.surveyCat1',compact('pertanyaan'));
+    }
+    public function category2()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat2',compact('pertanyaan'));
+    }
+    public function category3()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat3',compact('pertanyaan'));
+    }
+    public function category4()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat4',compact('pertanyaan'));
+    }
+    public function category5()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat5',compact('pertanyaan'));
+    }
+    public function category6()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat6',compact('pertanyaan'));
+    }
+    public function category7()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat7',compact('pertanyaan'));
+    }
+    public function category8()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat8',compact('pertanyaan'));
+    }
+    public function category9()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat9',compact('pertanyaan'));
+    }
+    public function category10()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat10',compact('pertanyaan'));
+    }
+    public function category11()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat11',compact('pertanyaan'));
+    }
+    public function category12()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat12',compact('pertanyaan'));
+    }
+    public function category13()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat13',compact('pertanyaan'));
+    }
+    public function category14()
+    {
+        $catpertanyaan = survey::all();;
+        $pertanyaan = survey_squestions::all();
+        return view('survey.surveyCat14',compact('pertanyaan'));
     }
 }

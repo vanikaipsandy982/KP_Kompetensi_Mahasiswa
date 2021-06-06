@@ -12,9 +12,9 @@
             <h1>ASESMEN KEPUASAN
                 PENGEMBANGAN DIRI MAHASISWA
             </h1>
-            <h2>DEVELOPING COMPETENCE</h2>
+            <h2>ESTABLISHING IDENTITY</h2>
             @foreach($pertanyaan as $data)
-                @if($data->id_survey == 1)
+                @if($data->id_survey == 5)
 
             <p style="font-size: 30px" >{{$data->question}}</p>
 
@@ -62,7 +62,7 @@
                 @endif
         @endforeach
             <div class="col-12">
-                <a href="/surveyCat2" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
+                <a href="/surveyCat6" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
             </div>
     </div>
 </section>

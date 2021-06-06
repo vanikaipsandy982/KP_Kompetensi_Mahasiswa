@@ -13,7 +13,7 @@ class CreateProdiTable extends Migration
      */
     public function up()
     {
-        Schema::create('prodi', function (Blueprint $table) {
+        Schema::create('Prodi', function (Blueprint $table) {
             $table->id();
             $table->integer('fk_id_fakultas')->nullable();
             $table->integer('id_prodi');
@@ -29,6 +29,6 @@ class CreateProdiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prodi');
+        Schema::dropIfExists('Prodi');
     }
 }

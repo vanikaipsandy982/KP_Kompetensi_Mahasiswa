@@ -9,7 +9,7 @@
     <div class="container" data-aos="fade-up">
         <!--pertanyaan 1-->
         <div class="section-title">
-            <h1>ASESMEN KEPUASAN
+            <h1>ASESMEN KEMAMPUAN
                 PENGEMBANGAN DIRI MAHASISWA
             </h1>
             <h2>DEVELOPING COMPETENCE</h2>
@@ -62,7 +62,7 @@
                 @endif
         @endforeach
             <div class="col-12">
-                <a href="/surveyCat2" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
+                <a href="/surveyCat9" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
             </div>
     </div>
 </section>
