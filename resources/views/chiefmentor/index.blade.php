@@ -14,22 +14,20 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Catatan Mentor</th>
-                            <th scope="col">Tgl Masuk</th>
-                            <th scope="col">Tgl Keluar</th>
                             <th scope="col">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($chief_mentor as $data)
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
-                            <td>28-05-2010</td>
-                            <td>29-06-2013</td>
+                            <th scope="row">{{$data->id}}</th>
+                            <td>{{$data->catatan_mentor}}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#editChief">Edit</button>
                                 <button type="button" class="btn btn-outline-danger">Hapus</button>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -49,25 +47,10 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <!--ID CHIEF-->
-                        <div class="form-group">
-                            <label for="id_chief">ID</label>
-                            <input type="text" class="form-control" placeholder="ID" maxlength="3">
-                        </div>
                         <!--Catatan-->
                         <div class="form-group">
                             <label for="catatan">Catatan</label>
                             <input type="text" class="form-control" placeholder="Catatan">
-                        </div>
-                        <!--Tgl Masuk-->
-                        <div class="form-group">
-                            <label for="tglMasuk">Tanggal Masuk</label>
-                            <input type="date" class="form-control" placeholder="Tanggal Masuk">
-                        </div>
-                        <!--Tgl Keluar-->
-                        <div class="form-group">
-                            <label for="tglKeluar">Tanggal Keluar</label>
-                            <input type="date" class="form-control" placeholder="Tanggal Keluar">
                         </div>
                         <!--Button Simpan-->
                         <div class="modal-footer">

@@ -68,6 +68,6 @@ Route::get('/userProfile', function (){
 
 //Bagian Mic
 //Chief Mentor
-Route::get('/listChief', function(){
-    return view('chiefmentor/index');
-});
+Route::get('/listChief', [Controllers\ChiefMentorController::class, 'index']);
+//Data Karyawan
+Route::get('/listKaryawan', [Controllers\DataKaryawanController::class, 'index']);
