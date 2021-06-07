@@ -6,6 +6,7 @@ use App\Http\Controllers\ProdiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testquery;
 use App\Http\Controllers\IsiSurveyController;
+use App\Http\Controllers\AdminJadwalController;
 use App\Http\Controllers\Controller;
 
 Route::get('/', function () {
@@ -71,3 +72,14 @@ Route::get('/userProfile', function (){
 Route::get('/listChief', [Controllers\ChiefMentorController::class, 'index']);
 //Data Karyawan
 Route::get('/listKaryawan', [Controllers\DataKaryawanController::class, 'index']);
+
+//Bagian Can
+//AdminJadwal
+Route::get('/listAdminJadwal',[Controllers\AdminJadwalController::class, 'index']);
+//UserJadwal
+Route::get('/listUserJadwal',[Controllers\UserJadwalController::class, 'index']);
+
+//AdminKelompokController
+Route::get('/listAdminKelompok',[Controllers\AdminKelompokController::class, 'index']);
+//User Kelompok
+Route::get('/listUserKelompok',[Controllers\UserKelompokController::class, 'index']);
