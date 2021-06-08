@@ -56,10 +56,14 @@ Route::get('/polosan', function () {
 //Bagian Vanika
 //Fakultas
 Route::get('/listFakultas', [FakultasController::class, 'index']);
+Route::post('/listFakultas', [FakultasController::class, 'store']);
+Route::delete('/listFakultas/{id}', [FakultasController::class, 'delete']);
+Route::patch('/listFakultas/{id}', [FakultasController::class, 'update']);
+
 //Prodi
 Route::get('/listProdi', [ProdiController::class, 'index']);
 //Mahasiswa
-Route::get('/listMhs', [MahasiswaController::class, 'index']);
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 Route::get('/detailMhs', function(){
     return view('mahasiswa/detailmhs');
 });

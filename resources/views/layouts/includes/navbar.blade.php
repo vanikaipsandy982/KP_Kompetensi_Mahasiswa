@@ -27,7 +27,7 @@
                 </li>
                 <li  class="dropdown" ><a href="#"><span>Data</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/listMhs">Data Mahasiswa</a></li>
+                        <li><a href="/mahasiswa">Data Mahasiswa</a></li>
                         <li><a href="">Data Dosen</a></li>
                         <li><a href="/listKaryawan">Data Karyawan</a></li>
                     </ul>

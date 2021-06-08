@@ -23,21 +23,6 @@ class Fakultas extends Seeder
             [
                 'nama_fakultas'=>'Psikologi'
             ],
-            [
-                'nama_fakultas'=>'Bahasa dan Budaya'
-            ],
-            [
-                'nama_fakultas'=>'Ekonomi'
-            ],
-            [
-                'nama_fakultas'=>'Seni Rupa dan Desain'
-            ],
-            [
-                'nama_fakultas'=>'Hukum'
-            ],
-            [
-                'nama_fakultas'=>'Kedokteran Gigi'
-            ]
         ];
         foreach($data as $value){
             $fakultas = new \App\Models\Fakultas();
