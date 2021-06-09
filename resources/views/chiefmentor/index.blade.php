@@ -9,6 +9,13 @@
                 <div class="col-sm-12">
                     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahChiefMentor">Tambah Chief Mentor</button>
                     <br><br>
+                    @if (session('message'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <i class="fa fa-check-circle"></i> {{session('message')}}
+                        </div>
+                    @endif
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -23,8 +30,13 @@
                             <th scope="row">{{$data->id}}</th>
                             <td>{{$data->catatan_mentor}}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#editChief">Edit</button>
-                                <button type="button" class="btn btn-outline-danger">Hapus</button>
+                                    <button type="submit" class="btn btn-outline-info" data-toggle="modal" data-target="#editChief">Edit</button>
+
+                                <form method="post" action="{{ url('/listChief/delete/'.$data->id) }}" class="d-inline">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger">Hapus</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -46,15 +58,49 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="POST" action="{{ url('/listChief/store') }}">
+                        @csrf
                         <!--Catatan-->
                         <div class="form-group">
                             <label for="catatan">Catatan</label>
-                            <input type="text" class="form-control" placeholder="Catatan">
+                            <input type="text" class="form-control" placeholder="Catatan" name="catatanMentor">
+                        </div>
+                            @error('catatanMentor')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        <!--Button Simpan-->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!--Form Edit Chief-->
+    <div class="modal fade" id="editChief" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEdit">Edit Catatan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ url('/listChief/update/'.$data->id) }}">
+                        @method('put')
+                        @csrf
+                        <!--Catatan-->
+                        <div class="form-group">
+                            <label for="catatan">Catatan</label>
+                            <input type="text" class="form-control" value="{{$data->catatan_mentor}}" name="catatanMentorBaru">
                         </div>
                         <!--Button Simpan-->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </form>
                 </div>

@@ -29,9 +29,26 @@ class ChiefMentor_KaryawanSeeder extends Seeder
                         'catatan_mentor'=>'test'
                     ]
                 ],
-                'nama_jabatan'=>'test jabatan',
+                'nama_jabatan'=>'Karyawan',
                 'username'=>'111'
             ],
+            [
+                'id_karyawan'=>'1234567',
+                'nama_karyawan'=>'Muhammad',
+                'email_karyawan'=>'muhmad@gmail.com',
+                'tgl_lahir'=>'06-01-2000',
+                'alamat_karyawan'=>'test alamat',
+                'notelp_karyawan'=>'823000119',
+                'agama'=>'islam',
+                'jeniskelamin_karyawan'=>'pria',
+                'karyawan_chiefMentor'=>[
+                    [
+                        'catatan_mentor'=>'test2'
+                    ]
+                ],
+                'nama_jabatan'=>'Dosen',
+                'username'=>'123'
+            ]
 
         ];
         foreach ($data as $value)   {
@@ -45,12 +62,14 @@ class ChiefMentor_KaryawanSeeder extends Seeder
             $Karyawan->agama=$value['agama'];
             $Karyawan->jeniskelamin_karyawan=$value['jeniskelamin_karyawan'];
 
+
             $jabatan = \App\Models\Jabatan::where('nama_jabatan','=',$value['nama_jabatan'])->first();
             $Karyawan->fk_id_jabatan=$jabatan->id;
 
             $user = Users::where('username','=',$value['username'])->first();
             $Karyawan->fk_id_user = $user->id;
             $Karyawan->save();
+
             foreach ($value['karyawan_chiefMentor'] as $value_Child){
                 $mentor = new \App\Models\Chief_Mentor();
                 $mentor->catatan_mentor=$value_Child['catatan_mentor'];

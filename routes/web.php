@@ -3,6 +3,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\ChiefMentorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testquery;
 use App\Http\Controllers\IsiSurveyController;
@@ -73,7 +74,10 @@ Route::get('/userProfile', function (){
 
 //Bagian Mic
 //Chief Mentor
-Route::get('/listChief', [Controllers\ChiefMentorController::class, 'index']);
+Route::get('/listChief', [ChiefMentorController::class, 'index']);
+Route::post('/listChief/store', [ChiefMentorController::class, 'store']);
+Route::delete('/listChief/delete/{id}', [ChiefMentorController::class, 'delete']);
+Route::put('/listChief/update/{id}', [ChiefMentorController::class, 'update']);
 //Data Karyawan
 Route::get('/listKaryawan', [Controllers\DataKaryawanController::class, 'index']);
 

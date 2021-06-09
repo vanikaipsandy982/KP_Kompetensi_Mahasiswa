@@ -10,7 +10,7 @@ class Chief_Mentor extends Model
     protected $table = "chief_mentor";
     protected $fillable =[
         "catatan_mentor",
-        "fk_id_karyawan",
+        "fk_id_karyawan"
     ];
     public function mentorKaryawan(){
         return $this->belongsTo('App\Models\Data_karyawan','fk_id_karyawan');

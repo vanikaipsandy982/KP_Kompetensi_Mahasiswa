@@ -15,7 +15,10 @@ class Jabatan extends Seeder
     {
         $data=[
             [
-                'nama_jabatan'=>'test jabatan'
+                'nama_jabatan'=>'Dosen'
+            ],
+            [
+                'nama_jabatan'=>'Karyawan'
             ]
         ];
         foreach ($data as $value) {
