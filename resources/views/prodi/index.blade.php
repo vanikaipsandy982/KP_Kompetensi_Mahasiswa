@@ -27,8 +27,16 @@
                             <td>{{$prod->nama_prodi}}</td>
                             <td>{{$prod->nama_fakultas}}</td>
                             <td>
-                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditProdi">Edit</button>
-                                <button type="button" class="btn btn-outline-danger">Hapus</button>
+                                <form action="/listProdi/{{$prod->id}}" method="post" class="d-inline">
+                                    @method('patch')
+                                    @csrf
+                                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditProdi">Edit</button>
+                                </form>
+                                <form action="/listProdi/{{$prod->id}}" method="post" class="d-inline">
+                                    @method('delete')
+                                    @csrf
+                                    <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-danger" >Hapus</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -52,27 +60,27 @@
                 <form>
                     <!--Pilih Fakultas-->
                     <div class="form-group">
-                        <label for="fakultas_mhs">Fakultas</label>
+                        <label for="prodi_mhs">Fakultas</label>
                         <select class="form-select">
-                            <option selected>Pilih Fakultas</option>
+                            <option disabled selected>Pilih Fakultas</option>
                             @foreach($fakultas as $data)
-                            <option value="1">{{$data->nama_fakultas}}</option>
+                                <option>{{$data->nama_fakultas}}</option>
                             @endforeach
                         </select>
                     </div>
                     <!--Kode Program Studi-->
                     <div class="form-group">
-                        <label for="kode_fakultas">Kode Program Studi</label>
-                        <input type="text" class="form-control" placeholder="Kode Program Studi" maxlength="3">
+                        <label for="kode_prodi">Kode Program Studi</label>
+                        <input type="text" class="form-control" placeholder="Kode Program Studi" maxlength="3" name="kodeProdi" required>
                     </div>
                     <!--Nama Program Studi-->
                     <div class="form-group">
-                        <label for="nama_fakultas">Nama Program Studi</label>
-                        <input type="text" class="form-control" placeholder="Nama Program Studi">
+                        <label for="nama_prodi">Nama Program Studi</label>
+                        <input type="text" class="form-control" placeholder="Nama Program Studi" name="namaProdi" required>
                     </div>
                     <!--Button Simpan-->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -90,29 +98,30 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form method="post" action="/listProdi/{{$prod->id}}">
                     <!--Pilih Fakultas-->
                     <div class="form-group">
-                        <label for="fakultas_mhs">Fakultas</label>
+                        <label for="prodi_mhs">Fakultas</label>
                         <select class="form-select">
-                            <option selected>Pilih Fakultas</option>
-                            <option value="1">Teknologi Informasi</option>
-                            <option value="2">Kedokteran</option>
+                            <option disabled selected>Pilih Fakultas</option>
+                            @foreach($fakultas as $data)
+                                <option>{{$data->nama_fakultas}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <!--Kode Program Studi-->
                     <div class="form-group">
-                        <label for="kode_fakultas">Kode Program Studi</label>
-                        <input type="text" class="form-control" placeholder="Kode Program Studi" maxlength="3">
+                        <label for="kode_prodi">Kode Program Studi</label>
+                        <input type="text" class="form-control" placeholder="Kode Program Studi" maxlength="3" name="kodeProdiBaru" value="{{$prod->id_prodi}}">
                     </div>
                     <!--Nama Program Studi-->
                     <div class="form-group">
-                        <label for="nama_fakultas">Nama Program Studi</label>
-                        <input type="text" class="form-control" placeholder="Nama Program Studi">
+                        <label for="nama_prodi">Nama Program Studi</label>
+                        <input type="text" class="form-control" placeholder="Nama Program Studi" name="namaProdiBaru" value="{{$prod->nama_prodi}}">
                     </div>
                     <!--Button Simpan-->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>

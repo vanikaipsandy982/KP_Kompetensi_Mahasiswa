@@ -67,7 +67,7 @@
                     <!--Nama Fakultas-->
                     <div class="form-group">
                         <label for="nama_fakultas">Nama Fakultas</label>
-                        <input type="text" class="form-control" placeholder="Nama Fakultas" name="namaFakultas">
+                        <input type="text" class="form-control" placeholder="Nama Fakultas" name="namaFakultas" required>
                     </div>
                         @error('namaFakultas')
                             <div class="invalid-feedback">{{ $message }}</div>
