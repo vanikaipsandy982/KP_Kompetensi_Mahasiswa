@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Data Karyawan')
+@section('title', 'Data Dosen')
 
 
 <section id="hero" class="d-flex align-items-center">
@@ -8,14 +8,14 @@
         <div class="row">
             <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                 <div class="col-sm-12">
-                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalDataKaryawan">Tambah Karyawan</button>
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalDataDosen">Tambah Dosen</button>
                     <br><br>
                     <table class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">No</th>
                             <th scope="col">NIK</th>
-                            <th scope="col">Nama Karyawan</th>
+                            <th scope="col">Nama Dosen</th>
                             <th scope="col">Email</th>
                             <th scope="col">Tanggal Lahir</th>
                             <th scope="col">Alamat</th>
@@ -27,9 +27,9 @@
                         </thead>
                         <tbody>
                         @php($count=1)
-                        @foreach($data_karyawan as $data)
+                        @foreach($data_dosen as $data)
                             <tr>
-                                <th>{{$count}}</th>
+                                <th scope="row">{{$count}}</th>
                                 <td>{{$data->id_karyawan}}</td>
                                 <td>{{$data->nama_karyawan}}</td>
                                 <td>{{$data->email_karyawan}}</td>
@@ -39,7 +39,7 @@
                                 <td>{{$data->agama}}</td>
                                 <td>{{$data->jeniskelamin_karyawan}}</td>
                                 <td>
-                                    <button type="submit" class="btn btn-outline-info" data-toggle="modal" data-target="#editKaryawan">Edit</button>
+                                    <button type="submit" class="btn btn-outline-info" data-toggle="modal" data-target="#editDosen">Edit</button>
                                     <button type="submit" class="btn btn-outline-danger">Hapus</button>
                                 </td>
                             </tr>
@@ -52,12 +52,12 @@
         </div>
     </div>
 
-    <!--Form Tambah Karyawan-->
-    <div class="modal fade" id="modalDataKaryawan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!--Form Tambah Dosen-->
+    <div class="modal fade" id="modalDataDosen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Catatan</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Dosen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -66,17 +66,17 @@
                     <form>
                         <!--NIK-->
                         <div class="form-group">
-                            <label for="id_karyawan">NIK</label>
+                            <label for="id_dosen">NIK</label>
                             <input type="number" class="form-control" placeholder="NIK" maxlength="3">
                         </div>
-                        <!--nama_karyawan-->
+                        <!--nama_dosen-->
                         <div class="form-group">
-                            <label for="nama_karyawan">Nama Karyawan</label>
-                            <input type="text" class="form-control" placeholder="Nama Karyawan">
+                            <label for="nama_dosen">Nama Dosen</label>
+                            <input type="text" class="form-control" placeholder="Nama Dosen">
                         </div>
-                        <!--email_karyawan-->
+                        <!--email_dosen-->
                         <div class="form-group">
-                            <label for="email_karyawan">Email</label>
+                            <label for="email_dosen">Email</label>
                             <input type="email" class="form-control" placeholder="Email">
                         </div>
                         <!--tgl lahir-->
@@ -84,9 +84,9 @@
                             <label for="tgl_lahir">Tanggal Lahir</label>
                             <input type="date" class="form-control">
                         </div>
-                        <!--notelp karyawan-->
+                        <!--notelp dosen-->
                         <div class="form-group">
-                            <label for="notelp_karyawan">No Telepon</label>
+                            <label for="notelp_dosen">No Telepon</label>
                             <input type="tel" class="form-control">
                         </div>
                         <!--agama-->
@@ -112,12 +112,12 @@
         </div>
     </div>
 
-    <!--Form Edit Karyawan-->
-    <div class="modal fade" id="editKaryawan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!--Form edit Dosen-->
+    <div class="modal fade" id="editDosen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Edit Karyawan</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Dosen</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

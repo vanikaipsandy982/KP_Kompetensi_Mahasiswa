@@ -4,6 +4,8 @@ use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ChiefMentorController;
+use App\Http\Controllers\DataKaryawanController;
+use App\Http\Controllers\DataDosenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testquery;
 use App\Http\Controllers\IsiSurveyController;
@@ -77,9 +79,11 @@ Route::get('/userProfile', function (){
 Route::get('/listChief', [ChiefMentorController::class, 'index']);
 Route::post('/listChief/store', [ChiefMentorController::class, 'store']);
 Route::delete('/listChief/delete/{id}', [ChiefMentorController::class, 'delete']);
-Route::put('/listChief/update/{id}', [ChiefMentorController::class, 'update']);
+Route::post('/listChief/update', [ChiefMentorController::class, 'update']);
 //Data Karyawan
-Route::get('/listKaryawan', [Controllers\DataKaryawanController::class, 'index']);
+Route::get('/listKaryawan', [DataKaryawanController::class, 'index']);
+//Data Dosen
+Route::get('/listDosen', [DataDosenController::class, 'index']);
 
 //Bagian Can
 //AdminJadwal
