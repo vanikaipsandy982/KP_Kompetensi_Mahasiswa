@@ -21,29 +21,29 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">No</th>
+{{--                            <th scope="col">ID</th>--}}
                             <th scope="col">Nama Fakultas</th>
                             <th scope="col">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($fakultas as $data)
-                        <tr>
-                            <th scope="row">{{$data->id}}</th>
-                            <td>{{$data->nama_fakultas}}</td>
-                            <td>
-                                <form action="/listFakultas/{{$data->id}}" method="post" class="d-inline">
-                                    @method('patch')
-                                    @csrf
-                                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditFakultas">Edit</button>
-                                </form>
-                                <form action="/listFakultas/{{$data->id}}" method="post" class="d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-danger" >Hapus</button>
-                                </form>
-                            </td>
-                        </tr>
+                        @php($count = 1)
+                        @foreach($fakultas->sortby('id') as $data)
+                            <tr>
+                                <th>{{$count}}</th>
+{{--                                <th>{{$data->id}}</th>--}}
+                                <td>{{$data->nama_fakultas}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
+                                    <form method="post" action="{{ url('/listFakultas/delete/'.$data->id) }}" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @php($count += 1)
                         @endforeach
                         </tbody>
                     </table>
@@ -62,17 +62,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/listFakultas">
-                    @csrf
-                    <!--Nama Fakultas-->
+                <form method="POST" action="{{ url('/listFakultas/store') }}">
+                @csrf
+                <!--Nama Fakultas-->
                     <div class="form-group">
                         <label for="nama_fakultas">Nama Fakultas</label>
                         <input type="text" class="form-control" placeholder="Nama Fakultas" name="namaFakultas" required>
                     </div>
-                        @error('namaFakultas')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    <!--Button Simpan-->
+                    @error('namaFakultas')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+                <!--Button Simpan-->
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
@@ -92,9 +92,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="/listFakultas/{{$data->id}}">
-                    @method('patch')
-                    @csrf
+                <form method="post" action="{{ url('/listFakultas/update') }}">
+                @csrf
+                    <input type="hidden" id="hiddenEditFakultas" name="namaFakultasEdit">
                     <!--Nama Fakultas-->
                     <div class="form-group">
                         <label for="nama_fakultas">Nama Fakultas</label>
@@ -110,4 +110,17 @@
     </div>
 </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function (){
+        $('.btn-edit').on('click',function (){
+            var id = $(this).attr('id').split('-');
+            $('#hiddenEditFakultas').val(id[2]);
+            var fakultasLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(2)`).html();
+            $('input[name="namaFakultasBaru"]').val(fakultasLama);
+            console.log(fakultasLama);
+            $('#modalEditFakultas').modal('toggle');
+        });
+    });
+</script>
 @endsection

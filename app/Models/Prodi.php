@@ -12,7 +12,6 @@ class Prodi extends Model
         "id_prodi",
         "nama_prodi",
         "fk_id_fakultas"
-
     ];
 
     public function prodiMahasiswa(){

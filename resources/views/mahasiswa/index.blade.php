@@ -18,7 +18,7 @@
                     <tr>
                         <th scope="col">NRP</th>
                         <th scope="col">Nama</th>
-{{--                        <th scope="col">Fakultas</th>--}}
+                        <th scope="col">Fakultas</th>
                         <th scope="col">Program Studi</th>
                         <th scope="col">Aksi</th>
                     </tr>
@@ -28,10 +28,10 @@
                     <tr>
                         <td>{{$mhs->nrp}}</td>
                         <td>{{$mhs->nama_mahasiswa}}</td>
-{{--                        <td>{{$mhs->nama_fakultas}}</td>--}}
+                        <td>{{$mhs->nama_fakultas}}</td>
                         <td>{{$mhs->nama_prodi}}</td>
                         <td>
-                            <a href="/detailMhs" class="btn btn-outline-dark">Detail</a>
+                            <a href="/mahasiswa/{{$mhs->id}}" class="btn btn-outline-dark">Detail</a>
                         </td>
                     </tr>
                     @endforeach

@@ -47,11 +47,12 @@ class MahasiswaController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $mahasiswa = Mahasiswa::find($id);
+        return view('mahasiswa.detailmhs', compact('mahasiswa'));
     }
 
     /**

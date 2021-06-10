@@ -19,6 +19,7 @@ Route::get('/index', function () {
     return view('home');
 });
 
+//Bagian Josrel
 Route::get('/editSurvey', [testquery::class,'show']);
 Route::get('/isiSurvey', [IsiSurveyController::class,'index']);
 Route::get('/surveyCat1',[IsiSurveyController::class,'category1']);
@@ -39,7 +40,6 @@ Route::get('/hasilsurvey',[IsiSurveyController::class,'hasilsurvey']);
 Route::post('/surveyCat1',[IsiSurveyController::class,'hasilRadio']);
 Route::post('/surveyCat2',[IsiSurveyController::class,'hasilRadio']);
 
-//Bagian Josrel
 //Route::get('/isiSurvey', function () {
 //    return view('survey/isiSurvey');
 //});
@@ -59,19 +59,18 @@ Route::get('/polosan', function () {
 //Bagian Vanika
 //Fakultas
 Route::get('/listFakultas', [FakultasController::class, 'index']);
-Route::post('/listFakultas', [FakultasController::class, 'store']);
-Route::delete('/listFakultas/{id}', [FakultasController::class, 'delete']);
-Route::patch('/listFakultas/{id}', [FakultasController::class, 'update']);
+Route::post('/listFakultas/store', [FakultasController::class, 'store']);
+Route::delete('/listFakultas/delete/{id}', [FakultasController::class, 'delete']);
+Route::post('/listFakultas/update', [FakultasController::class, 'update']);
 
 //Prodi
 Route::get('/listProdi', [ProdiController::class, 'index']);
+Route::post('/listProdi/store', [ProdiController::class, 'store']);
+
 //Mahasiswa
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 Route::get('/detailMhs', function(){
     return view('mahasiswa/detailmhs');
-});
-Route::get('/userProfile', function (){
-    return view('user.profile');
 });
 
 //Bagian Mic
@@ -95,3 +94,9 @@ Route::get('/listUserJadwal',[Controllers\UserJadwalController::class, 'index'])
 Route::get('/listAdminKelompok',[Controllers\AdminKelompokController::class, 'index']);
 //User Kelompok
 Route::get('/listUserKelompok',[Controllers\UserKelompokController::class, 'index']);
+
+
+//Profile
+Route::get('/userProfile', function (){
+    return view('user.profile');
+});

@@ -25,12 +25,12 @@ class FakultasController extends Controller
         return redirect('/listFakultas')->with('message', 'Data Fakultas Berhasil Di Input');
     }
 
-    public function update(Request $request, $id){
-        Fakultas::where('id', $id)
+    public function update(Request $request){
+        Fakultas::find($request->namaFakultasEdit)
             ->update([
-               'nama_fakultas'=> $request->namaFakultasBaru
+                'nama_fakultas'=> $request->namaFakultasBaru
             ]);
-        return redirect('/listFakultas')->with('message', 'Data Fakultas Berhasil Di Update');
+        return redirect()->back()->with('message', 'Data Fakultas Berhasil Di Update');
     }
 
     public function delete($id){
