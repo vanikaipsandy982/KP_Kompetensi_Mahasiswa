@@ -66,6 +66,7 @@ Route::post('/listFakultas/update', [FakultasController::class, 'update']);
 //Prodi
 Route::get('/listProdi', [ProdiController::class, 'index']);
 Route::post('/listProdi/store', [ProdiController::class, 'store']);
+Route::delete('/listProdi/delete/{id}', [ProdiController::class, 'delete']);
 
 //Mahasiswa
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);

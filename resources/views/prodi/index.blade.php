@@ -11,6 +11,13 @@
             <div class="col-sm-12">
                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahProdi">Tambah Program Studi</button>
                 <br><br>
+                @if (session('message'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <i class="fa fa-check-circle"></i> {{session('message')}}
+                    </div>
+                @endif
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -21,21 +28,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($prodi as $prod)
+                    @foreach($faculty as $prod)
                     <tr>
                         <th>{{$prod->id_prodi}}</th>
                         <td>{{$prod->nama_prodi}}</td>
-                        <td>{{$prod->fk_id_fakultas}}</td>
+                        <td>{{$prod->nama_fakultas}}</td>
                         <td>
                             <form action="/listProdi/{{$prod->id}}" method="post" class="d-inline">
                                 @method('patch')
                                 @csrf
                                 <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditProdi">Edit</button>
                             </form>
-                            <form action="/listProdi/{{$prod->id}}" method="post" class="d-inline">
+                            <form method="post" action="{{ url('/listProdi/delete/'.$prod->id) }}" class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-danger" >Hapus</button>
+                                <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
                             </form>
                         </td>
                     </tr>
@@ -132,4 +139,16 @@
     </div>
 </div>
 </section>
+<script>
+    $(document).ready(function (){
+        $('.btn-edit').on('click',function (){
+            var id = $(this).attr('id').split('-');
+            $('#editModal').val(id[2]);
+            var catatanLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(2)`).html();
+            $('input[name="catatanMentorBaru"]').val(catatanLama);
+            console.log(catatanLama);
+            $('#editChief').modal('toggle');
+        });
+    });
+</script>
 @endsection

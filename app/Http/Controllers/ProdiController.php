@@ -12,10 +12,11 @@ class ProdiController extends Controller
     {
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
-//        $result = Prodi::with('prodiFakultas')->get();
         $prodi = Prodi::with('prodiFakultas')->get();
-//        $result->all();
-        return view('prodi.index', compact('prodi', 'fakultas'));
+        $faculty = Prodi::select('Fakultas.nama_fakultas', 'Prodi.id','Prodi.id_prodi', 'Prodi.nama_prodi')
+            ->join('Fakultas', 'Prodi.fk_id_fakultas', '=', 'Fakultas.id')
+            ->get();
+        return view('prodi.index', compact('prodi', 'fakultas', 'faculty'));
     }
 
     public function store(Request $request){
@@ -25,7 +26,7 @@ class ProdiController extends Controller
         ]);
 
         $prodi = new Prodi;
-        $fakultas = Fakultas::where('id','=',$request->fakultasSelected)->first();
+        $fakultas = Fakultas::where('id','=',$request->selectedFakultas)->first();
         $prodi->fk_id_fakultas = $fakultas->id;
         $prodi->id_prodi = $request->kodeProdi;
         $prodi->nama_prodi = $request->namaProdi;
@@ -39,5 +40,11 @@ class ProdiController extends Controller
                 'nama_prodi'=> $request->namaProdiBaru
             ]);
         return redirect('/listProdi')->with('message', 'Data Program Studi Berhasil Di Update');
+    }
+
+    public function delete($id){
+        $prodi = Prodi::find($id);
+        $prodi -> delete();
+        return redirect('/listProdi')->with('message', 'Data Program Studi Berhasil Di Hapus');
     }
 }
