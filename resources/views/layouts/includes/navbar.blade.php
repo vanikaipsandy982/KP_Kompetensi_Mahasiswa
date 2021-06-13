@@ -19,10 +19,8 @@
                     <ul>
                         <li><a href="">Data Mentor</a></li>
                         <li><a href="/listChief">Data Chief Mentor</a></li>
-                        <li><a href="/listAdminJadwal">Admin Jadwal Mentoring</a></li>
-                        <li><a href="/listUserJadwal">Jadwal Mentoring</a></li>
-                        <li><a href="/listAdminKelompok">Admin Kelompok(Family-Cell)</a></li>
-                        <li><a href="/listUserKelompok">Kelompok(Family-Cell)</a></li>
+                        <li><a href="/listJadwal">Jadwal Mentoring</a></li>
+                        <li><a href="/listKelompok">Kelompok(Family-Cell)</a></li>
                     </ul>
                 </li>
                 <li  class="dropdown" ><a href="#"><span>Data</span><i class="bi bi-chevron-down"></i></a>

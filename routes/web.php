@@ -9,7 +9,7 @@ use App\Http\Controllers\DataDosenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testquery;
 use App\Http\Controllers\IsiSurveyController;
-use App\Http\Controllers\AdminJadwalController;
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\Controller;
 
 Route::get('/', function () {
@@ -85,15 +85,17 @@ Route::get('/listKaryawan', [DataKaryawanController::class, 'index']);
 Route::get('/listDosen', [DataDosenController::class, 'index']);
 
 //Bagian Can
-//AdminJadwal
-Route::get('/listAdminJadwal',[Controllers\AdminJadwalController::class, 'index']);
-//UserJadwal
-Route::get('/listUserJadwal',[Controllers\UserJadwalController::class, 'index']);
+//Jadwal
+Route::get('/listJadwal',[Controllers\JadwalController::class, 'index']);
+Route::post('/listJadwal/store',[Controllers\JadwalController::class, 'store']);
+Route::post('/listJadwal/update',[Controllers\JadwalController::class, 'update']);
+Route::delete('/listJadwal/delete/{id}',[Controllers\JadwalController::class, 'delete']);
+//KelompokController
+Route::get('/listKelompok',[Controllers\KelompokController::class, 'index']);
+Route::post('/listKelompok/store',[Controllers\KelompokController::class, 'store']);
+Route::post('/listKelompok/update',[Controllers\KelompokController::class, 'update']);
+Route::delete('/listKelompok/delete/{id}',[Controllers\KelompokController::class, 'delete']);
 
-//AdminKelompokController
-Route::get('/listAdminKelompok',[Controllers\AdminKelompokController::class, 'index']);
-//User Kelompok
-Route::get('/listUserKelompok',[Controllers\UserKelompokController::class, 'index']);
 
 
 //Profile
