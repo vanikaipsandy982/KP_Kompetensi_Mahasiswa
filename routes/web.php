@@ -76,12 +76,11 @@ Route::post('/listFakultas/update', [FakultasController::class, 'update']);
 Route::get('/listProdi', [ProdiController::class, 'index']);
 Route::post('/listProdi/store', [ProdiController::class, 'store']);
 Route::delete('/listProdi/delete/{id}', [ProdiController::class, 'delete']);
+Route::post('/listProdi/update', [ProdiController::class, 'update']);
 
 //Mahasiswa
-Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
-Route::get('/detailMhs', function(){
-    return view('mahasiswa/detailmhs');
-});
+Route::get('/listMahasiswa', [MahasiswaController::class, 'index']);
+
 
 //Bagian Mic
 //Chief Mentor

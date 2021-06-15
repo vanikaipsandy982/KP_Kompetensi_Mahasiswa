@@ -12,7 +12,6 @@ class ProdiController extends Controller
     {
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
-        $prodi = Prodi::with('prodiFakultas')->get();
         $faculty = Prodi::select('Fakultas.nama_fakultas', 'Prodi.id','Prodi.id_prodi', 'Prodi.nama_prodi')
             ->join('Fakultas', 'Prodi.fk_id_fakultas', '=', 'Fakultas.id')
             ->get();

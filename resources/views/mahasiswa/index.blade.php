@@ -10,21 +10,26 @@
         <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
             <div class="col-sm-12">
                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahMahasiswa">Tambah Mahasiswa</button>
+                <button type="button" class="btn btn-outline-primary" href="/listMahasiswa/create">Tambah Mahasiswa</button>
                 <button type="button" class="btn btn-outline-success">Export to Excel</button>
                 <button type="button" class="btn btn-outline-warning">Import</button>
                 @endif
                 <br><br>
-                <table class="table table-striped">
+                <table class="table table-striped table-responsive">
                     <thead>
                     <tr>
-                        <th scope="col">NRP</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Fakultas</th>
-                        <th scope="col">Program Studi</th>
-                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
-                        <th scope="col">Aksi</th>
-                        @endif
+                        <th>NRP</th>
+                        <th>Nama</th>
+                        <th>Fakultas</th>
+                        <th>Program Studi</th>
+                        <th>Alamat Mahasiswa</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Email</th>
+                        <th>Telepon Mahasiswa</th>
+                        <th>Tanggal Masuk</th>
+                        <th>Nama Orang Tua</th>
+                        <th>Alamat Orang Tua</th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,110 +39,29 @@
                         <td>{{$mhs->nama_mahasiswa}}</td>
                         <td>{{$mhs->nama_fakultas}}</td>
                         <td>{{$mhs->nama_prodi}}</td>
-                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
+                        <td>{{$mhs->alamat_mahasiswa}}</td>
+                        <td>{{$mhs->jeniskel_mahasiswa}}</td>
+                        <td>{{$mhs->email_mahasiswa}}</td>
+                        <td>{{$mhs->telp_mahasiswa}}</td>
+                        <td>{{$mhs->tanggal_masuk}}</td>
+                        <td>{{$mhs->nama_orangtua}}</td>
+                        <td>{{$mhs->alamat_orangtua}}</td>
                         <td>
-                            <a href="/mahasiswa/{{$mhs->id}}" class="btn btn-outline-dark">Detail</a>
+                            <form method="post" action="{{ url('/listMahasiswa/update/'.$mhs->id) }}" class="d-inline">
+                                @method('patch')
+                                @csrf
+                                <button type="submit" class="btn btn-outline-info">Edit</button>
+                            </form>
+                            <form method="post" action="{{ url('/listMahasiswa/delete/'.$mhs->id) }}" class="d-inline">
+                                @method('delete')
+                                @csrf
+                                <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
+                            </form>
                         </td>
-                        @endif
                     </tr>
                     @endforeach
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Form Tambah Mahasiswa-->
-<div class="modal fade" id="modalTambahMahasiswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Mahasiswa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <!--NRP Mahasiswa-->
-                    <div class="form-group">
-                        <label for="nrp_mhs">NRP</label>
-                        <input type="text" class="form-control" placeholder="NRP Mahasiswa">
-                    </div>
-                    <!--Nama-->
-                    <div class="form-group">
-                        <label for="nama_mhs">Nama</label>
-                        <input type="text" class="form-control" placeholder="Nama Mahasiswa">
-                    </div>
-                    <!--Jenis Kelamin-->
-                    <div class="form-group">
-                        <label for="jenis_kel">Jenis Kelamin</label>
-                        <br>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                            <label class="form-check-label" for="inlineRadio1">Perempuan</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                            <label class="form-check-label" for="inlineRadio2">Laki-Laki</label>
-                        </div>
-                    </div>
-                    <!--Nomor HP Mahasiswa-->
-                    <div class="form-group">
-                        <label for="no_hp_mhs">Nomor Telepon Mahasiswa</label>
-                        <input type="tel" class="form-control" placeholder="Nomor Telepon" maxlength="14">
-                    </div>
-                    <!--Email-->
-                    <div class="form-group">
-                        <label for="email_mhs">Email</label>
-                        <input type="email" class="form-control" placeholder="Email Mahasiswa">
-                    </div>
-                    <!--Alamat-->
-                    <div class="form-group">
-                        <label for="alamat_mhs">Alamat Mahasiswa</label>
-                        <textarea class="form-control" placeholder="Alamat Lengkap Mahasiswa" id="floatingTextarea2"></textarea>
-                    </div>
-                    <!--Fakultas-->
-                    <div class="form-group">
-                        <label for="fakultas_mhs">Fakultas</label>
-                        <select class="form-select">
-                            <option selected>Pilih Fakultas</option>
-                            @foreach($fakultas as $data)
-                                <option value="1">{{$data->nama_fakultas}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <!--Program Studi-->
-                    <div class="form-group">
-                        <label for="prodi_mhs">Program Studi</label>
-                        <select class="form-select">
-                            <option selected>Pilih Program Studi</option>
-                            @foreach($prodi as $prod)
-                                <option value="1">{{$prod->nama_prodi}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <!--Tanggal Masuk-->
-                    <div class="form-group">
-                        <label for="tgl_msk_mhs">Tanggal Masuk</label>
-                        <input type="date" class="form-control" placeholder="Email Mahasiswa">
-                    </div>
-                    <!--Orang Tua-->
-                    <!--Nama Orangtua-->
-                    <div class="form-group">
-                        <label for="nama_ortu_mhs">Nama Orang Tua</label>
-                        <input type="text" class="form-control" placeholder="Nama Orang Tua">
-                    </div>
-                    <!--Alamat Orang Tua-->
-                    <div class="form-group">
-                        <label for="alamat_ortu">Alamat Orang Tua</label>
-                        <textarea class="form-control" placeholder="Alamat Lengkap Orang Tua" id="floatingTextarea2"></textarea>
-                    </div>
-                    <!--Button Simpan-->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

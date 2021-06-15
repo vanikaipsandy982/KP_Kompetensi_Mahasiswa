@@ -28,17 +28,14 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @php($count=1)
                     @foreach($faculty as $prod)
                     <tr>
-                        <th>{{$prod->id_prodi}}</th>
+                        <td>{{$prod->id_prodi}}</td>
                         <td>{{$prod->nama_prodi}}</td>
                         <td>{{$prod->nama_fakultas}}</td>
                         <td>
-                            <form action="/listProdi/{{$prod->id}}" method="post" class="d-inline">
-                                @method('patch')
-                                @csrf
-                                <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#modalEditProdi">Edit</button>
-                            </form>
+                            <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$prod->id}}">Edit</button>
                             <form method="post" action="{{ url('/listProdi/delete/'.$prod->id) }}" class="d-inline">
                                 @method('delete')
                                 @csrf
@@ -46,6 +43,7 @@
                             </form>
                         </td>
                     </tr>
+                    @php($count +=1 )
                     @endforeach
                     </tbody>
                 </table>
@@ -66,6 +64,7 @@
             <div class="modal-body">
                 <form method="post" action="{{ url('/listProdi/store') }}">
                     @csrf
+                    <input type="hidden" id="hiddenEditFakultas" name="namaProdiEdit">
                     <!--Pilih Fakultas-->
                     <div class="form-group">
                         <label for="prodi_mhs">Fakultas</label>
@@ -106,14 +105,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action=action="/listProdi/{{$prod->id}}">
-                    @method('patch')
+                <form method="post" action="{{ url('/listProdi/update') }}">
                     @csrf
+                    <input type="hidden" id="#hiddenEditProdi" name="prodiEdit">
                     <!--Pilih Fakultas-->
                     <div class="form-group">
                         <label for="prodi_mhs">Fakultas</label>
-                        <select class="form-select" name="fakultasSelected">
-                            <option disabled selected>Pilih Fakultas</option>
+                        <select class="form-select" name="editFakultasSelected">
                             @foreach($fakultas as $data)
                                 <option value="{{$data->id}}">{{$data->nama_fakultas}}</option>
                             @endforeach
@@ -139,15 +137,22 @@
     </div>
 </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function (){
         $('.btn-edit').on('click',function (){
             var id = $(this).attr('id').split('-');
-            $('#editModal').val(id[2]);
-            var catatanLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(2)`).html();
-            $('input[name="catatanMentorBaru"]').val(catatanLama);
-            console.log(catatanLama);
-            $('#editChief').modal('toggle');
+            $('#hiddenEditProdi').val(id[2]);
+            var kodeLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(1)`).html();
+            var prodiLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(2)`).html();
+            var fakulLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(3)`).html();
+            $('input[name="kodeProdiBaru"]').val(kodeLama);
+            $('input[name="namaProdiBaru"]').val(prodiLama);
+            $('input[name="editFakultasSelected"]').val(fakulLama);
+            console.log(kodeLama);
+            console.log(prodiLama);
+            console.log(fakulLama);
+            $('#modalEditProdi').modal('toggle');
         });
     });
 </script>

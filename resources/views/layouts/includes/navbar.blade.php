@@ -25,7 +25,7 @@
                 </li>
                 <li  class="dropdown" ><a href="#"><span>Data</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/mahasiswa">Data Mahasiswa</a></li>
+                        <li><a href="/listMahasiswa">Data Mahasiswa</a></li>
                         <li><a href="/listDosen">Data Dosen</a></li>
                         <li><a href="/listKaryawan">Data Karyawan</a></li>
                     </ul>
@@ -40,9 +40,14 @@
                 <li class="dropdown"><a href="#"><span>NIK/NRP</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/userProfile">Profile</a></li>
-                        <li><form action="{{url('/logout')}}" method="post">
+                        <li>
+                            <form action="{{url('/logout')}}" method="post">
                                 @csrf
-                                <input type="submit">Logout</input></form></li>
+                                &nbsp;&nbsp;
+                                <button type="submit" class="btn btn-danger">Logout</button>
+{{--                                <input type="submit" class="bi bi-chevron-down" value="Logout"/></input>--}}
+                            </form>
+                        </li>
                     </ul>
                 </li>
             </ul>
