@@ -9,9 +9,11 @@
     <div class="row">
         <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
             <div class="col-sm-12">
+                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahMahasiswa">Tambah Mahasiswa</button>
                 <button type="button" class="btn btn-outline-success">Export to Excel</button>
                 <button type="button" class="btn btn-outline-warning">Import</button>
+                @endif
                 <br><br>
                 <table class="table table-striped">
                     <thead>
@@ -20,7 +22,9 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Fakultas</th>
                         <th scope="col">Program Studi</th>
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <th scope="col">Aksi</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -30,9 +34,11 @@
                         <td>{{$mhs->nama_mahasiswa}}</td>
                         <td>{{$mhs->nama_fakultas}}</td>
                         <td>{{$mhs->nama_prodi}}</td>
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <td>
                             <a href="/mahasiswa/{{$mhs->id}}" class="btn btn-outline-dark">Detail</a>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                     </tbody>

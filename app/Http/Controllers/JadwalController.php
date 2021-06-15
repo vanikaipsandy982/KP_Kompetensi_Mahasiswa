@@ -24,7 +24,7 @@ class JadwalController extends Controller
 
         $jadwal_mentoring = new Jadwal_Mentoring();
         $jadwal_mentoring->jadwal = $request->jadwalTambah;
-        $jadwal_mentoring->keterangan = $request->keteranganTambah;
+        $jadwal_mentoring->catatan = $request->keteranganTambah;
         $jadwal_mentoring->save();
         return redirect('/listJadwal')->with('message', 'Data Berhasil di Update !');
     }
@@ -32,8 +32,8 @@ class JadwalController extends Controller
     public function update(Request $request){
         Jadwal_Mentoring::find($request->jadwalEdit)
             ->update([
-                'jadwalTambah' => $request->jadwalBaru,
-                'keteranganTambah' => $request->keteranganBaru
+                'jadwal' => $request->jadwalBaru,
+                'catatan' => $request->keteranganBaru
             ]);
         return redirect()->back()->with('message', 'Jadwal Berhasil di Update');
     }

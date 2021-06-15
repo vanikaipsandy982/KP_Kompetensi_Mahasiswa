@@ -54,7 +54,7 @@ class MahasiswaSeeder extends Seeder
             $mahasiswa->alamat_orangtua = $value['alamat_orangtua'];
             $prodi = \App\Models\Prodi::where('nama_prodi','=',$value['nama_prodi'])->first();
             $mahasiswa->fk_id_prodi=$prodi->id;
-            $user = \App\Models\Users::where('username','=',$value['username'])->first();
+            $user = \App\Models\User::where('username','=',$value['username'])->first();
             $mahasiswa->fk_id_user=$user->id;
             $mahasiswa->save();
         }

@@ -14,6 +14,6 @@ class forums extends Model
         "fk_id_user"
     ];
     public function forumUser(){
-        return $this->belongsTo('App\Models\Users','fk_id_user');
+        return $this->belongsTo('App\Models\User','fk_id_user');
     }
 }

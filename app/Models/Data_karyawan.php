@@ -28,6 +28,6 @@ class Data_karyawan extends Model
         return $this->hasMany('App\Models\Chief_Mentor','fk_id_karyawan');
     }
     public function karyawanUser(){
-        return $this->belongsTo('App\Models\Users','fk_id_user');
+        return $this->belongsTo('App\Models\User','fk_id_user');
     }
 }

@@ -9,7 +9,9 @@
         <div class="row">
             <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                 <div class="col-sm-12">
+                    @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahFakultas">Tambah Fakultas</button>
+                    @endif
                     <br><br>
                     @if (session('message'))
                         <div class="alert alert-success alert-dismissible" role="alert">
@@ -24,7 +26,9 @@
                             <th scope="col">No</th>
 {{--                            <th scope="col">ID</th>--}}
                             <th scope="col">Nama Fakultas</th>
+                            @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                             <th scope="col">Aksi</th>
+                            @endif
                         </tr>
                         </thead>
                         <tbody>
@@ -34,6 +38,7 @@
                                 <th>{{$count}}</th>
 {{--                                <th>{{$data->id}}</th>--}}
                                 <td>{{$data->nama_fakultas}}</td>
+                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                 <td>
                                     <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
                                     <form method="post" action="{{ url('/listFakultas/delete/'.$data->id) }}" class="d-inline">
@@ -42,6 +47,7 @@
                                         <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
                             @php($count += 1)
                         @endforeach

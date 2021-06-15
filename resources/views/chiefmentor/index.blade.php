@@ -9,7 +9,9 @@
             <div class="row">
                 <div class="justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                     <div class="col-sm-12">
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahChiefMentor">Tambah Chief Mentor</button>
+                        @endif
                         <br><br>
                         @if (session('message'))
                             <div class="alert alert-success alert-dismissible" role="alert">
@@ -23,7 +25,9 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Catatan Mentor</th>
+                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                 <th scope="col">Aksi</th>
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -32,15 +36,16 @@
                                 <tr>
                                     <th scope="row">{{$count}}</th>
                                     <td>{{$data->catatan_mentor}}</td>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                     <td>
                                         <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
-
                                         <form method="post" action="{{ url('/listChief/delete/'.$data->id) }}" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                                 @php($count +=1 )
                             @endforeach

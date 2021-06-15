@@ -40,7 +40,9 @@
                 <li class="dropdown"><a href="#"><span>NIK/NRP</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/userProfile">Profile</a></li>
-                        <li><a href="">Logout</a></li>
+                        <li><form action="{{url('/logout')}}" method="post">
+                                @csrf
+                                <input type="submit">Logout</input></form></li>
                     </ul>
                 </li>
             </ul>

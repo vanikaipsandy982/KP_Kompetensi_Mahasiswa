@@ -12,11 +12,20 @@ use App\Http\Controllers\IsiSurveyController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\Controller;
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', function(){
+    return redirect('login');
 });
-Route::get('/index', function () {
-    return view('home');
+//Route::post('/login',[Controllers\Auth\AuthenticatedSessionController::class,'store']);
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//Route::middleware(['auth'])->group(function () {
+//
+//}
+
+Route::get('/home', function () {
+    return view('welcome');
 });
 
 //Bagian Josrel
@@ -103,3 +112,5 @@ Route::delete('/listKelompok/delete/{id}',[Controllers\KelompokController::class
 Route::get('/userProfile', function (){
     return view('user.profile');
 });
+
+require __DIR__ . '/auth.php';

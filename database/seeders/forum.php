@@ -24,7 +24,7 @@ class forum extends Seeder
             $forum = new \App\Models\forums();
             $forum->artikel = $value['artikel'];
             $forum->berita = $value['berita'];
-            $user = \App\Models\Users::where('username','=',$value['username'])->first();
+            $user = \App\Models\User::where('username','=',$value['username'])->first();
             $forum->fk_id_user=$user->id;
             $forum->save();
         }

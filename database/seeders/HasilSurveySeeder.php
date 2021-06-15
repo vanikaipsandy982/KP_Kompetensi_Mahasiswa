@@ -36,7 +36,7 @@ class HasilSurveySeeder extends Seeder
                 $hasilsurvey->fk_id_survey=$survey->id;
                 $survey_squestion = \App\Models\survey_squestions::where('question','=',$value['question'])->first();
                 $hasilsurvey->fk_id_squestion=$survey_squestion->id;
-                $user = \App\Models\Users::where('username','=',$value['username'])->first();
+                $user = \App\Models\User::where('username','=',$value['username'])->first();
                 $hasilsurvey->fk_id_user=$user->id;
                 $hasilsurvey->save();
             }

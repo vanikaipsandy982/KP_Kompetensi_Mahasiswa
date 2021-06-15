@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ChiefMentor_KaryawanSeeder extends Seeder
@@ -66,7 +66,7 @@ class ChiefMentor_KaryawanSeeder extends Seeder
             $jabatan = \App\Models\Jabatan::where('nama_jabatan','=',$value['nama_jabatan'])->first();
             $Karyawan->fk_id_jabatan=$jabatan->id;
 
-            $user = Users::where('username','=',$value['username'])->first();
+            $user = User::where('username','=',$value['username'])->first();
             $Karyawan->fk_id_user = $user->id;
             $Karyawan->save();
 

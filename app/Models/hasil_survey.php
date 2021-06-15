@@ -27,6 +27,6 @@ class hasil_survey extends Model
         return $this->belongsTo('App\Models\survey_squestions','fk_id_squestion');
     }
     public function hasilsurvey_user(){
-        return $this->belongsTo('App\Models\users','fk_id_user');
+        return $this->belongsTo('App\Models\User','fk_id_user');
     }
 }

@@ -29,6 +29,6 @@ class Mahasiswa extends Model
         return $this->hasMany('App\Models\Jadwal_Mentoring','fk_id_mahasiswa');
     }
     public function mahasiswaUser(){
-        return $this->belongsTo('App\Models\Users','fk_id_user');
+        return $this->belongsTo('App\Models\User','fk_id_user');
     }
 }

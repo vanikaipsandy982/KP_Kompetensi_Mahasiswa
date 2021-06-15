@@ -8,7 +8,9 @@
             <div class="row">
                 <div class="justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                     <div class="col-sm-12">
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahJadwal">Tambah Jadwal Mentoring</button>
+                        @endif
                         <br><br>
                         @if (session('message'))
                             <div class="alert alert-success alert-dismissible" role="alert">
@@ -23,7 +25,9 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Jadwal Mentoring</th>
                                 <th scope="col">Keterangan</th>
+                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                 <th scope="col">Aksi</th>
+                                @endif
                             </tr>
                             </thead>
                             <tbody>
@@ -33,6 +37,7 @@
                                     <th scope="row">{{$count}}</th>
                                     <td>{{$data->jadwal}}</td>
                                     <td>{{$data->catatan}}</td>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                     <td>
                                         <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
 
@@ -42,6 +47,7 @@
                                             <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                                 @php($count +=1 )
                             @endforeach
@@ -53,6 +59,7 @@
         </div>
 
         <!--Form Tambah Jadwal-->
+
         <div class="modal fade" id="modalTambahJadwal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -68,12 +75,12 @@
                         <!--Keterangan-->
                             <div class="form-group">
                                 <label for="keterangan">Jadwal</label>
-                                <input type="text" class="form-control" placeholder="Jadwal" name="jadwal">
+                                <input type="text" class="form-control" placeholder="Jadwal" name="jadwalTambah">
                             </div>
 
                             <div class="form-group">
                                 <label for="keterangan">Keterangan</label>
-                                <input type="text" class="form-control" placeholder="Keterangan" name="keteranganJadwal">
+                                <input type="text" class="form-control" placeholder="Keterangan" name="keteranganTambah">
                             </div>
                         <!--Button Simpan-->
                             <div class="modal-footer">
@@ -109,11 +116,6 @@
                                 <label for="catatan">Keterangan</label>
                                 <input type="text" class="form-control" name="keteranganBaru">
                             </div>
-                            <div class="form-group">
-                                <label for="catatan">Nama Mentor</label>
-                                <input type="text" class="form-control" name="mentorBaru">
-                            </div>
-
                             <!--Button Simpan-->
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -126,7 +128,8 @@
 
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"> </script>
+        <script>
         $(document).ready(function (){
             $('.btn-edit').on('click',function (){
                 var id = $(this).attr('id').split('-');
@@ -143,3 +146,4 @@
     </script>
 
 @endsection
+

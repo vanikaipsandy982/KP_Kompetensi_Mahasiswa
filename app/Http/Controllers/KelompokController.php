@@ -30,8 +30,8 @@ class KelompokController extends Controller
     }
 
     public function update(Request $request){
-        Pengelompokan::find($request->kelompokEdit)
-            ->update([
+        $kelompok = Pengelompokan::find($request->editKelompok);
+        $kelompok->update([
                 'nama_kelompok'=> $request->kelompokBaru
             ]);
         return redirect()->back()->with('message', 'Kelompok berhasil di Update');

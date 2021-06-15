@@ -8,7 +8,9 @@
         <div class="row">
             <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                 <div class="col-sm-12">
+                    @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalDataKaryawan">Tambah Karyawan</button>
+                    @endif
                     <br><br>
                     <table class="table table-striped">
                         <thead>
@@ -22,7 +24,9 @@
                             <th scope="col">No Telp</th>
                             <th scope="col">Agama</th>
                             <th scope="col">Jenis Kelamin</th>
+                            @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                             <th scope="col">Aksi</th>
+                            @endif
                         </tr>
                         </thead>
                         <tbody>
@@ -38,10 +42,12 @@
                                 <td>{{$data->notelp_karyawan}}</td>
                                 <td>{{$data->agama}}</td>
                                 <td>{{$data->jeniskelamin_karyawan}}</td>
+                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                 <td>
                                     <button type="submit" class="btn btn-outline-info" data-toggle="modal" data-target="#editKaryawan">Edit</button>
                                     <button type="submit" class="btn btn-outline-danger">Hapus</button>
                                 </td>
+                                @endif
                             </tr>
                             @php($count +=1 )
                         @endforeach

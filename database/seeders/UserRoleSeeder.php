@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\role;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserRoleSeeder extends Seeder
 {
@@ -28,9 +29,9 @@ class UserRoleSeeder extends Seeder
             ]
         ];
         foreach ($data as $value){
-            $user = new \App\Models\Users();
+            $user = new \App\Models\User();
             $user->username = $value['username'];
-            $user->password = $value['password'];
+            $user->password = Hash::make($value['password']);
             $role = role::where('name','=',$value['user_role'])->first();
             $user->fk_id_role = $role->id;
             $user->save();
