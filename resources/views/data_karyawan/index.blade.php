@@ -2,7 +2,7 @@
 
 @section('title', 'Data Karyawan')
 
-
+@section('container')
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
         <div class="row">
@@ -12,6 +12,13 @@
                     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalDataKaryawan">Tambah Karyawan</button>
                     @endif
                     <br><br>
+                    @if (session('message'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <i class="fa fa-check-circle"></i> {{session('message')}}
+                        </div>
+                    @endif
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -44,8 +51,12 @@
                                 <td>{{$data->jeniskelamin_karyawan}}</td>
                                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                 <td>
-                                    <button type="submit" class="btn btn-outline-info" data-toggle="modal" data-target="#editKaryawan">Edit</button>
-                                    <button type="submit" class="btn btn-outline-danger">Hapus</button>
+                                    <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
+                                    <form method="POST" action="{{ url('/listKaryawan/delete/'.$data->id) }}">
+                                        @method('delete')
+                                        @csrf
+                                        <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
+                                    </form>
                                 </td>
                                 @endif
                             </tr>
@@ -69,44 +80,74 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="POST" action="{{url('/listKaryawan/store')}}">
+                        @csrf
                         <!--NIK-->
                         <div class="form-group">
-                            <label for="id_karyawan">NIK</label>
-                            <input type="number" class="form-control" placeholder="NIK" maxlength="3">
+                            <label for="idKaryawan">NIK</label>
+                            <input type="number" class="form-control" placeholder="NIK" maxlength="3" name="idKaryawan">
                         </div>
                         <!--nama_karyawan-->
                         <div class="form-group">
-                            <label for="nama_karyawan">Nama Karyawan</label>
-                            <input type="text" class="form-control" placeholder="Nama Karyawan">
+                            <label for="namaKaryawan">Nama Karyawan</label>
+                            <input type="text" class="form-control" placeholder="Nama Karyawan" name="namaKaryawan">
                         </div>
                         <!--email_karyawan-->
                         <div class="form-group">
-                            <label for="email_karyawan">Email</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <label for="emailKaryawan">Email</label>
+                            <input type="email" class="form-control" placeholder="Email" name="emailKaryawan">
                         </div>
                         <!--tgl lahir-->
                         <div class="form-group">
-                            <label for="tgl_lahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control">
+                            <label for="tglLahir">Tanggal Lahir</label>
+                            <input type="date" class="form-control" name="tglLahir">
+                        </div>
+                        <!--alamat karyawan-->
+                        <div class="form-group">
+                            <label for="alamatKaryawan">Alamat</label>
+                            <input type="tel" class="form-control" name="alamatKaryawan">
                         </div>
                         <!--notelp karyawan-->
                         <div class="form-group">
-                            <label for="notelp_karyawan">No Telepon</label>
-                            <input type="tel" class="form-control">
+                            <label for="notelpKaryawan">No Telepon</label>
+                            <input type="tel" class="form-control" name="notelpKaryawan">
                         </div>
                         <!--agama-->
                         <div class="form-group">
                             <label for="agama">Agama</label>
-                            <input type="agama" class="form-control" placeholder="Agama">
+                            <input type="text" class="form-control" placeholder="Agama" name="agama">
                         </div>
                         <!--Jenis Kelamin-->
                         <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin</label><br>
-                            <input type="radio" value="Laki-Laki" id="laki" name="laki">
-                            <label for="laki">Laki-Laki</label><br>
-                            <input type="radio" value="Perempuan" id="perempuan" name="perempuan">
-                            <label for="perempuan">Perempuan</label><br>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" value="Laki-Laki" id="laki" name="gender">
+                                <label for="laki">Laki-Laki</label><br>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" value="Perempuan" id="perempuan" name="gender">
+                                <label for="perempuan">Perempuan</label><br>
+                            </div>
+                        </div>
+                        <!-- Jabatan -->
+                        <div class="form-group">
+                            <label for="jabatan">Jabatan</label>
+                            <select class="form-control" name="jabatan">
+                                <option></option>
+                                @foreach($jabatan as $value)
+                                    <option value="{{$value->id}}">{{$value->nama_jabatan}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <!-- user -->
+                        <div class="form-group">
+                            <label for="user">User</label>
+                            <select class="form-control" name="user">
+                                <option></option>
+                                @foreach($user as $value)
+                                    <option value="{{$value->id}}">{{$value->username}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <!--Button Simpan-->
                         <div class="modal-footer">
@@ -129,44 +170,38 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="post" action="{{url('/listKaryawan/update')}}">
+                        @csrf
+                        <input type="hidden" id="editModal" name="editKaryawan">
                         <!--NIK-->
                         <div class="form-group">
-                            <label for="id_karyawan">NIK</label>
-                            <input type="number" class="form-control" placeholder="NIK" maxlength="3">
+                            <label for="idKaryawanBaru">NIK</label>
+                            <input type="number" class="form-control" placeholder="NIK" maxlength="3" name="idKaryawanBaru">
                         </div>
                         <!--nama_karyawan-->
                         <div class="form-group">
-                            <label for="nama_karyawan">Nama Karyawan</label>
-                            <input type="text" class="form-control" placeholder="Nama Karyawan">
+                            <label for="namaKaryawanBaru">Nama Karyawan</label>
+                            <input type="text" class="form-control" placeholder="Nama Karyawan" name="namaKaryawanBaru">
                         </div>
                         <!--email_karyawan-->
                         <div class="form-group">
-                            <label for="email_karyawan">Email</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <label for="emailKaryawanBaru">Email</label>
+                            <input type="email" class="form-control" placeholder="Email" name="emailKaryawanBaru">
                         </div>
-                        <!--tgl lahir-->
+                        <!--alamat karyawan-->
                         <div class="form-group">
-                            <label for="tgl_lahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control">
+                            <label for="alamatKaryawanBaru">Alamat</label>
+                            <input type="tel" class="form-control" name="alamatKaryawanBaru">
                         </div>
                         <!--notelp karyawan-->
                         <div class="form-group">
-                            <label for="notelp_karyawan">No Telepon</label>
-                            <input type="tel" class="form-control">
+                            <label for="notelpKaryawanBaru">No Telepon</label>
+                            <input type="tel" class="form-control" name="notelpKaryawanBaru">
                         </div>
                         <!--agama-->
                         <div class="form-group">
-                            <label for="agama">Agama</label>
-                            <input type="agama" class="form-control" placeholder="Agama">
-                        </div>
-                        <!--Jenis Kelamin-->
-                        <div class="form-group">
-                            <label for="jenis_kelamin">Jenis Kelamin</label><br>
-                            <input type="radio" value="Laki-Laki" id="laki" name="laki">
-                            <label for="laki">Laki-Laki</label><br>
-                            <input type="radio" value="Perempuan" id="perempuan" name="perempuan">
-                            <label for="perempuan">Perempuan</label><br>
+                            <label for="agamaBaru">Agama</label>
+                            <input type="text" class="form-control" placeholder="Agama" name="agamaBaru">
                         </div>
                         <!--Button Simpan-->
                         <div class="modal-footer">
@@ -178,3 +213,26 @@
         </div>
     </div>
 </section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function (){
+        $('.btn-edit').on('click',function (){
+            var id = $(this).attr('id').split('-');
+            $('#editModal').val(id[2]);
+            var idLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(2)`).html();
+            var namaLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(3)`).html();
+            var emailLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(4)`).html();
+            var alamatLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(6)`).html();
+            var notelpLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(7)`).html();
+            var agamaLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(8)`).html();
+            $('input[name="idKaryawanBaru"]').val(idLama);
+            $('input[name="namaKaryawanBaru"]').val(namaLama);
+            $('input[name="emailKaryawanBaru"]').val(emailLama);
+            $('input[name="alamatKaryawanBaru"]').val(alamatLama);
+            $('input[name="notelpKaryawanBaru"]').val(notelpLama);
+            $('input[name="agamaBaru"]').val(agamaLama);
+            $('#editKaryawan').modal('toggle');
+        });
+    });
+</script>
+@endsection

@@ -91,8 +91,14 @@ Route::delete('/listChief/delete/{id}', [ChiefMentorController::class, 'delete']
 Route::post('/listChief/update', [ChiefMentorController::class, 'update']);
 //Data Karyawan
 Route::get('/listKaryawan', [DataKaryawanController::class, 'index']);
+Route::post('/listKaryawan/store', [DataKaryawanController::class, 'store']);
+Route::delete('/listKaryawan/delete/{id}', [DataKaryawanController::class, 'delete']);
+Route::post('/listKaryawan/update', [DataKaryawanController::class, 'update']);
 //Data Dosen
 Route::get('/listDosen', [DataDosenController::class, 'index']);
+Route::post('/listDosen/store', [DataDosenController::class, 'store']);
+Route::delete('/listDosen/delete/{id}', [DataDosenController::class, 'delete']);
+Route::post('/listDosen/update', [DataDosenController::class, 'update']);
 
 //Bagian Can
 //Jadwal
