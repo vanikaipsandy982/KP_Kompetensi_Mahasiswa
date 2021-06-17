@@ -80,7 +80,10 @@ Route::post('/listProdi/update', [ProdiController::class, 'update']);
 
 //Mahasiswa
 Route::get('/listMahasiswa', [MahasiswaController::class, 'index']);
-
+Route::get('/mahasiswacr', [MahasiswaController::class, 'create']);
+Route::post('/mahasiswastore', [MahasiswaController::class, 'store']);
+//Route::get('/listMahasiswa/{id}/edit', [MahasiswaController::class, 'edit']);
+Route::get('/mahasiswaedit/{id}', [MahasiswaController::class, 'edit']);
 
 //Bagian Mic
 //Chief Mentor

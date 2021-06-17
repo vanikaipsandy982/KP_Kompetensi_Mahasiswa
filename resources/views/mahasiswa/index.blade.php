@@ -10,7 +10,7 @@
         <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
             <div class="col-sm-12">
                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
-                <button type="button" class="btn btn-outline-primary" href="/listMahasiswa/create">Tambah Mahasiswa</button>
+                <a type="button" class="btn btn-outline-primary" href='/mahasiswacr'>Tambah Mahasiswa</a>
                 <button type="button" class="btn btn-outline-success">Export to Excel</button>
                 <button type="button" class="btn btn-outline-warning">Import</button>
                 @endif
@@ -47,11 +47,8 @@
                         <td>{{$mhs->nama_orangtua}}</td>
                         <td>{{$mhs->alamat_orangtua}}</td>
                         <td>
-                            <form method="post" action="{{ url('/listMahasiswa/update/'.$mhs->id) }}" class="d-inline">
-                                @method('patch')
-                                @csrf
-                                <button type="submit" class="btn btn-outline-info">Edit</button>
-                            </form>
+{{--                            <a href="/listMahasiswa/{{ $mhs->id }}/edit" class="btn btn-warning">Edit</a>--}}
+                            <a href="{{ url('/mahasiswaedit/'.$mhs->id) }}" class="btn btn-warning">Edit</a>
                             <form method="post" action="{{ url('/listMahasiswa/delete/'.$mhs->id) }}" class="d-inline">
                                 @method('delete')
                                 @csrf

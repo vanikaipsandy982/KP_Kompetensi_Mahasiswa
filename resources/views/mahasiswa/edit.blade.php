@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Tambah Data Mahasiswa')
+@section('title', 'Edit Data Mahasiswa')
 
 @section('container')
 
@@ -9,10 +9,11 @@
         <div class="row">
             <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                 <div class="col-sm-12">
-                    <h1>Tambah Data Mahasiswa</h1>
+                    <h1>Edit Data Mahasiswa</h1>
                     <br>
-                    <form method="post" action="/mahasiswastore">
+                    <form method="post" action="/mahasiswaupdate">
                         @csrf
+                        @method('patch')
                         <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
@@ -81,7 +82,7 @@
                             <br>
                             <div class="form-group">
                                 <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="submit">Simpan</button>
+                                    <button class="btn btn-primary" type="submit">Simpan Perubahan</button>
                                     <a href="{{ url()->previous() }}" class="btn btn-primary">Batal</a>
                                 </div>
                             </div>

@@ -25,20 +25,20 @@ class ProdiController extends Controller
         ]);
 
         $prodi = new Prodi;
-        $fakultas = Fakultas::where('id','=',$request->selectedFakultas)->first();
-        $prodi->fk_id_fakultas = $fakultas->id;
+        $prodi->fk_id_fakultas = $request->selectedFakultas;
         $prodi->id_prodi = $request->kodeProdi;
         $prodi->nama_prodi = $request->namaProdi;
         $prodi->save();
         return redirect('/listProdi')->with('message', 'Data Program Studi Berhasil Di Input');
     }
 
-    public function update(Request $request, $id){
-        Prodi::where('id', $id)
+    public function update(Request $request){
+        Prodi::find($request->prodiEdit)
             ->update([
+                'id_prodi'=> $request->kodeProdiBaru,
                 'nama_prodi'=> $request->namaProdiBaru
             ]);
-        return redirect('/listProdi')->with('message', 'Data Program Studi Berhasil Di Update');
+        return redirect()->back()->with('message', 'Data Program Studi Berhasil Di Update');
     }
 
     public function delete($id){
