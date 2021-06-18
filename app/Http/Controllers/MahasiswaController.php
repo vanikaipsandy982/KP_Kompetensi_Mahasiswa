@@ -19,7 +19,8 @@ class MahasiswaController extends Controller
 //        $mahasiswa = Mahasiswa::all();
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
-        $mahasiswa = Mahasiswa::select('mahasiswa.nrp',
+        $mahasiswa = Mahasiswa::select('mahasiswa.id',
+            'mahasiswa.nrp',
             'mahasiswa.nama_mahasiswa',
             'Fakultas.nama_fakultas',
             'Prodi.nama_prodi',
@@ -102,8 +103,8 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        $mahasiswa = Mahasiswa::find($id);
-        return view('mahasiswa.edit', compact('mahasiswa'));
+        $mhs = Mahasiswa::find($id);
+        return view('mahasiswa.edit', compact('mhs'));
     }
 
     /**
@@ -111,21 +112,48 @@ class MahasiswaController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nrp_mahasiswa_baru' => 'required',
+            'nama_mahasiswa_baru' => 'required',
+            'alamat_mahasiswa_baru' => 'required',
+            'jenkel_mahasiswa_baru' => 'required',
+            'tanggal_masuk_mahasiswa_baru' => 'required',
+            'email_mahasiswa_baru' => 'required',
+            'telp_mahasiswa_baru' => 'required',
+            'ortu_mahasiswa_baru' => 'required',
+            'alamat_ortu_mahasiswa_baru' => 'required'
+        ]);
+
+        Mahasiswa::where('id', $id)
+            ->update([
+                'nrp' => $request->nrp_mahasiswa_baru,
+                'nama_mahasiswa' => $request->nama_mahasiswa_baru,
+                'email_mahasiswa' => $request->email_mahasiswa_baru,
+                'telp_mahasiswa' => $request->telp_mahasiswa_baru,
+                'alamat_mahasiswa' => $request->alamat_mahasiswa_baru,
+                'jeniskel_mahasiswa' => $request->jenkel_mahasiswa_baru,
+                'tanggal_masuk' => $request->tanggal_masuk_mahasiswa_baru,
+                'nama_orangtua' => $request->ortu_mahasiswa_baru,
+                'alamat_orangtua' => $request->alamat_ortu_mahasiswa_baru,
+                'fk_id_prodi' => $request->selected_prodi_mahasiswa_baru,
+            ]);
+        return redirect('/listMahasiswa')->with('message', 'Data Mahasiswa Berhasil Di Update');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $mhs = Mahasiswa::find($id);
+        $mhs->delete();
+        return redirect('/listMahasiswa')->with('message', 'Data Mahasiswa Berhasil dihapus');
     }
 }

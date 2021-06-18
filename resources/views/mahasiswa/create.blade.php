@@ -11,6 +11,13 @@
                 <div class="col-sm-12">
                     <h1>Tambah Data Mahasiswa</h1>
                     <br>
+                    @if (session('message'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <i class="fa fa-check-circle"></i> {{session('message')}}
+                        </div>
+                    @endif
                     <form method="post" action="/mahasiswastore">
                         @csrf
                         <div class="row">
@@ -48,12 +55,12 @@
                             <div class="form-group">
                                 <label>Jenis Kelamin</label><br>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="jenkel_mahasiswa_baru" id="inlineRadio1" value="perempuan" checked>
-                                    <label class="form-check-label" for="inlineRadio1">Perempuan</label>
+                                    <input class="form-check-input" type="radio" name="jenkel_mahasiswa_baru" id="inlineRadio1" value="Wanita" checked>
+                                    <label class="form-check-label" for="inlineRadio1">Wanita</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="jenkel_mahasiswa_baru" id="inlineRadio2" value="laki">
-                                    <label class="form-check-label" for="inlineRadio2">Laki-Laki</label>
+                                    <input class="form-check-input" type="radio" name="jenkel_mahasiswa_baru" id="inlineRadio2" value="Pria">
+                                    <label class="form-check-label" for="inlineRadio2">Pria</label>
                                 </div>
                             </div>
                         </div>
@@ -79,11 +86,9 @@
                                 <textarea class="form-control" name="alamat_ortu_mahasiswa_baru" placeholder="Alamat Lengkap Orang Tua Mahasiswa" required></textarea>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="submit">Simpan</button>
-                                    <a href="{{ url()->previous() }}" class="btn btn-primary">Batal</a>
-                                </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="{{ url()->previous() }}" class="btn btn-secondary btn-lg">Batal</a>
+                                <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
                             </div>
                         </div>
                         </div>

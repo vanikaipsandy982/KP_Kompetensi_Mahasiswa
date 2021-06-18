@@ -15,6 +15,13 @@
                 <button type="button" class="btn btn-outline-warning">Import</button>
                 @endif
                 <br><br>
+                @if (session('message'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                        <i class="fa fa-check-circle"></i> {{session('message')}}
+                    </div>
+                @endif
                 <table class="table table-striped table-responsive">
                     <thead>
                     <tr>
@@ -47,13 +54,14 @@
                         <td>{{$mhs->nama_orangtua}}</td>
                         <td>{{$mhs->alamat_orangtua}}</td>
                         <td>
-{{--                            <a href="/listMahasiswa/{{ $mhs->id }}/edit" class="btn btn-warning">Edit</a>--}}
-                            <a href="{{ url('/mahasiswaedit/'.$mhs->id) }}" class="btn btn-warning">Edit</a>
-                            <form method="post" action="{{ url('/listMahasiswa/delete/'.$mhs->id) }}" class="d-inline">
-                                @method('delete')
-                                @csrf
-                                <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
-                            </form>
+                            <div class="d-grid gap-2">
+                                <a href="/mahasiswaedit{{$mhs->id}}" class="btn btn-outline-info">Edit</a>
+                                <form method="post" action="{{ url('/listMahasiswa/delete/'.$mhs->id) }}" class="d-inline">
+                                    @method('delete')
+                                    @csrf
+                                    <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                     @endforeach
