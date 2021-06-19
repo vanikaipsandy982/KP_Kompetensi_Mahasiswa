@@ -111,6 +111,7 @@ Route::post('/listJadwal/update',[Controllers\JadwalController::class, 'update']
 Route::delete('/listJadwal/delete/{id}',[Controllers\JadwalController::class, 'delete']);
 //KelompokController
 Route::get('/listKelompok',[Controllers\KelompokController::class, 'index']);
+Route::get('/getKelompok',[Controllers\KelompokController::class, 'get']);
 Route::post('/listKelompok/store',[Controllers\KelompokController::class, 'store']);
 Route::post('/listKelompok/update',[Controllers\KelompokController::class, 'update']);
 Route::delete('/listKelompok/delete/{id}',[Controllers\KelompokController::class, 'delete']);

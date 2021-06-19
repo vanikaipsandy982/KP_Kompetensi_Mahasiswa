@@ -25,10 +25,17 @@ class Mahasiswa extends Model
     public function mahasiswaProdi(){
         return $this->belongsTo('App\Models\Prodi','fk_id_prodi');
     }
+
     public function mahasiswaJadwalmentoring(){
         return $this->hasMany('App\Models\Jadwal_Mentoring','fk_id_mahasiswa');
     }
+
     public function mahasiswaUser(){
         return $this->belongsTo('App\Models\User','fk_id_user');
     }
+
+    public function mahasiswaKelompok(){
+        return $this->belongsTo('App\Models\Pengelompokan', 'fk_id_kelompok');
+    }
+
 }

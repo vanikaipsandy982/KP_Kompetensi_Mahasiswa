@@ -6,6 +6,7 @@ use App\Models\Chief_Mentor;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use App\Models\Pengelompokan;
+use Psy\Util\Json;
 
 class KelompokController extends Controller
 {
@@ -15,6 +16,13 @@ class KelompokController extends Controller
         $chief_mentor = Chief_Mentor::all();
         return view('mentoring.kelompok', compact('pengelompokan', 'chief_mentor'));
     }
+
+    public function get(Request $request)
+    {
+        $pengelompokan = Pengelompokan::with('kelompokMahasiswa')->where('id', '=', $request->id)->first();
+        return response()->json($pengelompokan);
+    }
+
 
     public function store(Request $request){
         $request->validate([

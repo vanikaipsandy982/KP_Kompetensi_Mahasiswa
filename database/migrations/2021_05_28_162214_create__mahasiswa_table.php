@@ -27,6 +27,7 @@ class CreateMahasiswaTable extends Migration
             $table->timestamps();
             $table->integer('fk_id_prodi')->nullable();
             $table->integer('fk_id_user')->nullable();
+            $table->integer('fk_id_kelompok')->nullable();
         });
     }
 

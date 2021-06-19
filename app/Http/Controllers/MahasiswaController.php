@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Fakultas;
 use App\Models\Mahasiswa;
+use App\Models\Pengelompokan;
 use App\Models\Prodi;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MahasiswaController extends Controller
 {
@@ -19,22 +22,9 @@ class MahasiswaController extends Controller
 //        $mahasiswa = Mahasiswa::all();
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
-        $mahasiswa = Mahasiswa::select('mahasiswa.id',
-            'mahasiswa.nrp',
-            'mahasiswa.nama_mahasiswa',
-            'Fakultas.nama_fakultas',
-            'Prodi.nama_prodi',
-            'mahasiswa.alamat_mahasiswa',
-            'mahasiswa.jeniskel_mahasiswa',
-            'mahasiswa.email_mahasiswa',
-            'mahasiswa.telp_mahasiswa',
-            'mahasiswa.tanggal_masuk',
-            'mahasiswa.nama_orangtua',
-            'mahasiswa.alamat_orangtua')
-            ->join('Prodi', 'mahasiswa.fk_id_prodi', '=', 'Prodi.id')
-            ->join('Fakultas', 'Prodi.fk_id_fakultas', '=', 'Fakultas.id')
-            ->get();
-        return view('mahasiswa.index', compact('mahasiswa', 'fakultas', 'prodi'));
+        $pengelompokan = Pengelompokan::all();
+        $mahasiswa = Mahasiswa::all();
+        return view('mahasiswa.index', compact('mahasiswa', 'fakultas', 'prodi', 'pengelompokan'));
     }
 
     /**
@@ -68,7 +58,13 @@ class MahasiswaController extends Controller
             'ortu_mahasiswa_baru' => 'required',
             'alamat_ortu_mahasiswa_baru' => 'required',
         ]);
-        $mahasiswa = new Mahasiswa;
+        $user = new User();
+        $user->username = $request->nrp_mahasiswa_baru;
+        $user->password = Hash::make($request->nrp_mahasiswa_baru);
+        $user->fk_id_role = 2;
+        $user->save();
+
+        $mahasiswa = new Mahasiswa();
         $mahasiswa->nrp = $request->nrp_mahasiswa_baru;
         $mahasiswa->nama_mahasiswa = $request->nama_mahasiswa_baru;
         $mahasiswa->email_mahasiswa = $request->email_mahasiswa_baru;
@@ -79,6 +75,7 @@ class MahasiswaController extends Controller
         $mahasiswa->tanggal_masuk = $request->tanggal_masuk_mahasiswa_baru;
         $mahasiswa->alamat_orangtua = $request->alamat_ortu_mahasiswa_baru;
         $mahasiswa->fk_id_prodi = $request->selected_prodi_mahasiswa_baru;
+        $mahasiswa->fk_id_user = $user->id;
         $mahasiswa->save();
 
         return redirect('/listMahasiswa')->with('message', 'Data Mahasiswa Berhasil Di Input');

@@ -10,7 +10,8 @@ class Pengelompokan extends Model
     protected $table = "pengelompokan";
     protected $fillable=[
         "fk_id_chief_mentor",
-        "nama_kelompok"
+        "nama_kelompok",
+        "nomor_kelompok"
     ];
     public function kelompokJadwalmentoring(){
         return $this->hasMany('App\Models\Jadwal_Mentoring','fk_id_kelompok');
@@ -19,4 +20,9 @@ class Pengelompokan extends Model
     public function kelompokMentor(){
         return $this->belongsTo('App\Models\Chief_Mentor','fk_id_chief_mentor');
     }
+
+    public function kelompokMahasiswa(){
+        return $this->hasMany('App\Models\Mahasiswa', 'fk_id_kelompok');
+    }
+
 }
