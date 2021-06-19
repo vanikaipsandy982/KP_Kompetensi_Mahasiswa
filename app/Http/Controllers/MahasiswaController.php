@@ -19,11 +19,25 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-//        $mahasiswa = Mahasiswa::all();
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
         $pengelompokan = Pengelompokan::all();
-        $mahasiswa = Mahasiswa::all();
+//        $mahasiswa = Mahasiswa::all();
+        $mahasiswa = Mahasiswa::select('mahasiswa.id',
+            'mahasiswa.nrp',
+            'mahasiswa.nama_mahasiswa',
+            'Fakultas.nama_fakultas',
+            'Prodi.nama_prodi',
+            'mahasiswa.alamat_mahasiswa',
+            'mahasiswa.jeniskel_mahasiswa',
+            'mahasiswa.email_mahasiswa',
+            'mahasiswa.telp_mahasiswa',
+            'mahasiswa.tanggal_masuk',
+            'mahasiswa.nama_orangtua',
+            'mahasiswa.alamat_orangtua')
+            ->join('Prodi', 'mahasiswa.fk_id_prodi', '=', 'Prodi.id')
+            ->join('Fakultas', 'Prodi.fk_id_fakultas', '=', 'Fakultas.id')
+            ->get();
         return view('mahasiswa.index', compact('mahasiswa', 'fakultas', 'prodi', 'pengelompokan'));
     }
 
@@ -101,7 +115,25 @@ class MahasiswaController extends Controller
     public function edit($id)
     {
         $mhs = Mahasiswa::find($id);
-        return view('mahasiswa.edit', compact('mhs'));
+        $mahasiswa = Mahasiswa::select('mahasiswa.id', 'Prodi.id AS ProdiID', 'Fakultas.id AS FakultasID',
+            'mahasiswa.nrp',
+            'mahasiswa.nama_mahasiswa',
+            'Fakultas.nama_fakultas',
+            'Prodi.nama_prodi',
+            'mahasiswa.alamat_mahasiswa',
+            'mahasiswa.jeniskel_mahasiswa',
+            'mahasiswa.email_mahasiswa',
+            'mahasiswa.telp_mahasiswa',
+            'mahasiswa.tanggal_masuk',
+            'mahasiswa.nama_orangtua',
+            'mahasiswa.alamat_orangtua')
+            ->join('Prodi', 'mahasiswa.fk_id_prodi', '=', 'Prodi.id')
+            ->join('Fakultas', 'Prodi.fk_id_fakultas', '=', 'Fakultas.id')
+            ->where('mahasiswa.id', '=', $id)
+            ->get();
+        $fakultas = Fakultas::all();
+        $prodi = Prodi::all();
+        return view('mahasiswa.edit', compact('mhs', 'mahasiswa', 'fakultas', 'prodi'));
     }
 
     /**
