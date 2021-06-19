@@ -24,6 +24,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">No</th>
+                                <th scope="col">Nama Chief Mentor</th>
                                 <th scope="col">Catatan Mentor</th>
                                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                 <th scope="col">Aksi</th>
@@ -35,8 +36,9 @@
                             @foreach($chief_mentor->sortby('id') as $data)
                                 <tr>
                                     <th scope="row">{{$count}}</th>
+                                    <td>{{$data->mentorKaryawan->nama_karyawan}}</td>
                                     <td>{{$data->catatan_mentor}}</td>
-                                    @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
+                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                     <td>
                                         <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
                                         <form method="post" action="{{ url('/listChief/delete/'.$data->id) }}" class="d-inline">
@@ -69,19 +71,20 @@
                     <div class="modal-body">
                         <form method="POST" action="{{ url('/listChief/store') }}">
                         @csrf
-                        <!--Catatan-->
+                            <!-- nama chief mentor dari karyawan -->
                             <div class="form-group">
-                                <label for="catatan">Catatan</label>
-                                <input type="text" class="form-control" placeholder="Catatan" name="catatanMentor">
-                            </div>
-                            <div class="form-group">
-                                <label for="karyawan">karyawan</label>
+                                <label for="karyawan">Nama Chief Mentor</label>
                                 <select class="form-control" name="karyawan">
                                     <option></option>
                                     @foreach($data_karyawan as $value)
                                         <option value="{{$value->id}}">{{$value->nama_karyawan}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        <!--Catatan-->
+                            <div class="form-group">
+                                <label for="catatan">Catatan</label>
+                                <input type="text" class="form-control" placeholder="Catatan" name="catatanMentor">
                             </div>
 
                             @error('catatanMentor')
@@ -134,7 +137,7 @@
             $('.btn-edit').on('click',function (){
                 var id = $(this).attr('id').split('-');
                 $('#editModal').val(id[2]);
-                var catatanLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(2)`).html();
+                var catatanLama = $(`#hero > div.container > div > div > div > table > tbody > tr:nth-child(${id[0]}) > td:nth-child(3)`).html();
                 $('input[name="catatanMentorBaru"]').val(catatanLama);
                 console.log(catatanLama);
                 $('#editChief').modal('toggle');

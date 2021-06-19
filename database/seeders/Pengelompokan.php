@@ -18,6 +18,10 @@ class Pengelompokan extends Seeder
               'nama_kelompok'=>'test kelompok1',
               'catatan_mentor'=>'test'
           ],
+          [
+              'nama_kelompok'=>'test kelompok2',
+              'catatan_mentor'=>'test2'
+          ]
         ];
         foreach($data as $value){
             $pengelompokan = new \App\Models\Pengelompokan();

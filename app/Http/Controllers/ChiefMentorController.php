@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chief_Mentor;
 use App\Models\Data_karyawan;
+use App\Models\Pengelompokan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,9 +14,14 @@ class ChiefMentorController extends Controller
 {
     public function index()
     {
-        $chief_mentor = Chief_Mentor::all();
-        $data_karyawan = Data_karyawan::all();
-        return view('chiefmentor.index',compact('chief_mentor','data_karyawan'));
+        $chief_mentor = Chief_Mentor::whereHas('mentorKaryawan',function($query){
+            $query->where('fk_id_jabatan','=','1');
+        })->get();
+        $data_karyawan = Data_karyawan::whereHas('karyawanJabatan',function($query){
+            $query->where('nama_jabatan','=','Dosen');
+        })->get();
+        $pengelompokan = Pengelompokan::all();
+        return view('chiefmentor.index',compact('chief_mentor','data_karyawan','pengelompokan'));
     }
 
     public function store(Request $request){
