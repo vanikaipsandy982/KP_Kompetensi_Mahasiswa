@@ -25,7 +25,11 @@ class UserRoleSeeder extends Seeder
                 'username'=>'111',
                 'password'=>'111',
                 'user_role'=>'user'
-
+            ],
+            [
+                'username'=>'1872011',
+                'password'=>'1872011',
+                'user_role'=>'mentor'
             ]
         ];
         foreach ($data as $value){

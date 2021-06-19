@@ -47,6 +47,8 @@
                                         @csrf
                                         <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
                                     </form>
+
+                                    <button type="button" class="btn btn-outline-info btn-detail">Detail</button>
                                 </td>
                                 @endif
                             </tr>
@@ -94,7 +96,7 @@
             </div>
         </div>
     </div>
-</section>
+
 
 <!--Form Edit Kelompok-->
 <div class="modal fade" id="editKelompok" tabindex="-1" role="dialog" aria-labelledby="modalEdit" aria-hidden="true">
@@ -125,6 +127,25 @@
     </div>
 </div>
 
+<!--Form Detail Mahasiswa-->
+<div class="modal fade" id="modalDetailKelompok" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Detail Kelompok</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="{{url('/listKelompok/store')}}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"> </script>
 <script>
     $(document).ready(function (){
@@ -140,5 +161,6 @@
             $('#editKelompok').modal('toggle');
         });
     });
+
 </script>
 @endsection
