@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MahasiswaExport;
+use App\Imports\MahasiswaImport;
 use App\Models\Fakultas;
 use App\Models\Mahasiswa;
 use App\Models\Pengelompokan;
@@ -9,6 +11,7 @@ use App\Models\Prodi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MahasiswaController extends Controller
 {
@@ -96,17 +99,6 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -184,5 +176,14 @@ class MahasiswaController extends Controller
         $mhs = Mahasiswa::find($id);
         $mhs->delete();
         return redirect('/listMahasiswa')->with('message', 'Data Mahasiswa Berhasil dihapus');
+    }
+
+    public function export()
+    {
+        return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
+    }
+    public function import(Request $request)
+    {
+        Excel::import(new MahasiswaImport, $request->file('data_mhs'));
     }
 }

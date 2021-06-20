@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Fakultas;
+use App\Models\Mahasiswa;
 use App\Models\Prodi;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -32,13 +33,34 @@ class ProdiController extends Controller
         return redirect('/listProdi')->with('message', 'Data Program Studi Berhasil Di Input');
     }
 
-    public function update(Request $request){
-        Prodi::find($request->prodiEdit)
+    public function edit($id)
+    {
+        $prod = Prodi::find($id);
+        $fkl = Fakultas::select('Fakultas.id',
+            'Fakultas.nama_fakultas',
+            'Prodi.nama_prodi',
+            'Prodi.id AS ProdiID',
+            'Fakultas.id AS FakultasID',
+            )
+            ->join('Prodi', 'Prodi.fk_id_fakultas', '=', 'Fakultas.id')
+            ->where('Prodi.id', '=', $id)
+            ->get();
+        $fakultas = Fakultas::all();
+        return view('prodi.edit', compact('fakultas', 'prod', 'fkl'));
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'kode_prodi_baru' => 'required',
+            'nama_prodi_baru' => 'required',
+        ]);
+        Prodi::where('id', $id)
             ->update([
-                'id_prodi'=> $request->kodeProdiBaru,
-                'nama_prodi'=> $request->namaProdiBaru
+                'id_prodi' => $request->kode_prodi_baru,
+                'nama_prodi' => $request->nama_prodi_baru,
+                'fk_id_fakultas' => $request->selected_fakultas_prodi_baru,
             ]);
-        return redirect()->back()->with('message', 'Data Program Studi Berhasil Di Update');
+        return redirect('/listProdi')->with('message', 'Data Program Studi Berhasil Di Update');
     }
 
     public function delete($id){
