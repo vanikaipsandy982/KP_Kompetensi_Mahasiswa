@@ -40,7 +40,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($mahasiswa as $mhs)
+                    @foreach($mahasiswa->sortby('id') as $mhs)
                     <tr>
                         <td>{{$mhs->nrp}}</td>
                         <td>{{$mhs->nama_mahasiswa}}</td>

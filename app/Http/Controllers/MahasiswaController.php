@@ -81,14 +81,14 @@ class MahasiswaController extends Controller
         $mahasiswa = new Mahasiswa();
         $mahasiswa->nrp = $request->nrp_mahasiswa_baru;
         $mahasiswa->nama_mahasiswa = $request->nama_mahasiswa_baru;
-        $mahasiswa->email_mahasiswa = $request->email_mahasiswa_baru;
-        $mahasiswa->telp_mahasiswa = $request->telp_mahasiswa_baru;
+        $mahasiswa->fk_id_prodi = $request->selected_prodi_mahasiswa_baru;
         $mahasiswa->alamat_mahasiswa = $request->alamat_mahasiswa_baru;
         $mahasiswa->jeniskel_mahasiswa = $request->jenkel_mahasiswa_baru;
-        $mahasiswa->nama_orangtua = $request->ortu_mahasiswa_baru;
+        $mahasiswa->email_mahasiswa = $request->email_mahasiswa_baru;
+        $mahasiswa->telp_mahasiswa = $request->telp_mahasiswa_baru;
         $mahasiswa->tanggal_masuk = $request->tanggal_masuk_mahasiswa_baru;
+        $mahasiswa->nama_orangtua = $request->ortu_mahasiswa_baru;
         $mahasiswa->alamat_orangtua = $request->alamat_ortu_mahasiswa_baru;
-        $mahasiswa->fk_id_prodi = $request->selected_prodi_mahasiswa_baru;
         $mahasiswa->fk_id_user = $user->id;
         $mahasiswa->save();
 

@@ -71,16 +71,16 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="tanggal_masuk_mhs">Tanggal Masuk</label>
-                                <input type="date" class="form-control" @error('tanggal_masuk') is-invalid @enderror value="{{$mhs->tanggal_masuk}}" name="tanggal_masuk_mahasiswa_baru" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="email_mhs">Email</label>
-                                <input type="text" class="form-control" @error('email_mahasiswa') is-invalid @enderror value="{{$mhs->email_mahasiswa}}" name="email_mahasiswa_baru" required>
+                                <input type="email" class="form-control" @error('email_mahasiswa') is-invalid @enderror value="{{$mhs->email_mahasiswa}}" name="email_mahasiswa_baru" required>
                             </div>
                             <div class="form-group">
                                 <label for="telp_mhs">Telepon</label>
                                 <input type="text" class="form-control" @error('telp_mahasiswa') is-invalid @enderror value="{{$mhs->telp_mahasiswa}}" name="telp_mahasiswa_baru" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tanggal_masuk_mhs">Tanggal Masuk</label>
+                                <input type="date" class="form-control" @error('tanggal_masuk') is-invalid @enderror value="{{$mhs->tanggal_masuk}}" name="tanggal_masuk_mahasiswa_baru" required>
                             </div>
                             <div class="form-group">
                                 <label for="nama_ortu">Nama Orang Tua</label>
