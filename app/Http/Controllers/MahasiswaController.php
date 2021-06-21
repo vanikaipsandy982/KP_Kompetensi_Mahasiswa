@@ -182,8 +182,31 @@ class MahasiswaController extends Controller
     {
         return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
     }
+//    public function import(Request $request)
+//    {
+//        Excel::import(new MahasiswaImport, '/mahasiswa(1).xlsx');
+//
+//        return redirect('/listMahasiswa')->with('message', 'Data Berhasil Di Import');
+//    }
     public function import(Request $request)
     {
-        Excel::import(new MahasiswaImport, $request->file('data_mhs'));
+        // validasi
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+
+        // menangkap file excel
+        $file = $request->file('file');
+
+        // membuat nama file unik
+        $nama_file = rand().$file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('file_mahasiswa',$nama_file);
+
+        // import data
+        Excel::import(new MahasiswaImport, public_path('/file_mahasiswa/'.$nama_file));
+
+        return redirect('/listMahasiswa')->with('message', 'Data Mahasiswa Berhasil Di Import');
     }
 }
