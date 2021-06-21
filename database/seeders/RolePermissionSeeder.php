@@ -37,6 +37,14 @@ class RolePermissionSeeder extends Seeder
                     [
                         ['name'=>'isi survey']
                     ]
+            ],
+
+            [
+                'name'=>'dosen',
+                'role_permission'=>
+                    [
+                        ['name'=>'akses data survey']
+                    ]
             ]
         ];
         foreach ($data as $value) {
