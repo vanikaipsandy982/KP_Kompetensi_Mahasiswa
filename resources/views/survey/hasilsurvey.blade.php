@@ -14,6 +14,7 @@
                 PENGEMBANGAN DIRI MAHASISWA
             </h1>
         </div>
+{{--        <p>{{$tampung}}</p>--}}
             <table class="table table-bordered">
                 <thead>
                 <tr>

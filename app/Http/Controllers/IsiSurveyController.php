@@ -112,7 +112,7 @@ class IsiSurveyController extends Controller
             'hasil_surveys.selisih', 'hasil_surveys.rata_rata', 'hasil_surveys.keterangan')
             ->join('surveys', 'survey_squestions.id_survey', '=', 'surveys.id')
             ->join('hasil_surveys', 'survey_squestions.id', '=', 'hasil_surveys.fk_id_squestion')
-//            ->where('survey_squestions.id_survey','=','surveys.id')
+            ->where('survey_squestions.id_survey','=','surveys.id')
             ->get();
         return view('survey.hasilsurvey',compact('pertanyaan'));
     }
