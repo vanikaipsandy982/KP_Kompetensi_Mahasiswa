@@ -77,14 +77,18 @@ Route::get('/listProdi', [ProdiController::class, 'index']);
 Route::post('/listProdi/store', [ProdiController::class, 'store']);
 Route::delete('/listProdi/delete/{id}', [ProdiController::class, 'delete']);
 Route::post('/listProdi/update', [ProdiController::class, 'update']);
+Route::get('/prodiedit{id}', [ProdiController::class, 'edit']);
+Route::patch('/prodiupdate/{id}', [ProdiController::class, 'update']);
 
 //Mahasiswa
 Route::get('/listMahasiswa', [MahasiswaController::class, 'index']);
 Route::get('/mahasiswacr', [MahasiswaController::class, 'create']);
 Route::post('/mahasiswastore', [MahasiswaController::class, 'store']);
 Route::get('/mahasiswaedit{id}', [MahasiswaController::class, 'edit']);
-Route::patch('mahasiswaupdate/{id}', [MahasiswaController::class, 'update']);
+Route::patch('/mahasiswaupdate/{id}', [MahasiswaController::class, 'update']);
 Route::delete('/listMahasiswa/delete/{id}', [MahasiswaController::class, 'delete']);
+Route::get('/mahasiswaexport', [MahasiswaController::class, 'export']);
+Route::post("/mahasiswaimport",[MahasiswaController::class, 'import'])->name('mahasiswa.import');
 
 //Bagian Mic
 //Chief Mentor

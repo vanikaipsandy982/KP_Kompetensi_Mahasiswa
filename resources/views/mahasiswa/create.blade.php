@@ -66,16 +66,16 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="tanggal_masuk_mhs">Tanggal Masuk</label>
-                                <input type="date" class="form-control" name="tanggal_masuk_mahasiswa_baru" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="email_mhs">Email</label>
-                                <input type="text" class="form-control" placeholder="Email Mahasiswa" name="email_mahasiswa_baru" required>
+                                <input type="email" class="form-control" placeholder="Email Mahasiswa" name="email_mahasiswa_baru" required>
                             </div>
                             <div class="form-group">
                                 <label for="telp_mhs">Telepon</label>
                                 <input type="text" class="form-control" placeholder="Telepon Mahasiswa" name="telp_mahasiswa_baru" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tanggal_masuk_mhs">Tanggal Masuk</label>
+                                <input type="date" class="form-control" name="tanggal_masuk_mahasiswa_baru" required>
                             </div>
                             <div class="form-group">
                                 <label for="nama_ortu">Nama Orang Tua</label>

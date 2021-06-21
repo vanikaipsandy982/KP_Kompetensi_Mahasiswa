@@ -11,8 +11,8 @@
             <div class="col-sm-12">
                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                 <a type="button" class="btn btn-outline-primary" href='/mahasiswacr'>Tambah Mahasiswa</a>
-                <button type="button" class="btn btn-outline-success">Export to Excel</button>
-                <button type="button" class="btn btn-outline-warning">Import</button>
+                <a type="button" class="btn btn-outline-success" href="/mahasiswaexport">Export to Excel</a>
+                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#importmhs">Import</button>
                 @endif
                 <br><br>
                 @if (session('message'))
@@ -40,7 +40,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($mahasiswa as $mhs)
+                    @foreach($mahasiswa->sortby('id') as $mhs)
                     <tr>
                         <td>{{$mhs->nrp}}</td>
                         <td>{{$mhs->nama_mahasiswa}}</td>
@@ -72,4 +72,24 @@
     </div>
 </div>
 </section>
+<!-- Modal Import -->
+<div class="modal fade" id="importmhs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Import Data Mahasiswa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {!!Form::open(['route' => 'mahasiswa.import', 'class' => 'form-horizontal','enctype' => 'multipart/form-data'])!!}
+
+                {!!Form::file('data_mhs')!!}
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" value="Import">
+            </div>
+        </div>
+    </div>
 @endsection

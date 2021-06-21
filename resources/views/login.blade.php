@@ -1,6 +1,6 @@
 @extends('layouts.login')
 
-@section('title', 'Data Mahasiswa')
+@section('title', 'MCUCare')
 
 
 @section('css')

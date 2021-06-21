@@ -34,19 +34,23 @@
                             <div class="form-group">
                                 <label for="fakul_mahasiswa">Fakultas</label>
                                 <select class="form-select" name="selected_fakultas_mahasiswa_baru">
-                                    <option disabled selected>Pilih Fakultas</option>
-{{--                                    @foreach($fakultas as $data)--}}
-{{--                                        <option value="{{$data->id}}">{{$data->nama_fakultas}}</option>--}}
-{{--                                    @endforeach--}}
+                                    @foreach($mahasiswa as $data)
+                                        <option style="display: none" value="{{$data->FakultasID}}" selected>{{$data->nama_fakultas}}</option>
+                                    @endforeach
+                                    @foreach($fakultas as $data)
+                                        <option value="{{$data->id}}">{{$data->nama_fakultas}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="prodi_mahasiswa">Program Studi</label>
                                 <select class="form-select" name="selected_prodi_mahasiswa_baru">
-                                    <option disabled selected>Pilih Program Studi</option>
-{{--                                    @foreach($prodi as $data2)--}}
-{{--                                        <option value="{{$data2->id}}">{{$data2->nama_prodi}}</option>--}}
-{{--                                    @endforeach--}}
+                                    @foreach($mahasiswa as $data2)
+                                        <option style="display: none" value="{{$data2->ProdiID}}" selected>{{$data2->nama_prodi}}</option>
+                                    @endforeach
+                                    @foreach($prodi as $data)
+                                        <option value="{{$data->id}}">{{$data->nama_prodi}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -56,27 +60,27 @@
                             <div class="form-group">
                                 <label>Jenis Kelamin</label><br>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="jenkel_mahasiswa_baru" id="inlineRadio1" value="Wanita" checked>
+                                    <input class="form-check-input" type="radio" name="jenkel_mahasiswa_baru" id="inlineRadio1" value="Wanita" @if($mhs->jeniskel_mahasiswa == 'Wanita') checked @endif>
                                     <label class="form-check-label" for="inlineRadio1">Wanita</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="jenkel_mahasiswa_baru" id="inlineRadio2" value="Pria">
+                                    <input class="form-check-input" type="radio" name="jenkel_mahasiswa_baru" id="inlineRadio2" value="Pria" @if($mhs->jeniskel_mahasiswa == 'Pria') checked @endif>
                                     <label class="form-check-label" for="inlineRadio2">Pria</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="tanggal_masuk_mhs">Tanggal Masuk</label>
-                                <input type="date" class="form-control" name="tanggal_masuk_mahasiswa_baru" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="email_mhs">Email</label>
-                                <input type="text" class="form-control" @error('email_mahasiswa') is-invalid @enderror value="{{$mhs->email_mahasiswa}}" name="email_mahasiswa_baru" required>
+                                <input type="email" class="form-control" @error('email_mahasiswa') is-invalid @enderror value="{{$mhs->email_mahasiswa}}" name="email_mahasiswa_baru" required>
                             </div>
                             <div class="form-group">
                                 <label for="telp_mhs">Telepon</label>
                                 <input type="text" class="form-control" @error('telp_mahasiswa') is-invalid @enderror value="{{$mhs->telp_mahasiswa}}" name="telp_mahasiswa_baru" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tanggal_masuk_mhs">Tanggal Masuk</label>
+                                <input type="date" class="form-control" @error('tanggal_masuk') is-invalid @enderror value="{{$mhs->tanggal_masuk}}" name="tanggal_masuk_mahasiswa_baru" required>
                             </div>
                             <div class="form-group">
                                 <label for="nama_ortu">Nama Orang Tua</label>
