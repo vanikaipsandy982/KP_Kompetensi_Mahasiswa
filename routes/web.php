@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testquery;
 use App\Http\Controllers\IsiSurveyController;
 use App\Http\Controllers\CategorySurvey;
+use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\Controller;
 
@@ -30,7 +31,15 @@ Route::get('/home', function () {
 });
 
 //Bagian Josrel
-Route::get('/editSurvey', [testquery::class,'show']);
+Route::get('/editSurvey', [SurveyController::class,'showSurvey']);
+Route::get('/lihat_survey{id}', [SurveyController::class,'detailSurvey']);
+Route::post('/lihat_survey/store', [SurveyController::class,'store']);
+Route::delete('/lihat_survey/delete/{nomor}{id}', [SurveyController::class, 'delete']);
+//Route::post('/lihat_survey/update', [SurveyController::class, 'update']);
+Route::get('/update_survey{id}', [SurveyController::class, 'edit']);
+Route::patch('/update/{id}{nomor}', [SurveyController::class, 'update']);
+Route::get('/hasilsurveyExport', [SurveyController::class, 'export']);
+
 Route::get('/isiSurvey', [IsiSurveyController::class,'index']);
 Route::get('/category_survey',[CategorySurvey::class,'index']);
 Route::get('/surveyCat1',[IsiSurveyController::class,'category1']);

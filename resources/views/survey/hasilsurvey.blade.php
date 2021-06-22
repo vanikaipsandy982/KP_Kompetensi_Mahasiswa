@@ -56,7 +56,7 @@
                 </tbody>
             </table>
             <div class="col-12">
-                <a href="/surveyCat2" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
+                <a type="button" class="btn btn-outline-success" href="/hasilsurveyExport">Export to Excel</a>
             </div>
 
 </div>
