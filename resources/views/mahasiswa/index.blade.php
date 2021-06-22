@@ -36,7 +36,9 @@
                         <th>Tanggal Masuk</th>
                         <th>Nama Orang Tua</th>
                         <th>Alamat Orang Tua</th>
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <th>Aksi</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -53,6 +55,7 @@
                         <td>{{$mhs->tanggal_masuk}}</td>
                         <td>{{$mhs->nama_orangtua}}</td>
                         <td>{{$mhs->alamat_orangtua}}</td>
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <td>
                             <div class="d-grid gap-2">
                                 <a href="/mahasiswaedit{{$mhs->id}}" class="btn btn-outline-info">Edit</a>
@@ -63,6 +66,7 @@
                                 </form>
                             </div>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                     </tbody>

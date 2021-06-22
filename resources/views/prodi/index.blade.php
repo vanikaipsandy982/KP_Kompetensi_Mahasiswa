@@ -24,7 +24,9 @@
                         <th scope="col">Kode</th>
                         <th scope="col">Nama Program Studi</th>
                         <th scope="col">Fakultas</th>
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <th scope="col">Aksi</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -33,6 +35,7 @@
                         <td>{{$prod->id_prodi}}</td>
                         <td>{{$prod->nama_prodi}}</td>
                         <td>{{$prod->nama_fakultas}}</td>
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <td>
                             <a href="/prodiedit{{$prod->id}}" class="btn btn-outline-info">Edit</a>
                             <form method="post" action="{{ url('/listProdi/delete/'.$prod->id) }}" class="d-inline">
@@ -41,6 +44,7 @@
                                 <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
                             </form>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                     </tbody>

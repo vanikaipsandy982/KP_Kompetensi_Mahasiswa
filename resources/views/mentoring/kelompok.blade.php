@@ -32,9 +32,7 @@
                             <th scope="col">No</th>
                             <th scope="col">Nama Kelompok</th>
                             <th scope="col">ID Mentor</th>
-                            @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                             <th scope="col">Aksi</th>
-                            @endif
                         </tr>
                         </thead>
                         <tbody>
@@ -44,19 +42,21 @@
                                 <th scope="row">{{$count}}</th>
                                 <th scope="row">{{$data->nama_kelompok}}</th>
                                 <td>{{$data->fk_id_chief_mentor}}</td>
-                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                 <td>
+                                    @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                     <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
+                                    @endif
 
                                     <form method="post" action="{{ url('/listKelompok/delete/'.$data->id) }}" class="d-inline">
                                         @method('delete')
                                         @csrf
+                                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                                         <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
+                                        @endif
                                     </form>
-
-                                    <button type="button" class="btn btn-outline-info btn-detail" id="detail-{{$data->id}}">Detail</button>
+                                        <button type="button" class="btn btn-outline-info btn-detail" id="detail-{{$data->id}}">Detail</button>
                                 </td>
-                                @endif
+
                             </tr>
                             @php($count +=1)
                         @endforeach
@@ -146,7 +146,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th scope="col">No</th>
+                        <th scope="col">NRP</th>
                         <th scope="col">Nama Mahasiswa</th>
                     </tr>
                     </thead>
