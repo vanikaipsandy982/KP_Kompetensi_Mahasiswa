@@ -16,7 +16,7 @@ class CreateSurveySquestionsTable extends Migration
         Schema::create('survey_squestions', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->integer('id_survey');
+            $table->integer('fk_id_survey');
             $table->timestamps();
         });
     }

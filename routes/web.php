@@ -42,7 +42,7 @@ Route::get('/hasilsurveyExport', [SurveyController::class, 'export']);
 
 Route::get('/isiSurvey', [IsiSurveyController::class,'index']);
 Route::get('/category_survey',[CategorySurvey::class,'index']);
-Route::get('/surveyCat1',[IsiSurveyController::class,'category1']);
+Route::get('/surveyCat',[IsiSurveyController::class,'category']);
 Route::get('/surveyCat2',[IsiSurveyController::class,'category2']);
 Route::get('/surveyCat3',[IsiSurveyController::class,'category3']);
 Route::get('/surveyCat4',[IsiSurveyController::class,'category4']);
@@ -57,6 +57,7 @@ Route::get('/surveyCat12',[IsiSurveyController::class,'category12']);
 Route::get('/surveyCat13',[IsiSurveyController::class,'category13']);
 Route::get('/surveyCat14',[IsiSurveyController::class,'category14']);
 Route::get('/hasilsurvey',[IsiSurveyController::class,'hasilsurvey']);
+Route::post('/savehasilsurvey',[IsiSurveyController::class,'save']);
 Route::post('/category_survey',[CategorySurvey::class,'store']);
 //Route::post('/surveyCat1',[IsiSurveyController::class,'hasilRadio']);
 Route::post('/surveyCat2',[IsiSurveyController::class,'hasilRadio']);

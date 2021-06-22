@@ -102,7 +102,7 @@ class Survey_squestions extends Seeder
             foreach ($value['squestions'] as $valuesquestion){
                 $value_squestion = new \App\Models\survey_squestions();
                 $value_squestion->question = $valuesquestion['question'];
-                $value_squestion->id_survey = $survey->id;
+                $value_squestion->fk_id_survey = $survey->id;
                 $value_squestion->save();
             }
         }

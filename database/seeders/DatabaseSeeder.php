@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Pengelompokan::class);
         $this->call(Jadwal_Mentoring::class);
         $this->call(Survey_squestions::class);
-        $this->call(HasilSurveySeeder::class);
+//        $this->call(HasilSurveySeeder::class);
     }
 }

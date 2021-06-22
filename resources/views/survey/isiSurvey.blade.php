@@ -32,7 +32,7 @@
 
 
                         <div class="col-12">
-                            <a href="/category_survey" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
+                            <a href="/surveyCat" class="btn btn-light" role="button" aria-pressed="true">Isi Survey</a>
                         </div>
                     </form>
                 </div>
