@@ -13,6 +13,7 @@ use App\Http\Controllers\CategorySurvey;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\chartSurveyController;
 
 
 Route::get('/', function(){
@@ -39,6 +40,8 @@ Route::delete('/lihat_survey/delete/{nomor}{id}', [SurveyController::class, 'del
 Route::get('/update_survey{id}', [SurveyController::class, 'edit']);
 Route::patch('/update/{id}{nomor}', [SurveyController::class, 'update']);
 Route::get('/hasilsurveyExport', [SurveyController::class, 'export']);
+Route::get('/chartSurvey', [chartSurveyController::class, 'index']);
+Route::get('/chartSurvey', [chartSurveyController::class, 'hasilsurvey']);
 
 Route::get('/isiSurvey', [IsiSurveyController::class,'index']);
 Route::get('/category_survey',[CategorySurvey::class,'index']);

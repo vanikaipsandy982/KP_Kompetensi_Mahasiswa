@@ -16,6 +16,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+
+
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,6 +33,19 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" rel="stylesheet">
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.esm.js" rel="stylesheet">
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.esm.min.js" rel="stylesheet">
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.js" rel="stylesheet">
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/helpers.esm.js" rel="stylesheet">
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/helpers.esm.min.js" rel="stylesheet">
+
+    <link  href="https://cdn.jsdelivr.net/combine/npm/chart.js@3.3.2/dist/chart.esm.min.js,npm/chart.js@3.3.2,npm/chart.js@3.3.2/dist/chart.min.js,npm/chart.js@3.3.2/dist/helpers.esm.min.js" rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.esm.min.js" rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js" rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js" rel="stylesheet">
+    <link  href="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/helpers.esm.min.js" rel="stylesheet">
     <!-- =======================================================
     * Template Name: Appland - v4.1.0
     * Template URL: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/

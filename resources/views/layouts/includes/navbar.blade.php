@@ -34,7 +34,7 @@
                     <ul>
                         <li><a href="/isiSurvey">Isi Survey</a></li>
                         @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
-                        <li><a href="/hasilsurvey">Hasil Survey</a></li>
+                        <li><a href="/chartSurvey">Hasil Survey</a></li>
                         <li><a href="/editSurvey">Edit Survey</a></li>
                         @endif
                     </ul>

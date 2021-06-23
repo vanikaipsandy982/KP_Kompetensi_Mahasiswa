@@ -40,7 +40,6 @@
                                 <tr>
                                     <td>{{$no++}}</td>
                                     <td>{{$data->question}}</td>
-                                    <td>{{$data->nomor}}</td>
                                     <td>
                                         <div class="d-grid gap-2">
                                             <a type="button" class="btn btn-outline-primary" href='/update_survey{{$data->nomor}}'>Edit</a>
