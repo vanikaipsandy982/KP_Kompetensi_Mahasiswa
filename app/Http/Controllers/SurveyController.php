@@ -26,11 +26,11 @@ class SurveyController extends Controller
         $judul= survey::select('survey_name','id')
             ->where('id','=',$id)
             ->get();
-        $showPertanyaan= survey_squestions::select('survey_squestions.id_survey',
+        $showPertanyaan= survey_squestions::select('survey_squestions.fk_id_survey',
             'surveys.survey_name', 'survey_squestions.question', 'surveys.id',
             'survey_squestions.id AS nomor')
-            ->join('surveys', 'survey_squestions.id_survey', '=', 'surveys.id')
-            ->where('survey_squestions.id_survey','=', $id)
+            ->join('surveys', 'survey_squestions.fk_id_survey', '=', 'surveys.id')
+            ->where('survey_squestions.fk_id_survey','=', $id)
             -> orderBy('nomor', 'ASC')
             ->get();
         return view('survey.lihatPertanyaan', compact('showPertanyaan','no','judul')) ;
@@ -42,7 +42,7 @@ class SurveyController extends Controller
         ]);
 
         $survey_ques = new survey_squestions();
-        $survey_ques->id_survey=$request->id;
+        $survey_ques->fk_id_survey=$request->id;
         $survey_ques->question= $request->pertanyaan;
         $survey_ques->save();
         return redirect('/lihat_survey'.$request->id)->with('message', 'Data Pertanyaan Berhasil Di Input');
@@ -74,7 +74,7 @@ class SurveyController extends Controller
             ->update([
                 'question' => $request->txtquestion,
             ]);
-        return redirect('/lihat_survey'.$nomor)->with('message', 'Data Mahasiswa Berhasil Di Update');
+        return redirect('/lihat_survey'.$nomor)->with('message', 'Data Pertanyaan Berhasil Di Update');
     }
     public function export()
     {

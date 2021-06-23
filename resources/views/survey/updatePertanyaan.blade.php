@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-                        <form method="post" action="/update/{{$sry->id}}{{$sry->id_survey}}">
+                        <form method="post" action="/update/{{$sry->id}}{{$sry->fk_id_survey}}">
                             @csrf
                             @method('patch')
                     <div class="col-sm-12">

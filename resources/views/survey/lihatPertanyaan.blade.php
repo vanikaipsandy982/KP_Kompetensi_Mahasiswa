@@ -81,7 +81,6 @@
                                 <input hidden type="text" class="form-control" name="id" value={{$data->id}} >
 
                         @endforeach
-                        <!--Nama Program Studi-->
                             <div class="form-group">
                                 <label for="pertanyaan">Pertanyaan</label>
                                 <input type="text" class="form-control" placeholder="Masukkan pertanyaan" name="pertanyaan" required>
