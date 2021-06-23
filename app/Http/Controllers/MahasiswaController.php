@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MahasiswaExpo;
 use App\Exports\MahasiswaExport;
+use App\Imports\MahasiswaImpo;
 use App\Imports\MahasiswaImport;
 use App\Models\Fakultas;
 use App\Models\Mahasiswa;
@@ -11,6 +13,7 @@ use App\Models\Prodi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class MahasiswaController extends Controller
@@ -182,12 +185,12 @@ class MahasiswaController extends Controller
     {
         return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
     }
-//    public function import(Request $request)
-//    {
-//        Excel::import(new MahasiswaImport, '/mahasiswa(1).xlsx');
-//
-//        return redirect('/listMahasiswa')->with('message', 'Data Berhasil Di Import');
-//    }
+
+    public function exportz()
+    {
+        return Excel::download(new MahasiswaExpo, 'mahasiswaz.xlsx');
+    }
+
     public function import(Request $request)
     {
         // validasi
@@ -201,12 +204,17 @@ class MahasiswaController extends Controller
         // membuat nama file unik
         $nama_file = rand().$file->getClientOriginalName();
 
-        // upload ke folder file_siswa di dalam folder public
-        $file->move('file_mahasiswa',$nama_file);
+        $path = $file->move('file_mahasiswa',$nama_file);
 
         // import data
-        Excel::import(new MahasiswaImport, public_path('/file_mahasiswa/'.$nama_file));
+        $import = Excel::import(new MahasiswaImpo, public_path('/file_mahasiswa/'.$nama_file));
 
-        return redirect('/listMahasiswa')->with('message', 'Data Mahasiswa Berhasil Di Import');
+        Storage::delete($path);
+
+        if($import){
+            return redirect('/listMahasiswa')->with('message', 'Data Mahasiswa Berhasil Di Import');
+        }else{
+            return redirect('/listMahasiswa')->with('message', 'Data Mahasiswa Gagal Di Import');
+        }
     }
 }

@@ -103,7 +103,8 @@ Route::post('/mahasiswastore', [MahasiswaController::class, 'store']);
 Route::get('/mahasiswaedit{id}', [MahasiswaController::class, 'edit']);
 Route::patch('/mahasiswaupdate/{id}', [MahasiswaController::class, 'update']);
 Route::delete('/listMahasiswa/delete/{id}', [MahasiswaController::class, 'delete']);
-Route::get('/mahasiswaexport', [MahasiswaController::class, 'export']);
+//Route::get('/mahasiswaexport', [MahasiswaController::class, 'export']);
+Route::get('/mahasiswaexpo', [MahasiswaController::class, 'exportz']);
 //Route::post('/mahasiswaimport',[MahasiswaController::class, 'import'])->name('mahasiswa.import');
 Route::post('/mahasiswaimport', [MahasiswaController::class, 'import']);
 

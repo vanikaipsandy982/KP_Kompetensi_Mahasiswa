@@ -11,7 +11,8 @@
             <div class="col-sm-12">
                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                 <a type="button" class="btn btn-outline-primary" href='/mahasiswacr'>Tambah Mahasiswa</a>
-                <a type="button" class="btn btn-outline-success" href="/mahasiswaexport">Export to Excel</a>
+{{--                <a type="button" class="btn btn-outline-success" href="/mahasiswaexport">Export to Excel</a>--}}
+                <a type="button" class="btn btn-outline-success" href="/mahasiswaexpo">Export to Excel</a>
                 <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#importmhs">Import</button>
                 @endif
                 <br><br>
@@ -88,21 +89,16 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="/mahasiswaimport" enctype="multipart/form-data">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                    <div class="modal-body">
+                        @csrf
+                        <label>Pilih file excel</label>
+                        <div class="form-group">
+                            <input type="file" name="file" required="required">
                         </div>
-                        <div class="modal-body">
-                            @csrf
-                            <label>Pilih file excel</label>
-                            <div class="form-group">
-                                <input type="file" name="file" required="required">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Import</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Import</button>
                     </div>
                 </form>
             </div>

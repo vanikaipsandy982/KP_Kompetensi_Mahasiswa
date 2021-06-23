@@ -15,9 +15,14 @@ class MahasiswaExport implements FromCollection,WithMapping,WithHeadings
     */
     public function collection()
     {
-        $mahasiswa = DB::table('mahasiswa')->join('Prodi', 'mahasiswa.fk_id_prodi', '=', 'Prodi.id')->join
-        ('Fakultas', 'Prodi.fk_id_fakultas', '=', 'Fakultas.id')->SELECT('mahasiswa.*', 'Prodi.id as idProdi', 'Prodi.nama_prodi as NamaProdi',
-        'Fakultas.id as idFakultas', 'Fakultas.nama_fakultas as NamaFakultas')->get();
+        $mahasiswa = DB::table('mahasiswa')
+            ->join('Prodi', 'mahasiswa.fk_id_prodi', '=', 'Prodi.id')
+            ->join('Fakultas', 'Prodi.fk_id_fakultas', '=', 'Fakultas.id')
+            ->SELECT('mahasiswa.*',
+                'Prodi.id as idProdi',
+                'Prodi.nama_prodi as NamaProdi',
+                'Fakultas.id as idFakultas',
+                'Fakultas.nama_fakultas as NamaFakultas')->get();
         return $mahasiswa;
     }
 
