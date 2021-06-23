@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\hasil_survey;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class chartSurveyController extends Controller
 {
@@ -27,6 +28,11 @@ class chartSurveyController extends Controller
         $sumRatKem=0;
         $sumRatKep=0;
         $counting=0;
+        $hitung=0;
+        $tampungRataRataKem= array();
+        $tampungRataRataKep= array();
+        $uid= Auth::user()->id;
+
         $pertanyaan = hasil_survey::select('hasil_surveys.skor_kepuasan','surveys.id','hasil_surveys.fk_id_survey',
             'hasil_surveys.skor_kemampuan',
             'survey_squestions.question',
@@ -36,10 +42,12 @@ class chartSurveyController extends Controller
             'hasil_surveys.keterangan')
             ->join('surveys','hasil_surveys.fk_id_survey','=','surveys.id')
             ->join('survey_squestions','hasil_surveys.fk_id_squestion','=','survey_squestions.id')
-            ->where('hasil_surveys.id','<',43)
-            ->where('hasil_surveys.id','>',1)
+//            ->where('hasil_surveys.id','<',43)
+            ->where('hasil_surveys.fk_id_user','=',$uid)
+
             ->get();
-        return view('survey.chartSurvey',compact('pertanyaan','sumRatKem','sumRatKep','counting'));
+        return view('survey.chartSurvey',compact('pertanyaan','sumRatKem',
+            'sumRatKep','counting', 'hitung', 'tampungRataRataKem', 'tampungRataRataKep'));
     }
 
     /**

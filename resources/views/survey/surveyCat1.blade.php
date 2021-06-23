@@ -19,7 +19,7 @@
                         <p style="font-size: 30px" >{{$data->question}}</p>
                         @for($i=1; $i<=10; $i++)
                             <div class="form-check form-check-inline">
-                                <input required class="form-check-input @error('inlineRadioOptions') is-invalid @enderror" type="radio"
+                                <input  class="form-check-input @error('inlineRadioOptions') is-invalid @enderror" type="radio"
                                        name="inlineRadioOptions_{{$data->id}}_{{$key_detail}}_{{$datacategory->id}}" id="inlineRadio1" value="{{$i}}">
                                 <label class="form-check-label" for="inlineRadio1">{{$i}}</label>
                             </div>

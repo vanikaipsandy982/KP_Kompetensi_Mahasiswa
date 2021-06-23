@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\HasilRadioRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Array_;
 
 class IsiSurveyController extends Controller
 {
@@ -49,6 +50,11 @@ class IsiSurveyController extends Controller
         $sumRatKem=0;
         $sumRatKep=0;
         $counting=0;
+        $hitung=0;
+        $tampungRataRataKem= array();
+        $tampungRataRataKep= array();
+        $uid= Auth::user()->id;
+
         $pertanyaan = hasil_survey::select('hasil_surveys.skor_kepuasan','surveys.id','hasil_surveys.fk_id_survey',
             'hasil_surveys.skor_kemampuan',
             'survey_squestions.question',
@@ -58,10 +64,12 @@ class IsiSurveyController extends Controller
             'hasil_surveys.keterangan')
             ->join('surveys','hasil_surveys.fk_id_survey','=','surveys.id')
             ->join('survey_squestions','hasil_surveys.fk_id_squestion','=','survey_squestions.id')
-            ->where('hasil_surveys.id','<',43)
-            ->where('hasil_surveys.id','>',1)
+//            ->where('hasil_surveys.id','<',43)
+            ->where('hasil_surveys.fk_id_user','=',$uid)
+
             ->get();
-        return view('survey.hasilsurvey',compact('pertanyaan','sumRatKem','sumRatKep','counting'));
+        return view('survey.hasilsurvey',compact('pertanyaan','sumRatKem',
+            'sumRatKep','counting', 'hitung', 'tampungRataRataKem', 'tampungRataRataKep'));
     }
 
     public function save(Request $request)

@@ -34,7 +34,8 @@ class hasilSurveyExport implements FromCollection,WithMapping,WithHeadings
             'hasil_surveys.keterangan')
             ->join('surveys','hasil_surveys.fk_id_survey','=','surveys.id')
             ->join('survey_squestions','hasil_surveys.fk_id_squestion','=','survey_squestions.id')
-            ->where('hasil_surveys.id','>',41)
+            ->where('hasil_surveys.id','>',1)
+            ->where('hasil_surveys.id','<',44)
             ->get();
         return $pertanyaan;
     }

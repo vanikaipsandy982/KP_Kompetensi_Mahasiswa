@@ -40,7 +40,7 @@
                                 <td scope="col">{{$data2->skor_kemampuan}}</td>
                                 <td scope="col">{{$data2->skor_kepuasan}}</td>
                                 <td scope="col">{{$data2->selisih}}</td>
-                                <td scope="col">{{$data2->skor_kepuasan}}</td>
+                                <td scope="col">-</td>
                             </tr>
                             <p hidden>{{$sumRatKem+=$data2->skor_kemampuan}}</p>
                             <p hidden>{{$sumRatKep+=$data2->skor_kepuasan}}</p>
@@ -51,6 +51,11 @@
                 <p hidden>{{$sumRatKep}}</p>
                 <p hidden>counting: {{$counting}}</p>
                 <p hidden>rata rata {{$sumRatKem/$counting}}</p>
+                <p hidden>rata rata {{$tampungRataRataKem[$hitung]= round($sumRatKem/$counting,1)}}</p>
+                <p hidden>rata rata kem {{print_r($tampungRataRataKem)}}</p>
+                <p hidden>rata rata {{$tampungRataRataKep[$hitung]= round($sumRatKep/$counting,1)}}</p>
+                <p hidden>rata rata kep {{print_r($tampungRataRataKep)}}</p>
+                <p hidden>rata rata {{$hitung++}}</p>
 
                         <tr>
                             <td scope="col"></td>
