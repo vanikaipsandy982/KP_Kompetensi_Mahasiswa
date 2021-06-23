@@ -8,7 +8,7 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" href="/home">Home</a></li>
-{{--                @if(Auth::user()->user_role == 'superadmin')--}}
+                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                 <li class="dropdown"><a href="#"><span>Akademik</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/listFakultas">Fakultas</a></li>
@@ -29,11 +29,14 @@
                         <li><a href="/listKaryawan">Data Karyawan</a></li>
                     </ul>
                 </li>
+                @endif
                 <li class="dropdown"><a href="#"><span>Survey</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/isiSurvey">Isi Survey</a></li>
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <li><a href="/hasilsurvey">Hasil Survey</a></li>
                         <li><a href="/editSurvey">Edit Survey</a></li>
+                        @endif
                     </ul>
                 </li>
                 <li class="dropdown"><a href="#"><span>NIK/NRP</span><i class="bi bi-chevron-down"></i></a>
