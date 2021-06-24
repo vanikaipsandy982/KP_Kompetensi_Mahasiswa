@@ -73,7 +73,6 @@
             <div class="col-12">
                 <a type="button" class="btn btn-outline-success" href="/hasilsurveyExport">Export to Excel</a>
             </div>
-
 </div>
 </section>
 @endsection

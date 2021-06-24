@@ -22,14 +22,19 @@
                         <li><a href="/listKelompok">Kelompok(Family-Cell)</a></li>
                     </ul>
                 </li>
+                @endif
                 <li  class="dropdown" ><a href="#"><span>Data</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin' or
+                            \Illuminate\Support\Facades\Auth::user()->userRole->name=='dosen')
                         <li><a href="/listMahasiswa">Data Mahasiswa</a></li>
+                        @endif
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <li><a href="/listDosen">Data Dosen</a></li>
                         <li><a href="/listKaryawan">Data Karyawan</a></li>
+                        @endif
                     </ul>
                 </li>
-                @endif
                 <li class="dropdown"><a href="#"><span>Survey</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/isiSurvey">Isi Survey</a></li>
@@ -39,7 +44,9 @@
                         @endif
                     </ul>
                 </li>
-                <li class="dropdown"><a href="#"><span>NIK/NRP</span><i class="bi bi-chevron-down"></i></a>
+                <li class="dropdown"><a href="#"><span>Halo, &nbsp;
+                            {{\Illuminate\Support\Facades\Auth::user()->username}}
+                        </span><i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/userProfile">Profile</a></li>
                         <li>
