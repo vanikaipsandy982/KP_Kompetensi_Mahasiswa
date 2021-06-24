@@ -138,11 +138,4 @@ Route::post('/listKelompok/store',[Controllers\KelompokController::class, 'store
 Route::post('/listKelompok/update',[Controllers\KelompokController::class, 'update']);
 Route::delete('/listKelompok/delete/{id}',[Controllers\KelompokController::class, 'delete']);
 
-
-
-//Profile
-Route::get('/userProfile', function (){
-    return view('user.profile');
-});
-
 require __DIR__ . '/auth.php';

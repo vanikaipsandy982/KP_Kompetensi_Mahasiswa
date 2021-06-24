@@ -51,13 +51,11 @@
                             {{\Illuminate\Support\Facades\Auth::user()->username}}
                         </span><i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/userProfile">Profile</a></li>
                         <li>
                             <form action="{{url('/logout')}}" method="post">
                                 @csrf
                                 &nbsp;&nbsp;
                                 <button type="submit" class="btn btn-danger">Logout</button>
-{{--                                <input type="submit" class="bi bi-chevron-down" value="Logout"/></input>--}}
                             </form>
                         </li>
                     </ul>
