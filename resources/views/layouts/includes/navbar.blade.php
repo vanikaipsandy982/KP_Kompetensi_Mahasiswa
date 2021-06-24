@@ -8,13 +8,16 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" href="/home">Home</a></li>
-                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
+                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin' or
+                            \Illuminate\Support\Facades\Auth::user()->userRole->name=='dosen')
                 <li class="dropdown"><a href="#"><span>Akademik</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/listFakultas">Fakultas</a></li>
                         <li><a href="/listProdi">Program Studi</a></li>
                     </ul>
                 </li>
+                @endif
+                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                 <li class="dropdown"><a href="#"><span>Mentoring</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/listChief">Data Chief Mentor</a></li>
