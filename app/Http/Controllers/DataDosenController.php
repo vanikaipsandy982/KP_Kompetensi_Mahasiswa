@@ -18,7 +18,7 @@ class DataDosenController extends Controller
         })->get();
         $jabatan = Jabatan::where('nama_jabatan','=','Dosen')->get();
         $user = User::whereHas('userRole',function ($query){
-            $query->where('name','=','superadmin');
+            $query->where('name','=','dosen');
         })->get();
         return view('data_dosen.index',compact('data_dosen','jabatan','user'));
     }

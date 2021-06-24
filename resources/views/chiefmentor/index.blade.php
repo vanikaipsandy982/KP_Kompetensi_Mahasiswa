@@ -10,7 +10,7 @@
                 <div class="justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                     <div class="col-sm-12">
                         @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
-                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahChiefMentor">Tambah Chief Mentor</button>
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahChiefMentor">Tambah</button>
                         @endif
                         <br><br>
                         @if (session('message'))
