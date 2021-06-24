@@ -40,7 +40,7 @@
                 </li>
                 <li class="dropdown"><a href="#"><span>Survey</span><i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="/isiSurvey">Isi Survey</a></li>
+                        <li><a href="/surveyCat">Isi Survey</a></li>
                         <li><a href="/chartSurvey">Hasil Survey</a></li>
                         @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <li><a href="/editSurvey">Edit Survey</a></li>

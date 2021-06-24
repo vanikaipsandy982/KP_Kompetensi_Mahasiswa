@@ -12,9 +12,6 @@
                     <a href="#" class="download-btn"><i class="bx bxl-apple"></i> App Store</a>
                 </div>
             </div>
-            <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
-                <img src="assets/img/hero-img.png" class="img-fluid" alt="">
-            </div>
         </div>
     </div>
 </section><!-- End Hero -->
