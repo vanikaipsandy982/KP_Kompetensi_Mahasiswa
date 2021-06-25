@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                     <div class="col-sm-12">
-                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
+                        @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin' or
+                            \Illuminate\Support\Facades\Auth::user()->userRole->name=='dosen')
                         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahChiefMentor">Tambah</button>
                         @endif
                         <br><br>
@@ -26,7 +27,8 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Chief Mentor</th>
                                 <th scope="col">Catatan Mentor</th>
-                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
+                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin' or
+                                    \Illuminate\Support\Facades\Auth::user()->userRole->name=='dosen')
                                 <th scope="col">Aksi</th>
                                 @endif
                             </tr>
@@ -38,7 +40,8 @@
                                     <th scope="row">{{$count}}</th>
                                     <td>{{$data->mentorKaryawan->nama_karyawan}}</td>
                                     <td>{{$data->catatan_mentor}}</td>
-                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
+                                @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin' or
+                                    \Illuminate\Support\Facades\Auth::user()->userRole->name=='dosen')
                                     <td>
                                         <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
                                         <form method="post" action="{{ url('/listChief/delete/'.$data->id) }}" class="d-inline">

@@ -18,7 +18,8 @@
                 </li>
                 @endif
                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin' or
-                    \Illuminate\Support\Facades\Auth::user()->userRole->name=='mentor')
+                    \Illuminate\Support\Facades\Auth::user()->userRole->name=='mentor' or
+                    \Illuminate\Support\Facades\Auth::user()->userRole->name=='dosen')
                 <li class="dropdown"><a href="#"><span>Mentoring</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
                         <li><a href="/listChief">Data Chief Mentor</a></li>
