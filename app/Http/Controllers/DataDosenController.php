@@ -62,7 +62,7 @@ class DataDosenController extends Controller
                 'notelp_karyawan'=> $request->notelpKaryawanBaru,
                 'agama'=> $request->agamaBaru
             ]);
-        return redirect()->back()->with('message', 'Catatan Berhasil Di Update');
+        return redirect()->back()->with('message', 'Berhasil Di Update');
     }
 
     public function delete($id){
