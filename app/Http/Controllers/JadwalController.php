@@ -26,7 +26,7 @@ class JadwalController extends Controller
         $jadwal_mentoring->jadwal = $request->jadwalTambah;
         $jadwal_mentoring->catatan = $request->keteranganTambah;
         $jadwal_mentoring->save();
-        return redirect('/listJadwal')->with('message', 'Data Berhasil di Update !');
+        return redirect('/listJadwal')->with('message', 'Data Berhasil di input');
     }
 
     public function update(Request $request){

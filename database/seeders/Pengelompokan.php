@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use phpDocumentor\Reflection\Types\Nullable;
 
 class Pengelompokan extends Seeder
 {

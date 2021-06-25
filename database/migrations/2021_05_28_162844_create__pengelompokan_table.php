@@ -16,7 +16,7 @@ class CreatePengelompokanTable extends Migration
         Schema::create('pengelompokan', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kelompok');
-            $table->integer('nomor_kelompok');
+            $table->integer('nomor_kelompok')->nullable();
             $table->integer('fk_id_chief_mentor')->nullable();
             $table->timestamps();
         });
