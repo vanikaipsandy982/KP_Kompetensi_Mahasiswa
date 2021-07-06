@@ -38,7 +38,7 @@
                         </thead>
                         <tbody>
                         @php($count=1)
-                        @foreach($data_dosen as $data)
+                        @foreach($data_dosen->sortby('id') as $data)
                             <tr>
                                 <th scope="row">{{$count}}</th>
                                 <td>{{$data->id_karyawan}}</td>

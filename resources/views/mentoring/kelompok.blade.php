@@ -89,7 +89,7 @@
                             <select class="form-control" name="fk_chiefMentor">
                                 <option></option>
                                 @foreach($chief_mentor as $value)
-                                    <option value="{{$value->id}}">{{$value->id}}</option>
+                                    <option value="{{$value->id}}">{{$value->mentorKaryawan->nama_karyawan}}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -2,6 +2,7 @@
 use App\Http\Controllers;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\MentorController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ChiefMentorController;
 use App\Http\Controllers\DataKaryawanController;
@@ -111,9 +112,17 @@ Route::post('/mahasiswaimport', [MahasiswaController::class, 'import']);
 //Bagian Mic
 //Chief Mentor
 Route::get('/listChief', [ChiefMentorController::class, 'index']);
+Route::get('/getMahasiswa',[ChiefMentorController::class, 'get']);
 Route::post('/listChief/store', [ChiefMentorController::class, 'store']);
 Route::delete('/listChief/delete/{id}', [ChiefMentorController::class, 'delete']);
 Route::post('/listChief/update', [ChiefMentorController::class, 'update']);
+//Mentor
+Route::get('/listMentor', [MentorController::class, 'index']);
+Route::get('/mentorcr', [MentorController::class, 'create']);
+Route::post('/mentorstore', [MentorController::class, 'store']);
+Route::get('/mentoredit{id}', [MentorController::class, 'edit']);
+Route::patch('/mentorupdate/{id}', [MentorController::class, 'update']);
+Route::delete('/listMentor/delete/{id}', [MentorController::class, 'delete']);
 //Data Karyawan
 Route::get('/listKaryawan', [DataKaryawanController::class, 'index']);
 Route::post('/listKaryawan/store', [DataKaryawanController::class, 'store']);

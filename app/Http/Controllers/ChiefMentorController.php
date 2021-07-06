@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chief_Mentor;
 use App\Models\Data_karyawan;
+use App\Models\Mahasiswa;
 use App\Models\Pengelompokan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,20 @@ class ChiefMentorController extends Controller
         })->get();
         $pengelompokan = Pengelompokan::all();
         return view('chiefmentor.index',compact('chief_mentor','data_karyawan','pengelompokan'));
+    }
+
+    public function get(Request $request)
+    {
+        $mahasiswa = [];
+        $kelompok = Pengelompokan::where('fk_id_chief_mentor', '=', $request->id)->get();
+        foreach ($kelompok as $data){
+            foreach ($data->kelompokMahasiswa as $data2){
+                if ($data2->mahasiswaUser->userRole->name == 'mentor'){
+                    array_push($mahasiswa,$data2);
+                }
+            }
+        }
+        return response()->json($mahasiswa);
     }
 
     public function store(Request $request){

@@ -17,7 +17,7 @@ class DataKaryawanController extends Controller
     })->get();
         $jabatan = Jabatan::where('nama_jabatan','=','Karyawan')->get();
         $user = User::whereHas('userRole',function ($query){
-            $query->where('name','=','user');
+            $query->where('name','=','superadmin');
         })->get();
         return view('data_karyawan.index',compact('data_karyawan','jabatan','user'));
     }

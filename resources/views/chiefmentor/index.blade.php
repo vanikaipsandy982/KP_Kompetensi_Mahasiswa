@@ -27,6 +27,7 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Nama Chief Mentor</th>
                                 <th scope="col">Catatan Mentor</th>
+                                <th scope="col">Tanggal</th>
                                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin' or
                                     \Illuminate\Support\Facades\Auth::user()->userRole->name=='dosen')
                                 <th scope="col">Aksi</th>
@@ -40,6 +41,7 @@
                                     <th scope="row">{{$count}}</th>
                                     <td>{{$data->mentorKaryawan->nama_karyawan}}</td>
                                     <td>{{$data->catatan_mentor}}</td>
+                                    <td>{{$data->created_at}}</td>
                                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin' or
                                     \Illuminate\Support\Facades\Auth::user()->userRole->name=='dosen')
                                     <td>
@@ -49,6 +51,7 @@
                                             @csrf
                                             <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
                                         </form>
+                                        <button type="button" class="btn btn-outline-info btn-detail" id="detail-{{$data->fk_id_karyawan}}">Detail</button>
                                     </td>
                                     @endif
                                 </tr>
@@ -132,8 +135,35 @@
                 </div>
             </div>
         </div>
+        <!--Form Detail -->
+        <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Detail</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">NRP</th>
+                            <th scope="col">Nama Mahasiswa</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tbody id="detail-table">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
 
     </section>
+@endsection
+@section('js')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function (){
@@ -144,6 +174,40 @@
                 $('input[name="catatanMentorBaru"]').val(catatanLama);
                 console.log(catatanLama);
                 $('#editChief').modal('toggle');
+            });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('.btn-detail').on('click', function () {
+
+                var type='GET';
+                var formData={
+                    id: $(this).attr('id').split('-').pop(),
+                };
+                var url='/getMahasiswa';
+                $.ajax({
+                    type: type,
+                    url: url,
+                    data: formData,
+                    success: function (data) {
+                        $('#detail-table').empty();
+                        console.log(data);
+                        $.each(data,function( index, element ) {
+                            $('#detail-table').append(
+                                `
+                             <tr>
+                                <td scope="col">${element.nrp}</td>
+                                <td scope="col">${element.nama_mahasiswa}</td>
+                            </tr>
+                            `
+                            );
+                        });
+                        $('#modalDetail').modal('toggle');
+                    },
+                    error: function (data) { console.log('Error : ', data); }
+                });
             });
         });
     </script>
