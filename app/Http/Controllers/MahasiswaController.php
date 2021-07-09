@@ -181,14 +181,9 @@ class MahasiswaController extends Controller
         return redirect('/listMahasiswa')->with('message', 'Data Mahasiswa Berhasil dihapus');
     }
 
-    public function export()
-    {
-        return Excel::download(new MahasiswaExport, 'mahasiswa.xlsx');
-    }
-
     public function exportz()
     {
-        return Excel::download(new MahasiswaExpo, 'mahasiswaz.xlsx');
+        return Excel::download(new MahasiswaExpo, 'mahasiswa.xlsx');
     }
 
     public function import(Request $request)
