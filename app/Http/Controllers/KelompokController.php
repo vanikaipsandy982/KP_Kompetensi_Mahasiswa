@@ -26,22 +26,23 @@ class KelompokController extends Controller
 
     public function store(Request $request){
         $request->validate([
-           'namaKelompok'=> 'required'
+            'namaKelompok'=> 'required'
         ]);
+        $pengelompokan = Pengelompokan::firstOrNew(['nama_kelompok' =>  $request->namaKelompok]);
 
-        $pengelompokan = new Pengelompokan();
         $pengelompokan->nama_kelompok = $request->namaKelompok;
         $chief_mentor = Chief_Mentor::where('id','=', $request->fk_chiefMentor)->first();
         $pengelompokan->fk_id_chief_mentor = $chief_mentor->id;
-        $pengelompokan->save();
+        if(!isset($pengelompokan->id))
+            $pengelompokan->save();
         return redirect('/listKelompok')->with('message', 'Data berhasil di input');
     }
 
     public function update(Request $request){
         $kelompok = Pengelompokan::find($request->editKelompok);
         $kelompok->update([
-                'nama_kelompok'=> $request->kelompokBaru
-            ]);
+            'nama_kelompok'=> $request->kelompokBaru
+        ]);
         return redirect()->back()->with('message', 'Kelompok berhasil di Update');
     }
 

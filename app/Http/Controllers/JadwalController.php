@@ -23,6 +23,8 @@ class JadwalController extends Controller
         ]);
 
         $jadwal_mentoring = new Jadwal_Mentoring();
+        $jadwal_mentoring->fk_id_kelompok = $request->fk_kelompok;
+        $jadwal_mentoring->fk_id_mahasiswa = $request->fk_mahasiswa;
         $jadwal_mentoring->jadwal = $request->jadwalTambah;
         $jadwal_mentoring->catatan = $request->keteranganTambah;
         $jadwal_mentoring->save();
@@ -43,6 +45,5 @@ class JadwalController extends Controller
         $jadwal_mentoring -> delete();
         return redirect('/listJadwal')->with('message', 'Jadwal berhasil di Hapus');
     }
-
 
 }

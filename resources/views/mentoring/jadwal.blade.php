@@ -9,7 +9,7 @@
                 <div class="justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
                     <div class="col-sm-12">
                         @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
-                        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahJadwal">Tambah Jadwal Mentoring</button>
+                            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalTambahJadwal">Tambah Jadwal Mentoring</button>
                         @endif
                         <br><br>
                         @if (session('message'))
@@ -25,8 +25,10 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Jadwal Mentoring</th>
                                 <th scope="col">Keterangan</th>
+                                <th scope="col">ID Mentor</th>
+                                <th scope="col">Nama Kelompok</th>
                                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
-                                <th scope="col">Aksi</th>
+                                    <th scope="col">Aksi</th>
                                 @endif
                             </tr>
                             </thead>
@@ -37,16 +39,18 @@
                                     <th scope="row">{{$count}}</th>
                                     <td>{{$data->jadwal}}</td>
                                     <td>{{$data->catatan}}</td>
+                                    <td>{{$data->jadwalmentoringMahasiswa->nrp}}</td>
+                                    <td>{{$data->jadwalmentoringKelompok->nama_kelompok}}</td>
                                     @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
-                                    <td>
-                                        <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-info btn-edit" id="{{$count}}-edit-{{$data->id}}">Edit</button>
 
-                                        <form method="post" action="{{ url('/listJadwal/delete/'.$data->id) }}" class="d-inline">
-                                            @method('delete')
-                                            @csrf
-                                            <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
-                                        </form>
-                                    </td>
+                                            <form method="post" action="{{ url('/listJadwal/delete/'.$data->id) }}" class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button onClick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="submit" class="btn btn-outline-danger">Hapus</button>
+                                            </form>
+                                        </td>
                                     @endif
                                 </tr>
                                 @php($count +=1 )
@@ -59,7 +63,6 @@
         </div>
 
         <!--Form Tambah Jadwal-->
-
         <div class="modal fade" id="modalTambahJadwal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -82,7 +85,26 @@
                                 <label for="keterangan">Keterangan</label>
                                 <input type="text" class="form-control" placeholder="Keterangan" name="keteranganTambah">
                             </div>
-                        <!--Button Simpan-->
+
+                            <div class="form-group">
+                                <label for="keterangan">ID Mentor</label>
+                                <select required class="form-control" name="fk_mahasiswa">
+                                    <option></option>
+                                    @foreach($jadwal_mentoring as $value)
+                                        <option value="{{$value->jadwalmentoringMahasiswa->id}}">{{$value->jadwalmentoringMahasiswa->nrp}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="keterangan">Nama Kelompok</label>
+                                <select required class="form-control" name="fk_kelompok">
+                                    <option></option>
+                                    @foreach($jadwal_mentoring as $value)
+                                        <option value="{{$value->jadwalmentoringKelompok->id}}">{{$value->jadwalmentoringKelompok->nama_kelompok}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!--Button Simpan-->
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
@@ -129,7 +151,7 @@
     </section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"> </script>
-        <script>
+    <script>
         $(document).ready(function (){
             $('.btn-edit').on('click',function (){
                 var id = $(this).attr('id').split('-');
