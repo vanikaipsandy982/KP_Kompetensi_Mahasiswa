@@ -54,6 +54,17 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="nama_chief_baru">Chief Mentor</label>
+                                <select class="form-select" name="nama_chief_baru">
+                                    @foreach($mahasiswa as $data2)
+                                        <option style="display: none" value="{{$data2->id}}" selected>{{$data2->nama_chief}}</option>
+                                    @endforeach
+                                    @foreach($data_karyawan as $data)
+                                        <option value="{{$data->id}}">{{$data->nama_karyawan}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="alamat_mhs">Alamat Mahasiswa</label>
                                 <textarea class="form-control" name="alamat_mahasiswa_baru" @error('alamat_mahasiswa') is-invalid @enderror required>{{$mhs->alamat_mahasiswa}}</textarea>
                             </div>
@@ -89,6 +100,17 @@
                             <div class="form-group">
                                 <label for="alamat_ortu">Alamat Orang Tua</label>
                                 <textarea class="form-control" name="alamat_ortu_mahasiswa_baru" @error('alamat_orangtua') is-invalid @enderror value="{{$mhs->alamat_orangtua}}" required>{{$mhs->alamat_orangtua}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="kelompok_baru">Kelompok</label>
+                                <select class="form-select" name="kelompok_baru">
+                                    @foreach($mahasiswa as $data2)
+                                        <option style="display: none" value="{{$data2->id}}" selected>{{$data2->fk_id_kelompok}}</option>
+                                    @endforeach
+                                    @foreach($kelompok as $data)
+                                        <option value="{{$data->id}}">{{$data->nama_kelompok}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <br>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">

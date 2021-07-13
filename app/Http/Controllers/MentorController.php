@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Data_karyawan;
 use App\Models\Fakultas;
 use App\Models\Mahasiswa;
 use App\Models\Pengelompokan;
@@ -26,7 +27,10 @@ class MentorController extends Controller
         $mahasiswaMentor = Mahasiswa::whereHas('mahasiswaUser',function($query){
             $query->where('fk_id_role','=','3');
         })->get();
-        return view('mentor.index', compact( 'fakultas', 'prodi', 'pengelompokan','mahasiswaMentor'));
+        $data_karyawan = Data_karyawan::whereHas('karyawanJabatan',function($query){
+            $query->where('nama_jabatan','=','Dosen');
+        })->get();
+        return view('mentor.index', compact( 'fakultas', 'prodi', 'pengelompokan','mahasiswaMentor','data_karyawan'));
     }
 
     /**
@@ -38,7 +42,11 @@ class MentorController extends Controller
     {
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
-        return view('mentor.create', compact('fakultas', 'prodi'));
+        $kelompok = Pengelompokan::all();
+        $data_karyawan = Data_karyawan::whereHas('karyawanJabatan',function($query){
+            $query->where('nama_jabatan','=','Dosen');
+        })->get();
+        return view('mentor.create', compact('fakultas', 'prodi','data_karyawan','kelompok'));
     }
 
     /**
@@ -59,6 +67,8 @@ class MentorController extends Controller
             'telp_mahasiswa_baru' => 'required',
             'ortu_mahasiswa_baru' => 'required',
             'alamat_ortu_mahasiswa_baru' => 'required',
+            'nama_chief_baru'=>'required',
+            'kelompok_baru'=>'required'
         ]);
         $user = new User();
         $user->username = $request->nrp_mahasiswa_baru;
@@ -77,6 +87,8 @@ class MentorController extends Controller
         $mahasiswa->tanggal_masuk = $request->tanggal_masuk_mahasiswa_baru;
         $mahasiswa->nama_orangtua = $request->ortu_mahasiswa_baru;
         $mahasiswa->alamat_orangtua = $request->alamat_ortu_mahasiswa_baru;
+        $mahasiswa->nama_chief = $request->nama_chief_baru;
+        $mahasiswa->fk_id_kelompok = $request->kelompok_baru;
         $mahasiswa->fk_id_user = $user->id;
         $mahasiswa->save();
 
@@ -121,7 +133,11 @@ class MentorController extends Controller
             ->get();
         $fakultas = Fakultas::all();
         $prodi = Prodi::all();
-        return view('mentor.edit', compact('mhs', 'mahasiswa', 'fakultas', 'prodi'));
+        $data_karyawan = Data_karyawan::whereHas('karyawanJabatan',function($query){
+            $query->where('nama_jabatan','=','Dosen');
+        })->get();
+        $kelompok = Pengelompokan::all();
+        return view('mentor.edit', compact('mhs', 'mahasiswa', 'fakultas', 'prodi','data_karyawan','kelompok'));
     }
 
     /**
@@ -142,7 +158,9 @@ class MentorController extends Controller
             'email_mahasiswa_baru' => 'required',
             'telp_mahasiswa_baru' => 'required',
             'ortu_mahasiswa_baru' => 'required',
-            'alamat_ortu_mahasiswa_baru' => 'required'
+            'alamat_ortu_mahasiswa_baru' => 'required',
+            'nama_chief_baru' =>'required',
+            'kelompok_baru'=>'required'
         ]);
 
         Mahasiswa::where('id', $id)
@@ -157,6 +175,8 @@ class MentorController extends Controller
                 'nama_orangtua' => $request->ortu_mahasiswa_baru,
                 'alamat_orangtua' => $request->alamat_ortu_mahasiswa_baru,
                 'fk_id_prodi' => $request->selected_prodi_mahasiswa_baru,
+                'nama_chief'=> $request->nama_chief_baru,
+                'fk_id_kelompok'=> $request->kelompok_baru
             ]);
         return redirect('/listMentor')->with('message', 'Data Mentor Berhasil Di Update');
     }

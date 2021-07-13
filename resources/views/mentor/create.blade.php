@@ -53,6 +53,15 @@
                                 <textarea class="form-control" name="alamat_mahasiswa_baru" placeholder="Alamat Lengkap Mahasiswa" required></textarea>
                             </div>
                             <div class="form-group">
+                                <label for="nama_chief_baru">Chief Mentor</label>
+                                <select class="form-select" name="nama_chief_baru">
+                                    <option disabled selected>Chief Mentor</option>
+                                    @foreach($data_karyawan as $data3)
+                                        <option value="{{$data3->id}}">{{$data3->nama_karyawan}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Jenis Kelamin</label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="jenkel_mahasiswa_baru" id="inlineRadio1" value="Wanita" checked>
@@ -84,6 +93,15 @@
                             <div class="form-group">
                                 <label for="alamat_ortu">Alamat Orang Tua</label>
                                 <textarea class="form-control" name="alamat_ortu_mahasiswa_baru" placeholder="Alamat Lengkap Orang Tua Mahasiswa" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="kelompok_baru">Kelompok</label>
+                                <select class="form-select" name="kelompok_baru">
+                                    <option disabled selected>Kelompok</option>
+                                    @foreach($kelompok as $data4)
+                                        <option value="{{$data4->id}}">{{$data4->nama_kelompok}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <br>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">

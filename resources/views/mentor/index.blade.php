@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
-            <div class="col-sm-12">
+            <div >
                 @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                     <a type="button" class="btn btn-outline-primary" href='/mentorcr'>Tambah Mentor</a>
                 @endif
@@ -34,6 +34,8 @@
                         <th>Tanggal Masuk</th>
                         <th>Nama Orang Tua</th>
                         <th>Alamat Orang Tua</th>
+                        <th>Nama Chief Mentor</th>
+                        <th>Kelompok</th>
                         @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <th>Aksi</th>
                         @endif
@@ -53,6 +55,8 @@
                         <td>{{$mhs->tanggal_masuk}}</td>
                         <td>{{$mhs->nama_orangtua}}</td>
                         <td>{{$mhs->alamat_orangtua}}</td>
+                        <td>{{$mhs->nama_chief}}</td>
+                        <td>{{$mhs->mahasiswaKelompok->nama_kelompok}}</td>
                         @if(\Illuminate\Support\Facades\Auth::user()->userRole->name=='superadmin')
                         <td>
                             <div class="d-grid gap-2">
